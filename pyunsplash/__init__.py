@@ -1,0 +1,17 @@
+import logging
+from logging.handlers import RotatingFileHandler
+
+from photos import Photos
+from users import Users
+
+
+def init_logging(log_level=logging.CRITICAL):
+    LOG_FILEPATH = 'pyunsplash.log'
+    logging.basicConfig(level=log_level)
+    logger = logging.getLogger("pyunsplash")
+    handler = RotatingFileHandler(LOG_FILEPATH, maxBytes=1024 * 1024 * 10, backupCount=10)
+    handler.setLevel(log_level)
+    formatter = logging.Formatter(
+                    "%(asctime)s %(name)s %(levelname)s %(message)s")
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
