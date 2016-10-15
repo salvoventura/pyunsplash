@@ -31,7 +31,7 @@ def photos():
     i=0
     while p.has_next and i<10:
         print i, p.get_next()
-        i+=1
+        i += 1
     photo = p.get_next()
     photo_id = photo[0].get('id')
     print photo_id
@@ -40,9 +40,13 @@ def photos():
     print p.get_download(id_=photo_id)
 
 
+def stats():
+    s = pyunsplash.Stats()
+    print s.get_total()
 
 
 
 if __name__ == '__main__':
     # users()
-    photos()
+    # photos()
+    stats()

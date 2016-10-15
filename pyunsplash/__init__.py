@@ -1,7 +1,10 @@
 import logging
 from logging.handlers import RotatingFileHandler
 
+from collections import Collections
 from photos import Photos
+from search import Search
+from stats import Stats
 from users import Users
 
 
