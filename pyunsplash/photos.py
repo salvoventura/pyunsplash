@@ -44,7 +44,7 @@ class Photos(generic.Generic):
         :param id_: str - The photo's ID. Required.
         :return:
         """
-        url_ = self._sanitized_url(id_ + '/stats')
+        url_ = self._sanitized_url(str(id_) + '/stats')
         self._loadurl(url_)
         return self.body
 
@@ -56,7 +56,7 @@ class Photos(generic.Generic):
         :param id_: str - The photo's ID. Required.
         :return:
         """
-        url_ = self._sanitized_url(id_ + '/download')
+        url_ = self._sanitized_url(str(id_) + '/download')
         self._loadurl(url_)
         return self.body
 

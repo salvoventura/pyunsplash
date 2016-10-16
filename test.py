@@ -40,13 +40,37 @@ def photos():
     print p.get_download(id_=photo_id)
 
 
+def search():
+    s = pyunsplash.Search()
+    print s.photos(query='dog,black', page=2)
+    print s.collections(query='horse,white', page=1)
+    print s.users(query='salvo',page=1)
+
+
+def collections():
+    c = pyunsplash.Collections()
+    print c.get_all(per_page=1, page=2)
+    print c.get_all_curated(page=3)
+    print c.get_all_featured(per_page=3)
+    collection = c.get_next()
+    collection_id = collection[0].get('id')
+    print collection_id
+    print c.get(collection_id)
+    print c.get_related(collection_id)
+    print c.get_photos(collection_id, per_page=1, page=1)
+    print c.get_curated_photos(collection_id)
+
+
+
+
 def stats():
     s = pyunsplash.Stats()
     print s.get_total()
 
 
-
 if __name__ == '__main__':
     # users()
     # photos()
-    stats()
+    # search()
+    collections()
+    # stats()

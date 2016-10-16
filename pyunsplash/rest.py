@@ -91,6 +91,7 @@ class Rest(object):
             else:
                 _url = '?'.join([url, self._query_parameters(query_params)])
 
+        logger.debug('rest get {}'.format(_url))
         _r = requests.get(_url, headers=self._req_headers, allow_redirects=True)
 
         try:
@@ -107,10 +108,10 @@ class Rest(object):
             logger.error('EXCEPTION: {}'.format(e))
             if self._status_code != requests.codes.ok:
                 logger.error(
-                    'HTTP status {}: {}'.format(self._status_code, _r.text))
+                    'HTTP EXC status {}: {}'.format(self._status_code, _r.text))
+                self._body = []
             raise
 
-        logger.debug('rest get {}'.format(_url))
         logger.debug('rest rsp status {} body {} headers {}'.format(self._status_code, self._body, self._headers))
         self._navigation = self._parse_pagination(self._headers)
         logger.debug('navigation {}'.format(self._navigation))

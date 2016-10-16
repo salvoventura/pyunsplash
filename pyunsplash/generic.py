@@ -34,9 +34,9 @@ class Generic(object):
 
     def _sanitized_url(self, sub_url):
         # sub_url always relative to _objurl if partial
-        if sub_url.startswith(self._objurl):
-            return sub_url
-        return self._objurl + '/' + sub_url.lstrip('/')
+        if str(sub_url).startswith(self._objurl):
+            return str(sub_url)
+        return self._objurl + '/' + str(sub_url).lstrip('/')
 
     def _loadurl(self, url_, query_params=None):
         if url_ is None:

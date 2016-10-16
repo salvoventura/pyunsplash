@@ -40,7 +40,7 @@ class Collections(generic.Generic):
         :param id_: str - The collections's ID. Required.
         :return:
         """
-        url_ = self._sanitized_url(id_ + '/related')
+        url_ = self._sanitized_url(str(id_) + '/related')
         self._loadurl(url_)
         return self.body
 
@@ -89,7 +89,7 @@ class Collections(generic.Generic):
         :param per_page: int - Number of items per page. (Optional; default: 10)
         :return:
         """
-        url_ = self._sanitized_url(id_ + '/photos')
+        url_ = self._sanitized_url(str(id_) + '/photos')
         valid_options = ['page', 'per_page']
         return self._get(url_, valid_options, **kwargs)
 
@@ -102,7 +102,7 @@ class Collections(generic.Generic):
         :param per_page: int - Number of items per page. (Optional; default: 10)
         :return:
         """
-        url_ = self._sanitized_url('/curated/' + id_ + '/photos')
+        url_ = self._sanitized_url('/curated/' + str(id_) + '/photos')
         valid_options = ['page', 'per_page']
         return self._get(url_, valid_options, **kwargs)
 
