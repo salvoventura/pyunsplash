@@ -1,0 +1,6 @@
+Usage
+=====
+::
+
+    pip install pyunsplash
+

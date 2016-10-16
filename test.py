@@ -10,7 +10,6 @@ logger.debug("="*80)
 
 
 def users():
-    u = pyunsplash.Users()
     print u.get(username='salvoventura')
     # u.get_followers()
     # u.get_following()
@@ -74,3 +73,4 @@ if __name__ == '__main__':
     search()
     collections()
     stats()
+

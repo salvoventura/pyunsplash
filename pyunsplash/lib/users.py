@@ -12,14 +12,14 @@
 ###############################################################################
 import logging
 
-import _generic
+import generic
 
 logger = logging.getLogger('pyunsplash')
 
 
-class Users(_generic.Generic):
-    def __init__(self):
-        super(Users, self).__init__('/users')
+class Users(generic.Generic):
+    def __init__(self, api_key):
+        super(Users, self).__init__(api_key, '/users')
 
     def get(self, username, **kwargs):
         """

@@ -12,14 +12,14 @@
 ###############################################################################
 import logging
 
-import _generic
+import generic
 
 logger = logging.getLogger('pyunsplash')
 
 
-class Stats(_generic.Generic):
-    def __init__(self):
-        super(Stats, self).__init__('/stats')
+class Stats(generic.Generic):
+    def __init__(self, api_key):
+        super(Stats, self).__init__(api_key, '/stats')
 
     def get_total(self):
         """

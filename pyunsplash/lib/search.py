@@ -12,14 +12,14 @@
 ###############################################################################
 import logging
 
-import _generic
+import generic
 
 logger = logging.getLogger('pyunsplash')
 
 
-class Search(_generic.Generic):
-    def __init__(self):
-        super(Search, self).__init__('/search')
+class Search(generic.Generic):
+    def __init__(self, api_key):
+        super(Search, self).__init__(api_key, '/search')
 
     def photos(self, **kwargs):
         """

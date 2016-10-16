@@ -1,0 +1,6 @@
+Examples
+========
+::
+
+    pip install pyunsplash
+

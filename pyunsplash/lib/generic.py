@@ -12,20 +12,18 @@
 ###############################################################################
 import logging
 
-import _rest
-import config
+import rest
 
 logger = logging.getLogger('pyunsplash')
 
 
 class Generic(object):
-    def __init__(self, collection):
-        self._config = config.config
+    def __init__(self, api_key, collection):
         self._apiurl = 'https://api.unsplash.com'
+        self._api_key = api_key
         self._objurl = self._apiurl + '{}'.format(collection)
-
         self._cururl = self._objurl
-        self._rest = _rest.Rest(api_key=self._config.get('API_KEY'))
+        self._rest = rest.Rest(api_key=self._api_key)
         self.status_code = None
         self.body = None
         self.headers = None
