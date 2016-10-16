@@ -69,8 +69,8 @@ def stats():
 
 
 if __name__ == '__main__':
-    # users()
-    # photos()
-    # search()
+    users()
+    photos()
+    search()
     collections()
-    # stats()
+    stats()

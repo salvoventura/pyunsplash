@@ -9,6 +9,12 @@ from .users import Users
 
 
 def init_logging(log_level=logging.CRITICAL):
+    """
+    Initialize logging if required. Only needed for debugging.
+
+    :param log_level: valid values from logging module
+    :return: None
+    """
     log_filepath = 'pyunsplash.log'
     logging.basicConfig(level=log_level)
     logger = logging.getLogger("pyunsplash")

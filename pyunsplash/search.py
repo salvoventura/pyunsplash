@@ -12,12 +12,12 @@
 ###############################################################################
 import logging
 
-import generic
+import _generic
 
 logger = logging.getLogger('pyunsplash')
 
 
-class Search(generic.Generic):
+class Search(_generic.Generic):
     def __init__(self):
         super(Search, self).__init__('/search')
 

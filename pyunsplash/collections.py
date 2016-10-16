@@ -12,12 +12,12 @@
 ###############################################################################
 import logging
 
-import generic
+import _generic
 
 logger = logging.getLogger('pyunsplash')
 
 
-class Collections(generic.Generic):
+class Collections(_generic.Generic):
     def __init__(self):
         super(Collections, self).__init__('/collections')
 
