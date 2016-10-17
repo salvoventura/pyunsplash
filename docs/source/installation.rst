@@ -1,5 +1,6 @@
+############
 Installation
-============
+############
 ::
 
     $ pip install pyunsplash
