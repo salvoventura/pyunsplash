@@ -49,7 +49,7 @@ class Users(generic.Generic):
 
     def get_following(self, username, **kwargs):
         """
-        Get a list of users following the given user.
+        API location of users this user is following.
 
         :param username: str - The user's username. Required.
         :param page: int - Page number to retrieve. (Optional; default: 1)
@@ -63,7 +63,7 @@ class Users(generic.Generic):
 
     def get_followers(self, username, **kwargs):
         """
-        Get a list of users followed by the given user.
+        API location of this user's followers.
 
         :param username: str - The user's username. Required.
         :param page: int - Page number to retrieve. (Optional; default: 1)

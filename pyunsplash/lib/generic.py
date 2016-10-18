@@ -16,7 +16,7 @@ import rest
 
 logger = logging.getLogger('pyunsplash')
 
-
+# TODO: add way to check what my last_page was in case of paging.
 class Generic(object):
     def __init__(self, api_key, collection):
         self._apiurl = 'https://api.unsplash.com'

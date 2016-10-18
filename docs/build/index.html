@@ -135,7 +135,7 @@ Supplying the optional <em>w</em> or <em>h</em> parameters will result in the cu
 <p><strong>Example</strong></p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
 <span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
-<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;salvoventura&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -166,8 +166,215 @@ Supplying the optional <em>w</em> or <em>h</em> parameters will result in the cu
 <p><strong>Example</strong></p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
 <span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
-<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_portfolio</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;salvoventura&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_portfolio</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">)</span>
 <span class="n">portfolio_url</span> <span class="o">=</span> <span class="n">json_body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_following(username)</strong></dt>
+<dd><p class="first">API location of users this user is following.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="19%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_following</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_followers(username)</strong></dt>
+<dd><p class="first">API location of this user&#8217;s followers.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="19%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_followers</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_photos(username, page, per_page, order_by)</strong></dt>
+<dd><p class="first">Get a list of photos uploaded by a user.</p>
+<p>The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>order_by</td>
+<td>string</td>
+<td>optional (default: latest)</td>
+<td>latest, oldest, popular</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;popular&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_likes(username, page, per_page, order_by)</strong></dt>
+<dd><p class="first">Get a list of photos liked by a user.</p>
+<p>The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>order_by</td>
+<td>string</td>
+<td>optional (default: latest)</td>
+<td>latest, oldest, popular</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;popular&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_collections(username, page, per_page)</strong></dt>
+<dd><p class="first">Get a list of collections created by the user.</p>
+<p>The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_collections</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
