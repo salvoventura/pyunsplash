@@ -87,8 +87,8 @@ This additional package should be automatically installed at installation time, 
 <li>Current User</li>
 <li>Users</li>
 <li>Photos</li>
-<li>Categories</li>
 <li>Collections</li>
+<li>Search</li>
 <li>Stats</li>
 </ul>
 <div class="section" id="authorization">
@@ -379,19 +379,970 @@ Supplying the optional <em>w</em> or <em>h</em> parameters will result in the cu
 </div>
 </dd>
 </dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_next()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;next&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># next page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_previous()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;previous&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># previous page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_first()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;first&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># first page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_first</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.get_last()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;last&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># last page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_last</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.has_next</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, returns &#8216;True&#8217; if there is a &#8216;next&#8217; page.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">has_next</span><span class="p">:</span>
+    <span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>users.has_previous</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, returns &#8216;True&#8217; if there is a &#8216;previous&#8217; page.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">has_previous</span><span class="p">:</span>
+    <span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 </div>
 <hr class="docutils" />
 <div class="section" id="photos">
 <h3>Photos<a class="headerlink" href="#photos" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><strong>photos.get(id, w, h, rect)</strong></dt>
+<dd><p class="first">Retrieve a single photo.</p>
+<p>Supplying the optional w or h parameters will result in the custom photo URL being added to the urls object.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>w</td>
+<td>number</td>
+<td>optional</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>h</td>
+<td>number</td>
+<td>optional</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>rect</td>
+<td>dict</td>
+<td>optional (cropped rect)</td>
+<td>{&#8216;x&#8217;: &lt;int&gt;, &#8216;y&#8217;: &lt;int&gt;, &#8216;w&#8217;: &lt;int&gt;, &#8216;h&#8217;: &lt;int&gt;}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_</span><span class="o">=</span><span class="s1">&#39;&lt;image_id&gt;&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="categories">
-<h3>Categories<a class="headerlink" href="#categories" title="Permalink to this headline">¶</a></h3>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_stats(id)</strong></dt>
+<dd><p class="first">Retrieve a single photo&#8217;s stats.</p>
+<p>Views are currently updated once daily.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_stats</span><span class="p">(</span><span class="n">id_</span><span class="o">=</span><span class="s1">&#39;&lt;image_id&gt;&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_download(id)</strong></dt>
+<dd><p class="first">Retrieve a single photo&#8217;s download link.</p>
+<p>Preferably hit this endpoint if a photo is downloaded in your application for use
+(example: to be displayed on a blog article, to be shared on social media, to be remixed, etc.).</p>
+<p>This is different than the concept of a view, which is tracked automatically when you hotlinking an image</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_download</span><span class="p">(</span><span class="n">id_</span><span class="o">=</span><span class="s1">&#39;&lt;image_id&gt;&#39;</span><span class="p">)</span>
+<span class="n">img_url</span> <span class="o">=</span> <span class="n">json_body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_all(page, per_page, order_by)</strong></dt>
+<dd><p class="first">Get a single page from the list of all photos.</p>
+<p>The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>order_by</td>
+<td>string</td>
+<td>optional (default: latest)</td>
+<td>latest, oldest, popular</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;popular&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_curated(page, per_page, order_by)</strong></dt>
+<dd><p class="first">Get a single page from the list of the curated photos (front-page&#8217;s photos).</p>
+<p>The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>order_by</td>
+<td>string</td>
+<td>optional (default: latest)</td>
+<td>latest, oldest, popular</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;popular&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_random(args)</strong></dt>
+<dd><p class="first">Retrieve a single random photo, given optional filters.</p>
+<p>If supplying multiple category ID&#8217;s, the resulting photos will be those that match all of the given categories,
+not ones that match any category.</p>
+<p>You can&#8217;t use the collections and query parameters in the same request</p>
+<p>When supplying a count parameter - and only then - the response will be an array of photos,
+even if the value of count is 1.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>category</td>
+<td>Category ID(&#8216;s) to filter selection. If multiple, comma-separated. (deprecated)</td>
+</tr>
+<tr class="row-odd"><td>collections</td>
+<td>Public collection ID(&#8216;s) to filter selection. If multiple, comma-separated.</td>
+</tr>
+<tr class="row-even"><td>featured</td>
+<td>Limit selection to featured photos.</td>
+</tr>
+<tr class="row-odd"><td>username</td>
+<td>Limit selection to a single user.</td>
+</tr>
+<tr class="row-even"><td>query</td>
+<td>Limit selection to photos matching a search term.</td>
+</tr>
+<tr class="row-odd"><td>w</td>
+<td>Image width in pixels.</td>
+</tr>
+<tr class="row-even"><td>h</td>
+<td>Image width in pixels.</td>
+</tr>
+<tr class="row-odd"><td>orientation</td>
+<td>Filter search results by photo orientation. Valid values are landscape, portrait, and squarish.</td>
+</tr>
+<tr class="row-even"><td>count</td>
+<td>The number of photos to return. (Default: 1; max: 30)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_random</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_next()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;next&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># next page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_previous()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;previous&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># previous page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_first()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;first&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># first page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_first</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.get_last()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;last&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># last page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_last</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.has_next</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, returns &#8216;True&#8217; if there is a &#8216;next&#8217; page.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">has_next</span><span class="p">:</span>
+    <span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>photos.has_previous</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, returns &#8216;True&#8217; if there is a &#8216;previous&#8217; page.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">has_previous</span><span class="p">:</span>
+    <span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">photos</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
 <div class="section" id="collections">
 <h3>Collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><strong>collections.get(id)</strong></dt>
+<dd><p class="first">Retrieve a single collection.</p>
+<p>To view a user&#8217;s private collections, the <strong>read_collections</strong> scope is required.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_</span><span class="o">=</span><span class="s1">&#39;&lt;collection_id&gt;&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_related(id)</strong></dt>
+<dd><p class="first">Retrieve a list of collections related to this one.</p>
+<p>To view a user&#8217;s private collections, the <strong>read_collections</strong> scope is required.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_related</span><span class="p">(</span><span class="n">id_</span><span class="o">=</span><span class="s1">&#39;&lt;collection_id&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_all(page, per_page)</strong></dt>
+<dd><p class="first">Get a single page from the list of featured collections.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_all_featured(page, per_page)</strong></dt>
+<dd><p class="first">Get a single page from the list of featured collections.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all_featured</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_all_curated(page, per_page)</strong></dt>
+<dd><p class="first">Get a single page from the list of curated collections.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all_curated</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_photos(id, page, per_page)</strong></dt>
+<dd><p class="first">Retrieve a collection&#8217;s photos.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_photos</span><span class="p">(</span><span class="n">id_</span><span class="o">=&lt;</span><span class="n">collection_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_curated_photos(id, page, per_page)</strong></dt>
+<dd><p class="first">Retrieve a curated collection&#8217;s photos.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>required</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>per_page</td>
+<td>number</td>
+<td>optional (default: 10)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_curated_photos</span><span class="p">(</span><span class="n">id_</span><span class="o">=&lt;</span><span class="n">collection_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_next()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;next&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># next page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_previous()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;previous&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># previous page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_first()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;first&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># first page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_first</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.get_last()</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, this will retrieve the &#8216;last&#8217; page from the same.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># last page from same query</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_last</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.has_next</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, returns &#8216;True&#8217; if there is a &#8216;next&#8217; page.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">has_next</span><span class="p">:</span>
+    <span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>collections.has_previous</strong></dt>
+<dd><p class="first">If the last object retrieved supported pagination, returns &#8216;True&#8217; if there is a &#8216;previous&#8217; page.</p>
+<p>Returns &#8216;False&#8217; otherwise.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">get_</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">has_previous</span><span class="p">:</span>
+    <span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="search">
+<h3>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><strong>search.photos(query, page)</strong></dt>
+<dd><p class="first">Get a single page of photo results for a query.</p>
+<p>Search results limited to 20 photos per page. The photo objects returned here are abbreviated.
+For full details use GET /photos/:id.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>query</td>
+<td>string</td>
+<td>required</td>
+<td>search terms</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">photos</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>search.collections(query, page)</strong></dt>
+<dd><p class="first">Get a single page of photo results for a query.</p>
+<p>Get a single page of collection results for a query.
+Search results limited to 20 collections per page.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>query</td>
+<td>string</td>
+<td>required</td>
+<td>search terms</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">collections</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s1">&#39;horse,white&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="docutils">
+<dt><strong>search.users(query, page)</strong></dt>
+<dd><p class="first">Get a single page of photo results for a query.</p>
+<p>Get a single page of collection results for a query.
+Search results limited to 20 users per page</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Optional/Required</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>query</td>
+<td>string</td>
+<td>required</td>
+<td>search terms</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>number</td>
+<td>optional (default: 1)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">users</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s1">&#39;maui&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
 <div class="section" id="stats">
 <h3>Stats<a class="headerlink" href="#stats" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><strong>stats.get_total()</strong></dt>
+<dd><p class="first">Get a list of counts for all of Unsplash.</p>
+<p><strong>Example</strong></p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyunsplash</span>
+<span class="n">pu</span> <span class="o">=</span> <span class="n">pyunsplash</span><span class="o">.</span><span class="n">PyUnsplash</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;&lt;your Unsplash API key&gt;&#39;</span><span class="p">)</span>
+<span class="n">json_body</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">get_stats</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<p>END</p>
 </div>
 </div>
 <span id="document-version"></span><div class="section" id="version">
@@ -430,8 +1381,8 @@ Supplying the optional <em>w</em> or <em>h</em> parameters will result in the cu
 <li class="toctree-l2"><a class="reference internal" href="index.html#current-user">Current User</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#users">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#photos">Photos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#categories">Categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#collections">Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#search">Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#stats">Stats</a></li>
 </ul>
 </li>

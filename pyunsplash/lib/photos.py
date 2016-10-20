@@ -28,6 +28,7 @@ class Photos(generic.Generic):
 
         :param id_: str - The photo's ID. Required.
         :param w: int - Image width in pixels. Optional.
+        :param h: int - Image height in pixels. Optional.
         :param rect: dict - dictionary of 4 integers representing x, y, width, height of the cropped rectangle.
                      {'x': 0, 'y': 0, 'w': 100, 'h': 100}
         :return:
@@ -50,8 +51,10 @@ class Photos(generic.Generic):
 
     def get_download(self, id_):
         """
-        Retrieve a single photo's stats.
-        Views are currently updated once daily.
+        Retrieve a single photo's download link.
+        Preferably hit this endpoint if a photo is downloaded in your application for use
+        (example: to be displayed on a blog article, to be shared on social media, to be remixed, etc.).
+        This is different than the concept of a view, which is tracked automatically when you hotlinking an image
 
         :param id_: str - The photo's ID. Required.
         :return:

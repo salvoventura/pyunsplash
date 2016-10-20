@@ -1,7 +1,0 @@
-########
-Examples
-########
-::
-
-    pip install pyunsplash
-
