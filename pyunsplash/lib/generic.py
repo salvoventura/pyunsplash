@@ -67,16 +67,17 @@ class GenericCollection(object):
     @property
     def has_next(self):
         if self.navigation:
-            return self.navigation.get('next') is not None
+            return self.link_next is not None
         return False
 
     @property
     def has_previous(self):
         if self.navigation:
-            return self.navigation.get('prev') is not None
+            return self.link_previous is not None
         return False
 
-    def get_next(self):
+    @property
+    def link_next(self):
         """
         If the last object retrieved supported pagination,
         this will retrieve the 'next' page from the same.
@@ -84,11 +85,10 @@ class GenericCollection(object):
         :return:
         """
         if self.navigation and self.navigation.get('next'):
-            self.url_self = self.navigation.get('next')
-            self.reload()
-        return False
+            return self.navigation.get('next')
 
-    def get_previous(self):
+    @property
+    def link_previous(self):
         """
         If the last object retrieved supported pagination,
         this will retrieve the 'previous' page from the same.
@@ -96,11 +96,10 @@ class GenericCollection(object):
         :return:
         """
         if self.navigation and self.navigation.get('prev'):
-            self.url_self = self.navigation.get('prev')
-            self.reload()
-        return False
+            return self.navigation.get('prev')
 
-    def get_first(self):
+    @property
+    def link_first(self):
         """
         If the last object retrieved supported pagination,
         this will retrieve the 'first' page from the same.
@@ -108,11 +107,10 @@ class GenericCollection(object):
         :return:
         """
         if self.navigation and self.navigation.get('first'):
-            self.url_self = self.navigation.get('first')
-            self.reload()
-        return False
+            return self.navigation.get('first')
 
-    def get_last(self):
+    @property
+    def link_last(self):
         """
         If the last object retrieved supported pagination,
         this will retrieve the 'last' page from the same.
@@ -120,9 +118,55 @@ class GenericCollection(object):
         :return:
         """
         if self.navigation and self.navigation.get('last'):
-            self.url_self = self.navigation.get('last')
-            self.reload()
-        return False
+            return self.navigation.get('last')
+
+    def get_next(self, class_cast):
+        """
+        Retrieve next page from last call query and return
+        list of class_cast objects
+
+        :return:
+        """
+        if self.link_next is not None:
+            response = self.get_url(self.link_next)
+            return [class_cast(self._api_key, source) for source in response.get('body') if
+                    response.get('status_code') == 200]
+
+    def get_previous(self, class_cast):
+        """
+        Retrieve previous page from last call query and return
+        list of class_cast objects
+
+        :return:
+        """
+        if self.link_previous is not None:
+            response = self.get_url(self.link_previous)
+            return [class_cast(self._api_key, source) for source in response.get('body') if
+                    response.get('status_code') == 200]
+
+    def get_first(self, class_cast):
+        """
+        Retrieve first page from last call query and return
+        list of class_cast objects
+
+        :return:
+        """
+        if self.link_first is not None:
+            response = self.get_url(self.link_first)
+            return [class_cast(self._api_key, source) for source in response.get('body') if
+                    response.get('status_code') == 200]
+
+    def get_last(self, class_cast):
+        """
+        Retrieve last page from last call query and return
+        list of class_cast objects
+
+        :return:
+        """
+        if self.link_last is not None:
+            response = self.get_url(self.link_last)
+            return [class_cast(self._api_key, source) for source in response.get('body') if
+                    response.get('status_code') == 200]
 
 
 class GenericObject(GenericCollection):

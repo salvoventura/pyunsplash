@@ -44,7 +44,8 @@ class Photos(GenericCollection):
         sub_url = '/photos'
         valid_options = ['page', 'per_page', 'order_by']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Photo(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_curated(self, **kwargs):
         """
@@ -60,7 +61,8 @@ class Photos(GenericCollection):
         sub_url = '/photos/curated'
         valid_options = ['page', 'per_page', 'order_by']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Photo(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_random(self, **kwargs):
         """
@@ -89,7 +91,8 @@ class Photos(GenericCollection):
         sub_url = '/photos/random'
         valid_options = ['category', 'collections', 'featured', 'username', 'query', 'w', 'h', 'orientation', 'count']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Photo(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_next(self):
         """
@@ -98,9 +101,7 @@ class Photos(GenericCollection):
 
         :return:
         """
-        if self.navigation.get('next') is not None:
-            response = self.get_url(self.navigation.get('next'))
-            return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return super(Photos, self).get_next(Photo)
 
     def get_previous(self):
         """
@@ -109,9 +110,25 @@ class Photos(GenericCollection):
 
         :return:
         """
-        if self.navigation.get('prev') is not None:
-            response = self.get_url(self.navigation.get('prev'))
-            return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return super(Photos, self).get_previous(Photo)
+
+    def get_first(self):
+        """
+        Retrieve first page from last call query and return
+        list of Photo objects
+
+        :return:
+        """
+        return super(Photos, self).get_first(Photo)
+
+    def get_last(self):
+        """
+        Retrieve last page from last call query and return
+        list of Photo objects
+
+        :return:
+        """
+        return super(Photos, self).get_last(Photo)
 
     # TODO: PUT /photos/:id
     # TODO: POST /photos/:id/like

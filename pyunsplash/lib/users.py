@@ -110,7 +110,8 @@ class User(GenericObject):
         sub_url = '/photos'
         valid_options = ['page', 'per_page', 'order_by']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Photo(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_likes(self, **kwargs):
         """
@@ -126,7 +127,8 @@ class User(GenericObject):
         sub_url = '/likes'
         valid_options = ['page', 'per_page', 'order_by']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Photo(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_collections(self, **kwargs):
         """
@@ -139,6 +141,7 @@ class User(GenericObject):
         sub_url = '/collections'
         valid_options = ['page', 'per_page']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Collection(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
 

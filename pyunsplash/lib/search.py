@@ -37,7 +37,8 @@ class Search(GenericObject):
         sub_url = '/photos'
         valid_options = ['query', 'page']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Photo(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def collections(self, **kwargs):
         """
@@ -51,7 +52,8 @@ class Search(GenericObject):
         sub_url = '/collections'
         valid_options = ['query', 'page']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Collection(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def users(self, **kwargs):
         """
@@ -65,5 +67,6 @@ class Search(GenericObject):
         sub_url = '/users'
         valid_options = ['query', 'page']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [User(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [User(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 

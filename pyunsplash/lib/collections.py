@@ -42,7 +42,8 @@ class Collections(GenericCollection):
         sub_url = '/collections'
         valid_options = ['page', 'per_page']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Collection(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_featured(self, **kwargs):
         """
@@ -55,7 +56,8 @@ class Collections(GenericCollection):
         sub_url = '/collections/featured'
         valid_options = ['page', 'per_page']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Collection(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_curated(self, **kwargs):
         """
@@ -68,29 +70,45 @@ class Collections(GenericCollection):
         sub_url = '/collections/curated'
         valid_options = ['page', 'per_page']
         response = self.get_url(sub_url, valid_options, **kwargs)
-        return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Collection(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_next(self):
         """
         Retrieve next page from last call query and return
-        list of Collections
+        list of Collection objects
 
         :return:
         """
-        if self.navigation.get('next') is not None:
-            response = self.get_url(self.navigation.get('next'))
-            return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return super(Collections, self).get_next(Collection)
 
     def get_previous(self):
         """
         Retrieve previous page from last call query and return
-        list of Collections
+        list of Collection objects
 
         :return:
         """
-        if self.navigation.get('prev') is not None:
-            response = self.get_url(self.navigation.get('prev'))
-            return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return super(Collections, self).get_previous(Collection)
+
+    def get_first(self):
+        """
+        Retrieve first page from last call query and return
+        list of Collection objects
+
+        :return:
+        """
+        return super(Collections, self).get_first(Collection)
+
+    def get_last(self):
+        """
+        Retrieve last page from last call query and return
+        list of Collection objects
+
+        :return:
+        """
+        return super(Collections, self).get_last(Collection)
+
 
     # TODO: POST /collections
     # TODO: PUT /collections/:id
@@ -111,7 +129,8 @@ class Collection(GenericObject):
         """
         sub_url = '/related'
         response = self.get_url(sub_url)
-        return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Collection(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_photos(self, **kwargs):
         """
@@ -123,7 +142,8 @@ class Collection(GenericObject):
         """
         valid_options = ['page', 'per_page']
         response = self.get_url(self.url_self + '/photos', valid_options, **kwargs)
-        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Photo(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
     def get_curated_photos(self, **kwargs):
         """
@@ -138,7 +158,8 @@ class Collection(GenericObject):
         # collection is curated, self.url_self is already correct
         valid_options = ['page', 'per_page']
         response = self.get_url(self.url_self + '/photos', valid_options, **kwargs)
-        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+        return [Photo(self._api_key, source) for source in response.get('body') if
+                response.get('status_code') == 200]
 
 
 
