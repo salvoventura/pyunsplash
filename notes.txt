@@ -1,0 +1,36 @@
+Ideas:
+
+    Collections API
+    ---------------
+    1. Make a Collections class to retrieve:
+        - all, featured and curated collection list
+        - returns Collection objects
+    2. Make a Collection class
+        - can be instantiated via the collection id or json body or uri
+        - offers get_photos, which returns list of Photo objects
+        - get_photos allows for 'per_page', and 'page' is either a number or 'next', 'previous', 'first', 'last'
+        - pages: property dict with {'first', 'last', 'next', 'previous'}
+
+
+    Photos API
+    ----------
+    1. Make a Photos class to retrieve:
+        - all, curated and random photos
+        - returns Photo objects
+    2. Make a Photo class
+        - can be instantiated via the photo id or json body or uri
+
+
+    Users API
+    ---------
+    1. Make a User class (there's no "Users")
+    2. Make a 'me' class or extension
+
+    Stats API
+    ---------
+    1. Remains as-is
+
+    Search API
+    ----------
+    1. Returns list of objects of type Collection or Photo
+

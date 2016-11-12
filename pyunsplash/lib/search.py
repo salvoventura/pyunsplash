@@ -12,14 +12,17 @@
 ###############################################################################
 import logging
 
-import generic
+from collections import Collection
+from generic import GenericObject
+from photos import Photo
+from users import User
 
 logger = logging.getLogger('pyunsplash')
 
 
-class Search(generic.Generic):
+class Search(GenericObject):
     def __init__(self, api_key):
-        super(Search, self).__init__(api_key, '/search')
+        super(Search, self).__init__(api_key, '/search', '/search')
 
     def photos(self, **kwargs):
         """
@@ -31,9 +34,10 @@ class Search(generic.Generic):
         :param page: int - Page number to retrieve. (Optional; default: 1)
         :return:
         """
-        url_ = self._sanitized_url('/photos')
+        sub_url = '/photos'
         valid_options = ['query', 'page']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def collections(self, **kwargs):
         """
@@ -44,9 +48,10 @@ class Search(generic.Generic):
         :param page: int - Page number to retrieve. (Optional; default: 1)
         :return:
         """
-        url_ = self._sanitized_url('/collections')
+        sub_url = '/collections'
         valid_options = ['query', 'page']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def users(self, **kwargs):
         """
@@ -57,7 +62,8 @@ class Search(generic.Generic):
         :param page: int - Page number to retrieve. (Optional; default: 1)
         :return:
         """
-        url_ = self._sanitized_url('/users')
+        sub_url = '/users'
         valid_options = ['query', 'page']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [User(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 

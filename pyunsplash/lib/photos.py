@@ -12,56 +12,23 @@
 ###############################################################################
 import logging
 
-import generic
+from generic import GenericCollection, GenericObject
 
 logger = logging.getLogger('pyunsplash')
 
 
-class Photos(generic.Generic):
+class Photos(GenericCollection):
     def __init__(self, api_key):
-        super(Photos, self).__init__(api_key, '/photos')
+        super(Photos, self).__init__(api_key)
 
-    def get(self, id_, **kwargs):
+    def get(self, source):
         """
-        Retrieve a single photo.
-        Supplying the optional w or h parameters will result in the custom photo URL being added to the urls object.
+        Return a photo object based on source
 
-        :param id_: str - The photo's ID. Required.
-        :param w: int - Image width in pixels. Optional.
-        :param h: int - Image height in pixels. Optional.
-        :param rect: dict - dictionary of 4 integers representing x, y, width, height of the cropped rectangle.
-                     {'x': 0, 'y': 0, 'w': 100, 'h': 100}
+        :param source: collection id, url or json body
         :return:
         """
-        url_ = self._sanitized_url(id_)
-        valid_options = ['w', 'h', 'rect']
-        return self._get(url_, valid_options, **kwargs)
-
-    def get_stats(self, id_):
-        """
-        Retrieve a single photo's stats.
-        Views are currently updated once daily.
-
-        :param id_: str - The photo's ID. Required.
-        :return:
-        """
-        url_ = self._sanitized_url(str(id_) + '/stats')
-        self._loadurl(url_)
-        return self.body
-
-    def get_download(self, id_):
-        """
-        Retrieve a single photo's download link.
-        Preferably hit this endpoint if a photo is downloaded in your application for use
-        (example: to be displayed on a blog article, to be shared on social media, to be remixed, etc.).
-        This is different than the concept of a view, which is tracked automatically when you hotlinking an image
-
-        :param id_: str - The photo's ID. Required.
-        :return:
-        """
-        url_ = self._sanitized_url(str(id_) + '/download')
-        self._loadurl(url_)
-        return self.body
+        return Photo(self._api_key, source=source)
 
     def get_all(self, **kwargs):
         """
@@ -74,9 +41,10 @@ class Photos(generic.Generic):
         :param order_by: str - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
         :return:
         """
-        url_ = self._sanitized_url('')
+        sub_url = '/photos'
         valid_options = ['page', 'per_page', 'order_by']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_curated(self, **kwargs):
         """
@@ -89,9 +57,10 @@ class Photos(generic.Generic):
         :param order_by: str - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
         :return:
         """
-        url_ = self._sanitized_url('/curated')
+        sub_url = '/photos/curated'
         valid_options = ['page', 'per_page', 'order_by']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_random(self, **kwargs):
         """
@@ -117,10 +86,87 @@ class Photos(generic.Generic):
         :return:
         """
         # TODO: test/understand the 'featured' case, is it just a flag, and do i need to handle it differently?
-        url_ = self._sanitized_url('/random')
+        sub_url = '/photos/random'
         valid_options = ['category', 'collections', 'featured', 'username', 'query', 'w', 'h', 'orientation', 'count']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     # TODO: PUT /photos/:id
     # TODO: POST /photos/:id/like
     # TODO: DELETE /photos/:id/like
+
+
+class Photo(GenericObject):
+    def __init__(self, api_key, source, **kwargs):
+        super(Photo, self).__init__(api_key, '/photos', source)
+
+        # # guess format based on source type, extract the link to self
+        # if isinstance(source, dict):
+        #     self_body = source
+        #     self_url = source.get('links').get('self')
+        # elif isinstance(source, str):
+        #     self_body = None
+        #     # TODO: might have to become stricter
+        #     if source.startswith('https://api.unsplash.com/photos/'):
+        #         self_url = source
+        #     elif str(source).isalnum():
+        #         self_url = 'https://api.unsplash.com/photos/{}'.format(source)
+        # else:
+        #     logger.info('Invalid parameter to constructor: {}'.format(source))
+        #     raise ValueError('Invalid parameter to constructor: {}')
+        #
+        # # link to self
+        # self.url_self = self_url
+        # self.obj_self = self_body
+        # if self.obj_self is None:
+        #     # need to (re)load
+        #     self.reload()
+
+    def get(self, **kwargs):
+        """
+        Reload this photo, allows for optional parameters.
+        Supplying the optional w or h parameters will result in the custom photo URL being added to the urls object.
+
+        :param w: int - Image width in pixels. Optional.
+        :param h: int - Image height in pixels. Optional.
+        :param rect: dict - dictionary of 4 integers representing x, y, width, height of the cropped rectangle.
+                     {'x': 0, 'y': 0, 'w': 100, 'h': 100}
+        :return:
+        """
+        url = self.url_self
+        valid_options = ['w', 'h', 'rect']
+        response = self.get_url(url, valid_options, **kwargs)
+        if response.get('status_code') == 200:
+            self.obj_self = response.get('body')
+            return self.obj_self
+
+    def get_stats(self):
+        """
+        Retrieve this photo's stats.
+        Views are currently updated once daily.
+
+        :return:
+        """
+        sub_url = '/stats'
+        response = self.get_sub_url(sub_url)
+        if response.get('status_code') == 200:
+            return response.get('body')
+
+    def get_download(self):
+        """
+        Retrieve this photo's download link.
+        Preferably hit this endpoint if a photo is downloaded in your application for use
+        (example: to be displayed on a blog article, to be shared on social media, to be remixed, etc.).
+        This is different than the concept of a view, which is tracked automatically when you hotlinking an image
+
+        :return:
+        """
+        sub_url = '/download'
+        response = self.get_sub_url(sub_url)
+        if response.get('status_code') == 200:
+            return response.get('body')
+
+
+
+
+

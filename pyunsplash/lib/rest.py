@@ -36,6 +36,7 @@ class Rest(object):
         :param query_parameters: dictionary of query parameters and their values
         :return:
         """
+        logger.debug('calling _query_parameters({})'.format(query_parameters))
         if query_parameters is None:
             return ''
 
@@ -84,6 +85,7 @@ class Rest(object):
         return self._navigation
 
     def get(self, url, query_params=None):
+        logger.debug('calling rest get {} {}'.format(url, query_params))
         _url = url
         if query_params:
             if url.find('?') > 0:

@@ -12,42 +12,82 @@
 ###############################################################################
 import logging
 
-import generic
+from collections import Collection
+from generic import GenericCollection, GenericObject
+from photos import Photo
 
 logger = logging.getLogger('pyunsplash')
 
 
-class Users(generic.Generic):
+class Users(GenericCollection):
     def __init__(self, api_key):
-        super(Users, self).__init__(api_key, '/users')
+        super(Users, self).__init__(api_key)
 
-    def get(self, username, **kwargs):
+    def get(self, source):
+        """
+        Return a user object based on source
+
+        :param source: username, url or json body
+        :return:
+        """
+        return User(self._api_key, source)
+
+
+class User(GenericObject):
+    def __init__(self, api_key, source):
+        super(User, self).__init__(api_key, '/users', source)
+
+        # # guess format based on source type, extract the link to self
+        # if isinstance(source, dict):
+        #     self_body = source
+        #     self_url = source.get('links').get('self')
+        # elif isinstance(source, str):
+        #     self_body = None
+        #     # TODO: might have to become stricter
+        #     if source.startswith('https://api.unsplash.com/users/'):
+        #         self_url = source
+        #     elif str(source).isalnum():
+        #         self_url = 'https://api.unsplash.com/users/{}'.format(source)
+        # else:
+        #     logger.info('Invalid parameter to constructor: {}'.format(source))
+        #     raise ValueError('Invalid parameter to constructor: {}')
+        #
+        # # link to self
+        # self.url_self = self_url
+        # self.obj_self = self_body
+        # if self.obj_self is None:
+        #     # need to (re)load
+        #     self.reload()
+
+    def get(self, **kwargs):
         """
         Retrieve public details on a given user.
         Supplying the optional w or h parameters will result in the custom photo
         URL being added to the profile_image object.
 
-        :param username: str - The user's username. Required.
         :param w: int - Profile image width in pixels. Optional.
         :param h: int - Profile image height in pixels. Optional.
         :return:
         """
-        url_ = self._sanitized_url(username)
+        url = self.url_self
         valid_options = ['w', 'h']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_url(url, valid_options, **kwargs)
+        if response.get('status_code') == 200:
+            self.obj_self = response.get('body')
+            return self.obj_self
 
-    def get_portfolio(self, username):
+    def get_portfolio(self):
         """
-        Retrieve a single user's portfolio link.
+        Retrieve this user's portfolio link.
 
-        :param username: str - The user's username. Required.
         :return: str, url
         """
-        url_ = self._sanitized_url(username + '/portfolio')
-        self._loadurl(url_)
-        return self.body
+        sub_url = '/portfolio'
+        response = self.get_sub_url(sub_url)
+        if response.get('status_code') == 200:
+            return response.get('body')
 
-    def get_following(self, username, **kwargs):
+    def get_following(self, **kwargs):
         """
         API location of users this user is following.
 
@@ -57,74 +97,70 @@ class Users(generic.Generic):
         :return:
         """
         # TODO: test and verify is paging is supported
-        url_ = self._sanitized_url(username + '/following')
+        sub_url = '/following'
         valid_options = ['page', 'per_page']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options)
+        if response.get('status_code') == 200:
+            return response.get('body')
 
-    def get_followers(self, username, **kwargs):
+    def get_followers(self, **kwargs):
         """
         API location of this user's followers.
 
-        :param username: str - The user's username. Required.
         :param page: int - Page number to retrieve. (Optional; default: 1)
         :param per_page: int - Number of items per page. (Optional; default: 10)
         :return:
         """
         # TODO: test and verify is paging is supported
-        url_ = self._sanitized_url(username + '/followers')
+        sub_url = '/followers'
         valid_options = ['page', 'per_page']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options)
+        if response.get('status_code') == 200:
+            return response.get('body')
 
-    def get_photos(self, username, **kwargs):
+    def get_photos(self, **kwargs):
         """
         Get a list of photos uploaded by a user.
         The photo objects returned here are abbreviated.
         For full details use GET /photos/:id
 
-        :param username: str - The user's username. Required.
         :param page: int - Page number to retrieve. (Optional; default: 1)
         :param per_page: int - Number of items per page. (Optional; default: 10)
         :param order_by: str - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
         :return:
         """
-        url_ = self._sanitized_url(username + '/photos')
+        sub_url = '/photos'
         valid_options = ['page', 'per_page', 'order_by']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
-    def get_likes(self, username, **kwargs):
+    def get_likes(self, **kwargs):
         """
-        Get a list of photos liked by a user.
+        Get a list of photos liked by this user.
         The photo objects returned here are abbreviated.
         For full details use GET /photos/:id
 
-        :param username: str - The user's username. Required.
         :param page: int - Page number to retrieve. (Optional; default: 1)
         :param per_page: int - Number of items per page. (Optional; default: 10)
         :param order_by: str - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
         :return:
         """
-        url_ = self._sanitized_url(username + '/likes')
+        sub_url = '/likes'
         valid_options = ['page', 'per_page', 'order_by']
-        return self._get(url_, valid_options, **kwargs)
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
-    def get_collections(self, username, **kwargs):
+    def get_collections(self, **kwargs):
         """
-        Get a list of collections created by the user.
+        Get a list of collections created by this user.
 
-        :param username: str - The user's username. Required.
         :param page: int - Page number to retrieve. (Optional; default: 1)
         :param per_page: int - Number of items per page. (Optional; default: 10)
         :return:
         """
-        url_ = self._sanitized_url(username + '/likes')
+        sub_url = '/collections'
         valid_options = ['page', 'per_page']
-        return self._get(url_, valid_options, **kwargs)
-
-
-
-
-
-
-
+        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
 
