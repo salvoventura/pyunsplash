@@ -37,28 +37,6 @@ class User(GenericObject):
     def __init__(self, api_key, source):
         super(User, self).__init__(api_key, '/users', source)
 
-        # # guess format based on source type, extract the link to self
-        # if isinstance(source, dict):
-        #     self_body = source
-        #     self_url = source.get('links').get('self')
-        # elif isinstance(source, str):
-        #     self_body = None
-        #     # TODO: might have to become stricter
-        #     if source.startswith('https://api.unsplash.com/users/'):
-        #         self_url = source
-        #     elif str(source).isalnum():
-        #         self_url = 'https://api.unsplash.com/users/{}'.format(source)
-        # else:
-        #     logger.info('Invalid parameter to constructor: {}'.format(source))
-        #     raise ValueError('Invalid parameter to constructor: {}')
-        #
-        # # link to self
-        # self.url_self = self_url
-        # self.obj_self = self_body
-        # if self.obj_self is None:
-        #     # need to (re)load
-        #     self.reload()
-
     def get(self, **kwargs):
         """
         Retrieve public details on a given user.
@@ -83,7 +61,7 @@ class User(GenericObject):
         :return: str, url
         """
         sub_url = '/portfolio'
-        response = self.get_sub_url(sub_url)
+        response = self.get_url(sub_url)
         if response.get('status_code') == 200:
             return response.get('body')
 
@@ -99,7 +77,7 @@ class User(GenericObject):
         # TODO: test and verify is paging is supported
         sub_url = '/following'
         valid_options = ['page', 'per_page']
-        response = self.get_sub_url(sub_url, valid_options)
+        response = self.get_url(sub_url, valid_options)
         if response.get('status_code') == 200:
             return response.get('body')
 
@@ -114,7 +92,7 @@ class User(GenericObject):
         # TODO: test and verify is paging is supported
         sub_url = '/followers'
         valid_options = ['page', 'per_page']
-        response = self.get_sub_url(sub_url, valid_options)
+        response = self.get_url(sub_url, valid_options)
         if response.get('status_code') == 200:
             return response.get('body')
 
@@ -131,7 +109,7 @@ class User(GenericObject):
         """
         sub_url = '/photos'
         valid_options = ['page', 'per_page', 'order_by']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_likes(self, **kwargs):
@@ -147,7 +125,7 @@ class User(GenericObject):
         """
         sub_url = '/likes'
         valid_options = ['page', 'per_page', 'order_by']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_collections(self, **kwargs):
@@ -160,7 +138,7 @@ class User(GenericObject):
         """
         sub_url = '/collections'
         valid_options = ['page', 'per_page']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
 

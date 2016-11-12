@@ -43,7 +43,7 @@ class Photos(GenericCollection):
         """
         sub_url = '/photos'
         valid_options = ['page', 'per_page', 'order_by']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_curated(self, **kwargs):
@@ -59,7 +59,7 @@ class Photos(GenericCollection):
         """
         sub_url = '/photos/curated'
         valid_options = ['page', 'per_page', 'order_by']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_random(self, **kwargs):
@@ -88,8 +88,30 @@ class Photos(GenericCollection):
         # TODO: test/understand the 'featured' case, is it just a flag, and do i need to handle it differently?
         sub_url = '/photos/random'
         valid_options = ['category', 'collections', 'featured', 'username', 'query', 'w', 'h', 'orientation', 'count']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+
+    def get_next(self):
+        """
+        Retrieve next page from last call query and return
+        list of Photo objects
+
+        :return:
+        """
+        if self.navigation.get('next') is not None:
+            response = self.get_url(self.navigation.get('next'))
+            return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+
+    def get_previous(self):
+        """
+        Retrieve previous page from last call query and return
+        list of Photo objects
+
+        :return:
+        """
+        if self.navigation.get('prev') is not None:
+            response = self.get_url(self.navigation.get('prev'))
+            return [Photo(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     # TODO: PUT /photos/:id
     # TODO: POST /photos/:id/like
@@ -99,28 +121,6 @@ class Photos(GenericCollection):
 class Photo(GenericObject):
     def __init__(self, api_key, source, **kwargs):
         super(Photo, self).__init__(api_key, '/photos', source)
-
-        # # guess format based on source type, extract the link to self
-        # if isinstance(source, dict):
-        #     self_body = source
-        #     self_url = source.get('links').get('self')
-        # elif isinstance(source, str):
-        #     self_body = None
-        #     # TODO: might have to become stricter
-        #     if source.startswith('https://api.unsplash.com/photos/'):
-        #         self_url = source
-        #     elif str(source).isalnum():
-        #         self_url = 'https://api.unsplash.com/photos/{}'.format(source)
-        # else:
-        #     logger.info('Invalid parameter to constructor: {}'.format(source))
-        #     raise ValueError('Invalid parameter to constructor: {}')
-        #
-        # # link to self
-        # self.url_self = self_url
-        # self.obj_self = self_body
-        # if self.obj_self is None:
-        #     # need to (re)load
-        #     self.reload()
 
     def get(self, **kwargs):
         """
@@ -148,7 +148,7 @@ class Photo(GenericObject):
         :return:
         """
         sub_url = '/stats'
-        response = self.get_sub_url(sub_url)
+        response = self.get_url(sub_url)
         if response.get('status_code') == 200:
             return response.get('body')
 
@@ -162,7 +162,7 @@ class Photo(GenericObject):
         :return:
         """
         sub_url = '/download'
-        response = self.get_sub_url(sub_url)
+        response = self.get_url(sub_url)
         if response.get('status_code') == 200:
             return response.get('body')
 

@@ -12,6 +12,12 @@ logger.debug("="*80)
 
 simple = pu.collections.get_all()
 print simple
+while pu.collections.has_next:
+    simple = pu.collections.get_next()
+    print '>>', simple
+
+
+
 
 curated = pu.collections.get_curated()
 print curated

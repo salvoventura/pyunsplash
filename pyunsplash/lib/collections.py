@@ -41,7 +41,7 @@ class Collections(GenericCollection):
         """
         sub_url = '/collections'
         valid_options = ['page', 'per_page']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_featured(self, **kwargs):
@@ -54,7 +54,7 @@ class Collections(GenericCollection):
         """
         sub_url = '/collections/featured'
         valid_options = ['page', 'per_page']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_curated(self, **kwargs):
@@ -67,9 +67,30 @@ class Collections(GenericCollection):
         """
         sub_url = '/collections/curated'
         valid_options = ['page', 'per_page']
-        response = self.get_sub_url(sub_url, valid_options, **kwargs)
+        response = self.get_url(sub_url, valid_options, **kwargs)
         return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
+    def get_next(self):
+        """
+        Retrieve next page from last call query and return
+        list of Collections
+
+        :return:
+        """
+        if self.navigation.get('next') is not None:
+            response = self.get_url(self.navigation.get('next'))
+            return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
+
+    def get_previous(self):
+        """
+        Retrieve previous page from last call query and return
+        list of Collections
+
+        :return:
+        """
+        if self.navigation.get('prev') is not None:
+            response = self.get_url(self.navigation.get('prev'))
+            return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     # TODO: POST /collections
     # TODO: PUT /collections/:id
@@ -82,28 +103,6 @@ class Collection(GenericObject):
     def __init__(self, api_key, source):
         super(Collection, self).__init__(api_key, '/collections', source)
 
-        # # guess format based on source type, extract the link to self
-        # if isinstance(source, dict):
-        #     self_body = source
-        #     self_url = source.get('links').get('self')
-        # elif isinstance(source, str):
-        #     self_body = None
-        #     # TODO: might have to become stricter
-        #     if source.startswith('https://api.unsplash.com/collections/'):
-        #         self_url = source
-        #     elif str(source).isdigit():
-        #         self_url = 'https://api.unsplash.com/collections/{}'.format(source)
-        # else:
-        #     logger.info('Invalid parameter to constructor: {}'.format(source))
-        #     raise ValueError('Invalid parameter to constructor: {}')
-        #
-        # # link to self
-        # self.url_self = self_url
-        # self.obj_self = self_body
-        # if self.obj_self is None:
-        #     # need to (re)load
-        #     self.reload()
-
     def get_related(self):
         """
         Retrieve a list of collections related to this one.
@@ -111,7 +110,7 @@ class Collection(GenericObject):
         :return:
         """
         sub_url = '/related'
-        response = self.get_sub_url(sub_url)
+        response = self.get_url(sub_url)
         return [Collection(self._api_key, source) for source in response.get('body') if response.get('status_code') == 200]
 
     def get_photos(self, **kwargs):
