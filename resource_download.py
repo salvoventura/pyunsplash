@@ -71,10 +71,10 @@ def get_resources_search():
 
 
 def main():
-    get_resources_collections()
-    get_resources_photos()
-    get_resources_stats()
-    get_resources_users()
+    # get_resources_collections()
+    # get_resources_photos()
+    # get_resources_stats()
+    # get_resources_users()
     get_resources_search()
 
 

@@ -29,7 +29,7 @@ class TestSearch:
     }
 
     @responses.activate
-    def test_stats_total(self):
+    def test_search_collections(self):
         type = 'collections'
         resource_filepath = self.store_mapping[type]
         stored_response = json.loads(open(resource_filepath).read())
@@ -43,5 +43,42 @@ class TestSearch:
         )
         pu_obj = PyUnsplash(api_key=api_key)
         search = pu_obj.search(type, query='tree')
-        for entry in search.entries:
-            print entry.__class__
+        for collection in search.entries:
+            print collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related
+
+    @responses.activate
+    def test_search_photos(self):
+        type = 'photos'
+        resource_filepath = self.store_mapping[type]
+        stored_response = json.loads(open(resource_filepath).read())
+        responses.add(
+            responses.GET,
+            '{}{}'.format(API_ROOT, stored_response.get('url').split('?')[0]),   # cheating on the url, because the class always inits without query params
+            json=stored_response.get('body'),
+            status=stored_response.get('status_code'),
+            content_type='application/json',
+            adding_headers=stored_response.get('headers')
+        )
+        pu_obj = PyUnsplash(api_key=api_key)
+        search = pu_obj.search(type, query='tree')
+        for photo in search.entries:
+            print photo.id, photo.link_html, photo.link_download  # , photo.stats  # TODO: include stats in unit test
+
+    @responses.activate
+    def test_search_users(self):
+        type = 'users'
+        resource_filepath = self.store_mapping[type]
+        stored_response = json.loads(open(resource_filepath).read())
+        responses.add(
+            responses.GET,
+            '{}{}'.format(API_ROOT, stored_response.get('url').split('?')[0]),   # cheating on the url, because the class always inits without query params
+            json=stored_response.get('body'),
+            status=stored_response.get('status_code'),
+            content_type='application/json',
+            adding_headers=stored_response.get('headers')
+        )
+        pu_obj = PyUnsplash(api_key=api_key)
+        search = pu_obj.search(type, query='tree')
+        for user in search.entries:
+            print user.id, user.link_html, user.link_portfolio, user.link_following, user.link_followers, user.link_photos
+
