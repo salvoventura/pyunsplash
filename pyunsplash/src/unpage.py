@@ -131,18 +131,6 @@ class UnsplashPage(object):
     def get_last_page(self):
         return self.__class__(url=self.link_last, api_key=self.api_key)
 
-    def get_next(self):
-        return self.__class__(url=self.link_next, api_key=self.api_key)
-
-    def get_previous(self):
-        return self.__class__(url=self.link_previous, api_key=self.api_key)
-
-    def get_first(self):
-        return self.__class__(url=self.link_first, api_key=self.api_key)
-
-    def get_last(self):
-        return self.__class__(url=self.link_last, api_key=self.api_key)
-
     def _sanitized_url(self, url):
         logger.debug('call _sanitized_url({})'.format(url))
         if url.startswith(self._api_root):
