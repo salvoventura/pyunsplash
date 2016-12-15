@@ -1,12 +1,13 @@
 ###############################################################################
 #
-#      File: pyunsplash.py
+#      File: settings.py
 #
 #    Author: Salvatore Ventura <salvoventura@gmail.com>
-#      Date: 08 Dec 2016
-#   Purpose: simplify import statements
+#      Date: 07 Dec 2016
+#   Purpose: Global repository of common constants and values
 #
 #   Comment:
 #
 ###############################################################################
-from pyunsplash import PyUnsplash
+API_ROOT = 'https://api.unsplash.com'
+LIB_NAME = 'pyunsplash'

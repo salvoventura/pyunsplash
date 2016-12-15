@@ -1,0 +1,89 @@
+###############################################################################
+#
+#      File: collections.py
+#
+#    Author: Salvatore Ventura <salvoventura@gmail.com>
+#      Date: 06 Dec 2016
+#   Purpose:
+#
+#   Comment:
+#
+###############################################################################
+import logging
+from .unpage import UnsplashPage
+from .unobject import UnsplashObject
+from .photos import Photos
+from .settings import LIB_NAME
+
+logger = logging.getLogger(LIB_NAME)
+
+
+class Collections(UnsplashPage):
+    def __init__(self, api_key, url='/collections', **kwargs):
+        valid_options = ['page', 'per_page']
+        super(Collections, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
+
+    @property
+    def entries(self):
+        for entry in self.body:
+            yield Collection(api_key=self.api_key, source=entry)
+
+
+class CuratedCollections(UnsplashPage):
+    def __init__(self, api_key, url='/collections/curated', **kwargs):
+        valid_options = ['page', 'per_page']
+        super(CuratedCollections, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
+
+    @property
+    def entries(self):
+        for entry in self.body:
+            yield Collection(api_key=self.api_key, source=entry)
+
+
+class FeaturedCollections(UnsplashPage):
+    def __init__(self, api_key, url='/collections/featured', **kwargs):
+        valid_options = ['page', 'per_page']
+        super(FeaturedCollections, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
+
+    @property
+    def entries(self):
+        for entry in self.body:
+            yield Collection(api_key=self.api_key, source=entry)
+
+
+class Collection(UnsplashObject):
+    def __init__(self, api_key, source):
+        super(Collection, self).__init__(api_key=api_key, source=source)
+
+    @property
+    def title(self):
+        return self.body.get('title', None)
+
+    @property
+    def description(self):
+        return self.body.get('description', None)
+
+    @property
+    def user(self):
+        return self.body.get('user', None)
+
+    @property
+    def link_photos(self):
+        return self.links.get('photos')
+
+    @property
+    def link_related(self):
+        return self.links.get('related')
+
+    @property
+    def photos(self, **kwargs):
+        # TODO: cache the returned object
+        url = self.link_photos
+        return Photos(url=url, api_key=self.api_key, **kwargs)
+
+    @property
+    def related(self, **kwargs):
+        # TODO: cache the returned object
+        url = self.link_related
+        return Collections(url=url, api_key=self.api_key, **kwargs)
+
