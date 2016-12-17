@@ -9,12 +9,13 @@ PyUnsplash
 A Python wrapper for the `Unsplash API <https://unsplash.com/developers>`_.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 4
 
     installation
     dependencies
     usage
-    instance_methods
+    examples
+    classes/class_pyunsplash
     version
     license
 

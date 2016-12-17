@@ -1,6 +1,6 @@
 ###############################################################################
 #
-#      File: example_all.py
+#      File: example_iteration.py
 #
 #    Author: Salvatore Ventura <salvoventura@gmail.com>
 #      Date: 14 Dec 2016

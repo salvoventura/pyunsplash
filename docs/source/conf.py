@@ -281,7 +281,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'pyunsplash.tex', u'pyunsplash Documentation',
-     u'Salvatore Ventura', 'manual'),
+     u'Salvatore Ventura <salvoventura@gmail.com>', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

@@ -2,5 +2,4 @@ License
 =======
 ::
 
-    pip install pyunsplash
-
+PyUnsplash is released under
