@@ -16,6 +16,7 @@ A Python wrapper for the `Unsplash API <https://unsplash.com/developers>`_.
     usage
     examples
     classes/class_pyunsplash
+    classes/class_users
     classes/class_user
     version
     license
