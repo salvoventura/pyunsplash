@@ -37,7 +37,7 @@ Methods and properties
 ======================
 Methods and properties exposed by the ``PyUnsplash`` class.
 
-**PyUnsplash.user(username, kwargs)**
+**PyUnsplash.user(username, w, h)**
 -------------------------------------
     To interact with the ``user`` API, create an instance of class ``User``.
 
@@ -66,7 +66,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
 --------
 
-**PyUnsplash.collections(type, kwargs)**
+**PyUnsplash.collections(type, page, per_page)**
 ----------------------------------------
     To interact with the ``collections`` API, create an instance of class ``Collections``.
 
@@ -99,7 +99,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
 --------
 
-**PyUnsplash.photos(type, kwargs)**
+**PyUnsplash.photos(type, page, per_page, order_by)**
 -----------------------------------
     To interact with the ``photos`` API, create an instance of class ``Photos``.
 
@@ -133,7 +133,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
 --------
 
-**PyUnsplash.search(type, kwargs)**
+**PyUnsplash.search(type, type, page, per_page, query)**
 -----------------------------------
     To interact with the ``search`` API, create an instance of class ``Search``.
 
@@ -168,7 +168,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
 --------
 
-**PyUnsplash.stats(type, kwargs)**
+**PyUnsplash.stats(type)**
 ----------------------------------
     To interact with the ``stats`` API, create an instance of class ``Stats``.
 
