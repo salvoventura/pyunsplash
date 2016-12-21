@@ -1,7 +1,7 @@
 ###############
 API: Class User
 ###############
-This class is used to interact with the ``unsplash`` ``/users/:username`` REST API.
+This class is used to interact with the ``Unsplash`` ``/users/:username`` REST API.
 
 The constructor is invoked through the main ``PyUnsplash`` class as ``PyUnsplash.user(username, w, h)``
 

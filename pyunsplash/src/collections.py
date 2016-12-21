@@ -82,8 +82,9 @@ class Collection(UnsplashObject):
         return Photos(url=url, api_key=self.api_key, **kwargs)
 
     @property
-    def related(self, **kwargs):
+    def related(self):
+        # Apparently, 'related' doesn't honor parameters
         # TODO: cache the returned object
         url = self.link_related
-        return Collections(url=url, api_key=self.api_key, **kwargs)
+        return Collections(url=url, api_key=self.api_key)
 

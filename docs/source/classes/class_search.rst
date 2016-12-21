@@ -1,58 +1,35 @@
-#####################
-API: Class
-#####################
-This class is used to
+#################
+API: Class Search
+#################
+This class is used to interact with the ``Unsplash`` ``/search/`` REST API.
 
-=======================
-** **
-=======================
-    Create an instance of class ``-``.
+The constructor is invoked through the main ``PyUnsplash`` class as ``PyUnsplash.search(type, page, per_page, query)``
 
-    **Parameters**
-
-    ============  ======  ========================  ====================================
-    Argument      Type    Optional/Required         Notes
-    ============  ======  ========================  ====================================
-
-    ============  ======  ========================  ====================================
-
-    **Returns**
-
-    ==========  =======================================
-
-    ==========  =======================================
-
-    **Example**
-    ::
-
-        import pyunsplash
-        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-
----------
 
 ======================
 Methods and properties
 ======================
-Methods and properties exposed by the ``-`` class.
+Methods and properties exposed by the ``Search`` class.
 
-**-.-(, kwargs)**
--------------------------------------
-    Description
+**Search.entries**
+------------------
+    Returns an iterator for the returned objects contained in this ``Search`` instance.
+    Each entry will be an instance of class ``Collection``, ``Photo`` or ``User`` according
+    to the search ``type``.
+
 
     **Parameters**
 
     ============  ======  ========================  ====================================
     Argument      Type    Optional/Required         Notes
     ============  ======  ========================  ====================================
-    ** **         string  required
-    ** **         number  optional
-    ** **         number  optional
+    N/A
     ============  ======  ========================  ====================================
 
     **Returns**
 
     ==========  =======================================
-    ** **
+    iterator    each time an instance of class ``User``
     ==========  =======================================
 
     **Example**
@@ -60,6 +37,8 @@ Methods and properties exposed by the ``-`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
+        search = pu.search(type='photos', query='red,car')
+        for photo in search.entries:
+            print photo.id, photo.link_download
 
 
---------

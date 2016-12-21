@@ -14,7 +14,7 @@ Methods and properties
 Methods and properties exposed by the ``Users`` class.
 
 **Users.entries**
--------------------------------------
+-----------------
     Returns an iterator for the ``User`` objects contained in this ``Users`` instance
 
     **Parameters**

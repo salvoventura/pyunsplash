@@ -16,10 +16,14 @@ A Python wrapper for the `Unsplash API <https://unsplash.com/developers>`_.
     usage
     examples
     classes/class_pyunsplash
-    classes/class_user
-    classes/class_users
+    classes/class_collection
+    classes/class_collections
     classes/class_photo
     classes/class_photos
+    classes/class_search
+    classes/class_stats
+    classes/class_user
+    classes/class_users
     version
     license
 

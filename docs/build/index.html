@@ -89,10 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classes/class_pyunsplash.html">API: Class PyUnsplash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes/class_user.html">API: Class User</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes/class_users.html">API: Class Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_collection.html">API: Class Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_collections.html">API: Class Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classes/class_photo.html">API: Class Photo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classes/class_photos.html">API: Class Photos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_search.html">API: Class Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_stats.html">API: Class Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_user.html">API: Class User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_users.html">API: Class Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
@@ -160,8 +164,62 @@
 <li class="toctree-l3"><a class="reference internal" href="classes/class_pyunsplash.html#pyunsplash-collections-type-page-per-page"><strong>PyUnsplash.collections(type, page, per_page)</strong></a></li>
 <li class="toctree-l3"><a class="reference internal" href="classes/class_pyunsplash.html#pyunsplash-photos-type-page-per-page-order-by"><strong>PyUnsplash.photos(type, page, per_page, order_by)</strong></a></li>
 <li class="toctree-l3"><a class="reference internal" href="classes/class_pyunsplash.html#pyunsplash-search-type-type-page-per-page-query"><strong>PyUnsplash.search(type, type, page, per_page, query)</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="classes/class_pyunsplash.html#pyunsplash-stats-type"><strong>PyUnsplash.stats(type)</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_pyunsplash.html#pyunsplash-stats"><strong>PyUnsplash.stats()</strong></a></li>
 <li class="toctree-l3"><a class="reference internal" href="classes/class_pyunsplash.html#pyunsplash-init-logging-log-level"><strong>PyUnsplash.init_logging(log_level)</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_collection.html">API: Class Collection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/class_collection.html#methods-and-properties">Methods and properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-refresh"><strong>Collection.refresh()</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-id"><strong>Collection.id</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-title"><strong>Collection.title</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-description"><strong>Collection.description</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-user"><strong>Collection.user</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-link-photos"><strong>Collection.link_photos</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-link-related"><strong>Collection.link_related</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-photos-page-per-page-order-by"><strong>Collection.photos(page, per_page, order_by)</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collection.html#collection-related"><strong>Collection.related()</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_collections.html">API: Class Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/class_collections.html#methods-and-properties">Methods and properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_collections.html#collections-entries"><strong>Collections.entries</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_photo.html">API: Class Photo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/class_photo.html#methods-and-properties">Methods and properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-refresh"><strong>Photo.refresh()</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-id"><strong>Photo.id</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-link-html"><strong>Photo.link_html</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-link-download"><strong>Photo.link_download</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-stats"><strong>Photo.stats</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_photos.html">API: Class Photos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/class_photos.html#methods-and-properties">Methods and properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_photos.html#photos-entries"><strong>Photos.entries</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_search.html">API: Class Search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/class_search.html#methods-and-properties">Methods and properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_search.html#search-entries"><strong>Search.entries</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/class_stats.html">API: Class Stats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/class_stats.html#methods-and-properties">Methods and properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/class_stats.html#stats-total"><strong>Stats.total</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -188,24 +246,6 @@
 <li class="toctree-l1"><a class="reference internal" href="classes/class_users.html">API: Class Users</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="classes/class_users.html#methods-and-properties">Methods and properties</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="classes/class_users.html#users-entries"><strong>Users.entries</strong></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="classes/class_photo.html">API: Class Photo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="classes/class_photo.html#methods-and-properties">Methods and properties</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-refresh"><strong>Photo.refresh()</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-id"><strong>Photo.id</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-link-html"><strong>Photo.link_html</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#photo-link-download"><strong>Photo.link_download</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="classes/class_photo.html#user-stats"><strong>User.stats</strong></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="classes/class_photos.html">API: Class Photos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="classes/class_photos.html#methods-and-properties">Methods and properties</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="classes/class_photos.html#photos-entries"><strong>Photos.entries</strong></a></li>
 </ul>
 </li>
 </ul>

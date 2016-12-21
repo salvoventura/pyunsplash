@@ -1,7 +1,7 @@
 #################
 API: Class Photos
 #################
-This class is used to interact with the ``unsplash`` ``/photos`` REST API but also with lists of ``Photo`` objects
+This class is used to interact with the ``Unsplash`` ``/photos`` REST API but also with lists of ``Photo`` objects
 as returned by certain ``unsplash`` REST APIs.
 
 The constructor can be invoked through the main ``PyUnsplash`` class as ``PyUnsplash.photos(type, page, per_page, order_by)``.
@@ -17,7 +17,7 @@ Methods and properties
 Methods and properties exposed by the ``Photos`` class.
 
 **Photos.entries**
--------------------------------------
+------------------
     Returns an iterator for the ``Photo`` objects contained in this ``Photos`` instance
 
     **Parameters**
@@ -43,5 +43,4 @@ Methods and properties exposed by the ``Photos`` class.
         photos = this_user.photos()    # photos is an instance of class Photos
         for photo in photos.entries:
             print photo.id, photo.link_download
-
 

@@ -136,8 +136,8 @@ Methods and properties exposed by the ``Photo`` class.
 
 --------
 
-**User.stats**
------------------------
+**Photo.stats**
+---------------
     Retrieve a single photo's stats.
 
     **Parameters**

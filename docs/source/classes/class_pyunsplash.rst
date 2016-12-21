@@ -1,7 +1,7 @@
 #####################
 API: Class PyUnsplash
 #####################
-This is the main class used to interact with the ``unsplash`` REST API.
+This is the main class used to interact with the ``Unsplash`` REST API.
 
 =======================
 **PyUnsplash(api_key)**
@@ -169,8 +169,8 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
 --------
 
-**PyUnsplash.stats(type)**
---------------------------
+**PyUnsplash.stats()**
+----------------------
     To interact with the ``stats`` API, create an instance of class ``Stats``.
 
     **Parameters**

@@ -1,41 +1,17 @@
-#####################
-API: Class
-#####################
-This class is used to
+################
+API: Class Stats
+################
+This class is used to interact with the ``Unsplash`` ``/stats/total`` REST API.
 
-=======================
-** **
-=======================
-    Create an instance of class ``-``.
+The constructor is invoked through the main ``PyUnsplash`` class as ``PyUnsplash.stats()``
 
-    **Parameters**
-
-    ============  ======  ========================  ====================================
-    Argument      Type    Optional/Required         Notes
-    ============  ======  ========================  ====================================
-
-    ============  ======  ========================  ====================================
-
-    **Returns**
-
-    ==========  =======================================
-
-    ==========  =======================================
-
-    **Example**
-    ::
-
-        import pyunsplash
-        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-
----------
 
 ======================
 Methods and properties
 ======================
-Methods and properties exposed by the ``-`` class.
+Methods and properties exposed by the ``Stats`` class.
 
-**-.-(, kwargs)**
+**Stats.total**
 -------------------------------------
     Description
 
@@ -44,22 +20,21 @@ Methods and properties exposed by the ``-`` class.
     ============  ======  ========================  ====================================
     Argument      Type    Optional/Required         Notes
     ============  ======  ========================  ====================================
-    ** **         string  required
-    ** **         number  optional
-    ** **         number  optional
+    N/A
     ============  ======  ========================  ====================================
 
     **Returns**
 
-    ==========  =======================================
-    ** **
-    ==========  =======================================
+    ==========  =====================================================
+    **json**    JSON encoded stats information about ``Unsplash.com``
+    ==========  =====================================================
 
     **Example**
     ::
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
+        stats = pu.stats()
+        print stats.total
 
 
---------

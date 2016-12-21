@@ -9,3 +9,9 @@ Version
 
     - Authorization workflow & Current user
     - Write operations
+
+    Desired:
+    - More unit-test coverage
+    - Documentation review
+
+
