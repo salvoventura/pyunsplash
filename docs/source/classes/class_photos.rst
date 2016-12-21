@@ -1,65 +1,47 @@
-#####################
-API: Class
-#####################
-This class is used to
+#################
+API: Class Photos
+#################
+This class is used to interact with the ``unsplash`` ``/photos`` REST API but also with lists of ``Photo`` objects
+as returned by certain ``unsplash`` REST APIs.
 
-=======================
-** **
-=======================
-    Create an instance of class ``-``.
+The constructor can be invoked through the main ``PyUnsplash`` class as ``PyUnsplash.photos(type, page, per_page, order_by)``.
 
-    **Parameters**
+The following class methods/properties in ``PyUnsplash`` also return a ``Photos`` class object:
+  - User.likes(page, per_page, order_by)
+  - User.photos(page, per_page, order_by)
 
-    ============  ======  ========================  ====================================
-    Argument      Type    Optional/Required         Notes
-    ============  ======  ========================  ====================================
-
-    ============  ======  ========================  ====================================
-
-    **Returns**
-
-    ==========  =======================================
-
-    ==========  =======================================
-
-    **Example**
-    ::
-
-        import pyunsplash
-        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-
----------
 
 ======================
 Methods and properties
 ======================
-Methods and properties exposed by the ``-`` class.
+Methods and properties exposed by the ``Photos`` class.
 
-**-.-(, kwargs)**
+**Photos.entries**
 -------------------------------------
-    Description
+    Returns an iterator for the ``Photo`` objects contained in this ``Photos`` instance
 
     **Parameters**
 
     ============  ======  ========================  ====================================
     Argument      Type    Optional/Required         Notes
     ============  ======  ========================  ====================================
-    ** **         string  required
-    ** **         number  optional
-    ** **         number  optional
+    N/A
     ============  ======  ========================  ====================================
 
     **Returns**
 
-    ==========  =======================================
-    ** **
-    ==========  =======================================
+    ==========  ========================================
+    iterator    each time an instance of class ``Photo``
+    ==========  ========================================
 
     **Example**
     ::
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
+        this_user = pu.user('salvoventura', w=100, h=100)
+        photos = this_user.photos()    # photos is an instance of class Photos
+        for photo in photos.entries:
+            print photo.id, photo.link_download
 
 
---------

@@ -1,58 +1,34 @@
-#####################
-API: Class
-#####################
-This class is used to
+################
+API: Class Users
+################
+This class is used to interact with lists of ``User`` objects as returned by certain ``unsplash`` REST APIs.
 
-=======================
-** **
-=======================
-    Create an instance of class ``-``.
+The following class methods/properties in ``PyUnsplash`` return a ``Users`` class object:
+  - User.followers()
+  - User.following()
 
-    **Parameters**
-
-    ============  ======  ========================  ====================================
-    Argument      Type    Optional/Required         Notes
-    ============  ======  ========================  ====================================
-
-    ============  ======  ========================  ====================================
-
-    **Returns**
-
-    ==========  =======================================
-
-    ==========  =======================================
-
-    **Example**
-    ::
-
-        import pyunsplash
-        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-
----------
 
 ======================
 Methods and properties
 ======================
-Methods and properties exposed by the ``-`` class.
+Methods and properties exposed by the ``Users`` class.
 
-**-.-(, kwargs)**
+**Users.entries**
 -------------------------------------
-    Description
+    Returns an iterator for the ``User`` objects contained in this ``Users`` instance
 
     **Parameters**
 
     ============  ======  ========================  ====================================
     Argument      Type    Optional/Required         Notes
     ============  ======  ========================  ====================================
-    ** **         string  required
-    ** **         number  optional
-    ** **         number  optional
+    N/A
     ============  ======  ========================  ====================================
 
     **Returns**
 
     ==========  =======================================
-    ** **
+    iterator    each time an instance of class ``User``
     ==========  =======================================
 
     **Example**
@@ -60,6 +36,9 @@ Methods and properties exposed by the ``-`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
+        this_user = pu.user('salvoventura', w=100, h=100)
+        followers = this_user.followers()    # followers is an instance of class Users
+        for user in followers.entries:
+            print user.id, user.body.get('first_name'), user.body.get('last_name')
 
 
---------
