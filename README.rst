@@ -13,7 +13,6 @@ Installation
 
     $ pip install pyunsplash
 
-
 ############
 Dependencies
 ############
@@ -22,7 +21,6 @@ This additional package should be automatically installed at installation time, 
 ::
 
     $ pip install requests
-
 
 ########
 Examples
