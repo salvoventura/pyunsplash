@@ -57,6 +57,10 @@ download link.
         # no need to specify per_page: will take from original object
         collections = collections.get_next_page()
 
+#############
+Documentation
+#############
+Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_.
 
 #######
 Version
