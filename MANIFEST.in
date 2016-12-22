@@ -1,1 +1,8 @@
-include README.rst
+include setup.cfg
+include setup.py
+include pyunsplash\__init__.py
+include pyunsplash\pyunsplash.py
+recursive-include pyunsplash\src *py
+recursive-include pyunsplash\examples *.py
+recursive-include pyunsplash\tests *
+prune resource_download.py

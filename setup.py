@@ -1,28 +1,33 @@
-from setuptools import setup
-
-def readme():
-    with open('README.rst') as f:
-        return f.read()
-
+from distutils.core import setup
 
 setup(
     name='pyunsplash',
-    version='0.1.0',
-    description='A Python client for the Unsplash API.',
-    long_description='A Python client for the Unsplash API.',
-    classifiers=[
-        'Development Status :: 3 - Alpha',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 2.7',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-    ],
-    keywords='unsplash unsplash.com client rest api',
-    url='http://github.com/salvoventura/pyunsplash',
-    author='Salvatore Ventura',
-    author_email='salvoventura@gmail.com',
+    version='1.0.0a1',  # alpha, v1
+    packages=['pyunsplash', 'pyunsplash.src'],
+    url='http://example.com',
     license='MIT',
-    packages=['pyunsplash'],
-    install_requires=['requests'],
-    zip_safe=False,
+    author='salvatore ventura',
+    author_email='salvoventura@gmail.com',
+    description='A Python wrapper for the Unsplash.com REST API',
+    classifiers=[
+        # How mature is this project? Common values are
+        #   3 - Alpha
+        #   4 - Beta
+        #   5 - Production/Stable
+        'Development Status :: 3 - Alpha',
+
+        # Indicate who your project is intended for
+        'Intended Audience :: Developers',
+
+        # Pick your license as you wish (should match "license" above)
+         'License :: OSI Approved :: MIT License',
+
+        # Specify the Python versions you support here. In particular, ensure
+        # that you indicate whether you support Python 2, Python 3 or both.
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+    ],
+    keywords=['unsplash', 'rest', 'api', 'python', 'wrapper', 'development', 'unsplash.com'],
+    install_requires=['requests']
 )
 
