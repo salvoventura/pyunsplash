@@ -17,7 +17,7 @@ import json
 import time
 
 # TODO: DO NOT DISTRIBUTE THIS FILE OR CLEAR THE API KEY
-api_key = 'ea8d39d41467c530ce8aa50b36cc1dd31d8527e6608656b729c270b9b8eaae79'
+api_key = '<YOUR_API_KEY>'
 
 req_headers = {
     'Accept-Version': 'v1',
