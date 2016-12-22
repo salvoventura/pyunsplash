@@ -5,7 +5,6 @@ PyUnsplash
 
 A Python wrapper for the `Unsplash API <https://unsplash.com/developers>`_.
 
-
 ############
 Installation
 ############
@@ -63,6 +62,7 @@ download link.
 Documentation
 #############
 Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_.
+
 
 #######
 Version
