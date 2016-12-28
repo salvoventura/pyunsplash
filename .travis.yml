@@ -3,7 +3,12 @@ language: python
 python:
   - "2.7"
 
-script: py.test
+install:
+  - pip install requests
+  - pip install responses
+
+script:
+  - py.test
 
 deploy:
   provider: pypi
