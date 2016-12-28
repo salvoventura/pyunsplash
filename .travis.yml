@@ -12,7 +12,7 @@ before_install:
 install:
   - pip install requests
   - pip install responses
-  - pip install -e ./pyunsplash/tests
+  - pip install -e .
 
 script:
   py.test --cov pyunsplash --cov-report term-missing
