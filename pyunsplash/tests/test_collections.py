@@ -32,7 +32,7 @@ class TestCollections:
     @responses.activate
     def test_collections_generic(self):
         type = 'generic'
-        resource_filepath = os.sep.join(self.tests_path, self.store_mapping[type])
+        resource_filepath = os.sep.join([self.tests_path, self.store_mapping[type]])
 
         stored_response = json.loads(open(resource_filepath).read())
         responses.add(
