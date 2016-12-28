@@ -12,7 +12,7 @@ install:
   - pip install responses
 
 script:
-  coverage run py.tests
+  coverage run pytest
 
 after_success:
   - codecov
