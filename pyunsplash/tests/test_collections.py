@@ -24,9 +24,9 @@ class TestCollections:
     # code duplication, as the testcases are pretty much the same for all
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
 
-    store_mapping = {'generic': os.sep.join([root_path, 'tests', 'resources', 'resource__collections_page_2.json']),
-                     'curated': os.sep.join([root_path, 'tests', 'resources', 'resource__collections_curated_page_2.json']),
-                     'featured': os.sep.join([root_path, 'tests', 'resources', 'resource__collections_featured_page_2.json'])}
+    store_mapping = {'generic': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__collections_page_2.json']),
+                     'curated': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__collections_curated_page_2.json']),
+                     'featured': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__collections_featured_page_2.json'])}
 
     @responses.activate
     def test_collections_generic(self):

@@ -25,9 +25,9 @@ class TestSearch:
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
 
     store_mapping = {
-        'collections': os.sep.join([root_path, 'tests', 'resources', 'resource__search_collections_query_tree.json']),
-        'photos': os.sep.join([root_path, 'tests', 'resources', 'resource__search_photos_query_blue.json']),
-        'users': os.sep.join([root_path, 'tests', 'resources', 'resource__search_users_query_ventura.json'])}
+        'collections': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__search_collections_query_tree.json']),
+        'photos': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__search_photos_query_blue.json']),
+        'users': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__search_users_query_ventura.json'])}
 
     @responses.activate
     def test_search_collections(self):

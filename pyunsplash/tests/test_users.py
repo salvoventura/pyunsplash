@@ -24,7 +24,7 @@ class TestUsers:
     # code duplication, as the testcases are pretty much the same for all
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
 
-    store_mapping = {'salvoventura': os.sep.join([root_path, 'tests', 'resources', 'resource__users_salvoventura.json'])}
+    store_mapping = {'salvoventura': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__users_salvoventura.json'])}
 
 
     @responses.activate

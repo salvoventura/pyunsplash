@@ -24,7 +24,7 @@ class TestStats:
     # code duplication, as the testcases are pretty much the same for all
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
 
-    store_mapping = {'total': os.sep.join([root_path, 'tests', 'resources', 'resource__stats_total.json'])}
+    store_mapping = {'total': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__stats_total.json'])}
 
     @responses.activate
     def test_stats_total(self):
