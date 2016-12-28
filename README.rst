@@ -1,7 +1,7 @@
 ##########
 PyUnsplash
 ##########
-|Latest Version| |Docs Build Status| |Build Status| |Code Coverage| |Code Climate|
+|Latest Version| |Docs Build Status| |Build Status| |Code Coverage| |Code Climate| |Landscape Io|
 
 An open source Python wrapper for the `Unsplash REST API <https://unsplash.com/developers>`_.
 The source code is available on GitHub at `https://github.com/salvoventura/pyunsplash <https://github.com/salvoventura/pyunsplash>`_.
@@ -107,3 +107,7 @@ PyUnsplash is released under the `MIT License <http://www.opensource.org/license
 .. |Code Climate| image:: https://codeclimate.com/github/salvoventura/pyunsplash/badges/gpa.svg
    :target: https://codeclimate.com/github/salvoventura/pyunsplash
    :alt: Code Climate
+
+.. |Landscape Io| image:: https://landscape.io/github/salvoventura/pyunsplash/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/salvoventura/pyunsplash/master
+   :alt: Code Health
