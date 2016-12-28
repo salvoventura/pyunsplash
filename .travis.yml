@@ -22,8 +22,8 @@ script:
   py.test --cov pyunsplash --cov-report term-missing --cov-report xml
 
 after_success:
-  # - codecov
   - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+  # codecov  # python specific?
 
 deploy:
   provider: pypi
