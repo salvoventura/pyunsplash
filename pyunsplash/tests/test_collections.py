@@ -14,18 +14,17 @@ import json
 from pyunsplash import PyUnsplash
 from pyunsplash.src.settings import API_ROOT
 
-
-
 api_key = 'DUMMY_API_KEY'
+
 
 class TestCollections:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
 
-    store_mapping = {'generic': 'resources/resource__collections_page_2.json',
-                     'curated': 'resources/resource__collections_curated_page_2.json',
-                     'featured': 'resources/resource__collections_featured_page_2.json'}
+    store_mapping = {'generic': './resources/resource__collections_page_2.json',
+                     'curated': './resources/resource__collections_curated_page_2.json',
+                     'featured': './resources/resource__collections_featured_page_2.json'}
 
     @responses.activate
     def test_collections_generic(self):
