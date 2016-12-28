@@ -66,7 +66,7 @@ class UnsplashObject(object):
             logger.debug('Source is a dictionary')
             self.body = source
             self.url = source.get('links').get('self')
-                                                        # TODO: maybe protect and raise appropriate exception in
+        #                                               # TODO: maybe protect and raise appropriate exception in
         elif isinstance(source, str):                   # case someone feeds a random dictionary here
             logger.debug('Source is a string')
             if source.startswith(self._api_root):
