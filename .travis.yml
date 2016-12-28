@@ -15,7 +15,7 @@ install:
   - pip install -e ./pyunsplash/tests
 
 script:
-  py.test --cov=pyunsplash/tests/
+  py.test --cov pyunsplash --cov-report term-missing
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"

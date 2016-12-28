@@ -1,25 +1,37 @@
 engines:
   duplication:
     enabled: true
+    exclude_paths:
+      - "tests/"
     config:
       languages:
         python:
-          mass_threshold: 50
+          mass_threshold: 100
 
   fixme:
     enabled: false
+    exclude_paths:
+      - "tests/"
 
   markdownlint:
     enabled: true
 
   pep8:
     enabled: true
+    exclude_paths:
+      - "tests/"
     checks:
       E501:
+        enabled: false
+      E302:
+        enabled: false
+      E303:
         enabled: false
 
   radon:
     enabled: true
+    exclude_paths:
+      - "tests/"
     config:
       threshold: "C"
 
@@ -29,4 +41,4 @@ ratings:
   - "**.py"
 
 exclude_paths:
-- docs/build/*
+  - docs/build/*
