@@ -23,7 +23,7 @@ script:
 
 after_success:
   - codecov
-  - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+  # - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 
 deploy:
   provider: pypi
