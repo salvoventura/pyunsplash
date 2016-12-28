@@ -30,6 +30,12 @@ class TestCollections:
     def test_collections_generic(self):
         type = 'generic'
         resource_filepath = self.store_mapping[type]
+
+        import os
+        print os.getcwd()
+        print os.environ
+
+
         stored_response = json.loads(open(resource_filepath).read())
         responses.add(
             responses.GET,
