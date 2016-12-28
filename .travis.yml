@@ -1,5 +1,7 @@
 language: python
 
+cache: pip
+
 python:
   - "2.7"
 
@@ -10,6 +12,7 @@ before_install:
 install:
   - pip install requests
   - pip install responses
+  - pip install -e ./pyunsplash/tests
 
 script:
   py.test --cov=pyunsplash/tests/
