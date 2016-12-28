@@ -4,7 +4,7 @@ engines:
     config:
       languages:
         python:
-          mass_threshold: 10
+          mass_threshold: 50
 
   fixme:
     enabled: false
@@ -14,6 +14,9 @@ engines:
 
   pep8:
     enabled: true
+    checks:
+      E501:
+        enabled: false
 
   radon:
     enabled: true

@@ -40,4 +40,4 @@ class TestStats:
         pu_obj = PyUnsplash(api_key=api_key)
         stats = pu_obj.stats()
         # TODO: implement after successful stats download
-        print stats.total
+        print(stats.total)

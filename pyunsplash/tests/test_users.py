@@ -39,6 +39,6 @@ class TestUsers:
         )
         pu_obj = PyUnsplash(api_key=api_key)
         user = pu_obj.user(source=type)
-        print user.id, user.link_html, user.link_portfolio, user.link_following, user.link_followers, user.link_photos
+        print(user.id, user.link_html, user.link_portfolio, user.link_following, user.link_followers, user.link_photos)
 
     # TODO: collections, photos and users from the user object

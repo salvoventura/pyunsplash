@@ -47,7 +47,7 @@ class TestCollections:
         assert collections.status_code == 200
         for collection in collections.entries:
             # if any of the fields breaks, then it's a problem
-            print collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related
+            print(collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related)
         assert collections.link_next is not None
         assert collections.link_previous is not None
         assert collections.link_first is not None
@@ -73,7 +73,7 @@ class TestCollections:
         assert collections.header is not None
         assert collections.status_code == 200
         for collection in collections.entries:
-            print collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related
+            print(collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related)
         assert collections.link_next is not None
         assert collections.link_previous is not None
         assert collections.link_first is not None
@@ -99,7 +99,7 @@ class TestCollections:
         assert collections.header is not None
         assert collections.status_code == 200
         for collection in collections.entries:
-            print collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related
+            print(collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related)
         assert collections.link_next is not None
         assert collections.link_previous is not None
         assert collections.link_first is not None

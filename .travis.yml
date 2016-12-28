@@ -12,7 +12,7 @@ install:
   - pip install responses
 
 script:
-  py.test --cov=./
+  py.test --cov=pyunsplash/tests/
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"

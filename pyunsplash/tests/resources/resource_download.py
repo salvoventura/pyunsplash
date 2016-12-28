@@ -39,7 +39,7 @@ def _save_content(sub_url):
 
     # save to file
     filename = sub_url.replace('/', '_').replace('?', '_').replace('=', '_')
-    print os.getcwd()
+    print(os.getcwd())
     filepath = os.sep.join(['.', 'pyunsplash', 'tests', 'resources', 'resource_{}.json'.format(filename)])
     with open(filepath, 'w') as f:
         f.write(json.dumps(out))

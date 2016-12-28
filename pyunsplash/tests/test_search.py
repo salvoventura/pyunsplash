@@ -44,7 +44,7 @@ class TestSearch:
         pu_obj = PyUnsplash(api_key=api_key)
         search = pu_obj.search(type, query='tree')
         for collection in search.entries:
-            print collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related
+            print(collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related)
 
     @responses.activate
     def test_search_photos(self):
@@ -62,7 +62,7 @@ class TestSearch:
         pu_obj = PyUnsplash(api_key=api_key)
         search = pu_obj.search(type, query='tree')
         for photo in search.entries:
-            print photo.id, photo.link_html, photo.link_download  # , photo.stats  # TODO: include stats in unit test
+            print(photo.id, photo.link_html, photo.link_download)  # , photo.stats  # TODO: include stats in unit test
 
     @responses.activate
     def test_search_users(self):
@@ -80,5 +80,5 @@ class TestSearch:
         pu_obj = PyUnsplash(api_key=api_key)
         search = pu_obj.search(type, query='tree')
         for user in search.entries:
-            print user.id, user.link_html, user.link_portfolio, user.link_following, user.link_followers, user.link_photos
+            print(user.id, user.link_html, user.link_portfolio, user.link_following, user.link_followers, user.link_photos)
 
