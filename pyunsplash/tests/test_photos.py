@@ -11,6 +11,7 @@
 ###############################################################################
 import responses
 import json
+import os
 from pyunsplash import PyUnsplash
 from pyunsplash.src.settings import API_ROOT
 
@@ -21,10 +22,11 @@ class TestPhotos:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
+    root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
 
-    store_mapping = {'generic': 'resources/resource__photos_page_2.json',
-                     'curated': 'resources/resource__photos_curated_page_2.json',
-                     'random': 'resources/resource__photos_random_count_2.json'}
+    store_mapping = {'generic': os.sep.join([root_path, 'tests', 'resources', 'resource__photos_page_2.json']),
+                     'curated': os.sep.join([root_path, 'tests', 'resources', 'resource__photos_curated_page_2.json']),
+                     'random': os.sep.join([root_path, 'tests', 'resources', 'resource__photos_random_count_2.json'])}
 
     @responses.activate
     def test_photos_generic(self):

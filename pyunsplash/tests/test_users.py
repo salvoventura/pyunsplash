@@ -11,6 +11,7 @@
 ###############################################################################
 import responses
 import json
+import os
 from pyunsplash import PyUnsplash
 from pyunsplash.src.settings import API_ROOT
 
@@ -21,8 +22,10 @@ class TestUsers:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
+    root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
 
-    store_mapping = {'salvoventura': 'resources/resource__users_salvoventura.json'}
+    store_mapping = {'salvoventura': os.sep.join([root_path, 'tests', 'resources', 'resource__users_salvoventura.json'])}
+
 
     @responses.activate
     def test_stats_total(self):

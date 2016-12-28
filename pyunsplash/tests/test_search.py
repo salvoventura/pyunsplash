@@ -11,6 +11,7 @@
 ###############################################################################
 import responses
 import json
+import os
 from pyunsplash import PyUnsplash
 from pyunsplash.src.settings import API_ROOT
 
@@ -21,12 +22,12 @@ class TestSearch:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
+    root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
 
     store_mapping = {
-        'collections': 'resources/resource__search_collections_query_tree.json',
-        'photos': 'resources/resource__search_photos_query_blue.json',
-        'users': 'resources/resource__search_users_query_ventura.json',
-    }
+        'collections': os.sep.join([root_path, 'tests', 'resources', 'resource__search_collections_query_tree.json']),
+        'photos': os.sep.join([root_path, 'tests', 'resources', 'resource__search_photos_query_blue.json']),
+        'users': os.sep.join([root_path, 'tests', 'resources', 'resource__search_users_query_ventura.json'])}
 
     @responses.activate
     def test_search_collections(self):

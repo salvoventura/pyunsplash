@@ -22,17 +22,16 @@ class TestCollections:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
-    tests_path = os.environ.get('TRAVIS_BUILD_DIR', '.')
-    tests_path = os.sep.join([tests_path, 'tests'])
+    root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
 
-    store_mapping = {'generic': 'resources/resource__collections_page_2.json',
-                     'curated': 'resources/resource__collections_curated_page_2.json',
-                     'featured': 'resources/resource__collections_featured_page_2.json'}
+    store_mapping = {'generic': os.sep.join([root_path, 'tests', 'resources', 'resource__collections_page_2.json']),
+                     'curated': os.sep.join([root_path, 'tests', 'resources', 'resource__collections_curated_page_2.json']),
+                     'featured': os.sep.join([root_path, 'tests', 'resources', 'resource__collections_featured_page_2.json'])}
 
     @responses.activate
     def test_collections_generic(self):
         type = 'generic'
-        resource_filepath = os.sep.join([self.tests_path, self.store_mapping[type]])
+        resource_filepath = self.store_mapping[type]
 
         stored_response = json.loads(open(resource_filepath).read())
         responses.add(
