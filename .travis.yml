@@ -5,17 +5,17 @@ python:
 
 before_install:
   - pip install pytest pytest-cov
-  - pip install coveralls
+  - pip install codecov
 
 install:
   - pip install requests
   - pip install responses
 
 script:
-  coverage run --source=pyunsplash setup.py test
+  coverage run py.tests
 
 after_success:
-  - coveralls
+  - codecov
 
 deploy:
   provider: pypi

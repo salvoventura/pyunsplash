@@ -1,7 +1,7 @@
 ##########
 PyUnsplash
 ##########
-|Build Status| |Docs Build Status| |Latest Version|
+|Latest Version| |Docs Build Status| |Build Status| |Code Coverage|
 
 An open source Python wrapper for the `Unsplash REST API <https://unsplash.com/developers>`_.
 The source code is available on GitHub at `https://github.com/salvoventura/pyunsplash <https://github.com/salvoventura/pyunsplash>`_.
@@ -100,3 +100,6 @@ PyUnsplash is released under the `MIT License <http://www.opensource.org/license
 
 .. |Latest Version| image:: https://badge.fury.io/py/pyunsplash.svg
     :target: https://badge.fury.io/py/pyunsplash
+
+.. |Code Coverage| image:: https://codecov.io/gh/salvoventura/pyunsplash/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/salvoventura/pyunsplash
