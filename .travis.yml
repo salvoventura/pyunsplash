@@ -4,18 +4,18 @@ python:
   - "2.7"
 
 before_install:
-  - pip install pytest pytest-cov
   - pip install codecov
+  - pip install pytest-cov
 
 install:
   - pip install requests
   - pip install responses
 
 script:
-  coverage run py.test
+  py.test --cov=./
 
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 
 deploy:
   provider: pypi

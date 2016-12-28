@@ -1,0 +1,29 @@
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        python:
+          mass_threshold: 10
+
+  fixme:
+    enabled: false
+
+  markdownlint:
+    enabled: true
+
+  pep8:
+    enabled: true
+
+  radon:
+    enabled: true
+    config:
+      threshold: "C"
+
+ratings:
+  paths:
+  - "**.md"
+  - "**.py"
+
+exclude_paths:
+- docs/build/*
