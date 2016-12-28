@@ -11,6 +11,7 @@
 ###############################################################################
 import responses
 import json
+import os
 from pyunsplash import PyUnsplash
 from pyunsplash.src.settings import API_ROOT
 
@@ -21,20 +22,17 @@ class TestCollections:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
+    tests_path = os.environ.get('TRAVIS_BUILD_DIR', '.')
+    tests_path = os.sep.join([tests_path, 'tests'])
 
-    store_mapping = {'generic': './resources/resource__collections_page_2.json',
-                     'curated': './resources/resource__collections_curated_page_2.json',
-                     'featured': './resources/resource__collections_featured_page_2.json'}
+    store_mapping = {'generic': 'resources/resource__collections_page_2.json',
+                     'curated': 'resources/resource__collections_curated_page_2.json',
+                     'featured': 'resources/resource__collections_featured_page_2.json'}
 
     @responses.activate
     def test_collections_generic(self):
         type = 'generic'
-        resource_filepath = self.store_mapping[type]
-
-        import os
-        print os.getcwd()
-        print os.environ
-
+        resource_filepath = os.sep.join(self.tests_path, self.store_mapping[type])
 
         stored_response = json.loads(open(resource_filepath).read())
         responses.add(

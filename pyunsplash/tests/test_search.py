@@ -23,9 +23,9 @@ class TestSearch:
     # code duplication, as the testcases are pretty much the same for all
 
     store_mapping = {
-        'collections': './resources/resource__search_collections_query_tree.json',
-        'photos': './resources/resource__search_photos_query_blue.json',
-        'users': './resources/resource__search_users_query_ventura.json',
+        'collections': 'resources/resource__search_collections_query_tree.json',
+        'photos': 'resources/resource__search_photos_query_blue.json',
+        'users': 'resources/resource__search_users_query_ventura.json',
     }
 
     @responses.activate

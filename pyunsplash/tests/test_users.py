@@ -22,7 +22,7 @@ class TestUsers:
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
 
-    store_mapping = {'salvoventura': './resources/resource__users_salvoventura.json'}
+    store_mapping = {'salvoventura': 'resources/resource__users_salvoventura.json'}
 
     @responses.activate
     def test_stats_total(self):
