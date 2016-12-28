@@ -2,7 +2,7 @@ engines:
   duplication:
     enabled: true
     exclude_paths:
-      - "tests/"
+      - tests/*
     config:
       languages:
         python:
@@ -11,7 +11,7 @@ engines:
   fixme:
     enabled: false
     exclude_paths:
-      - "tests/"
+      - tests/*
 
   markdownlint:
     enabled: true
@@ -19,7 +19,7 @@ engines:
   pep8:
     enabled: true
     exclude_paths:
-      - "tests/"
+      - tests/*
     checks:
       E501:
         enabled: false
@@ -31,7 +31,7 @@ engines:
   radon:
     enabled: true
     exclude_paths:
-      - "tests/"
+      - tests/*
     config:
       threshold: "C"
 
