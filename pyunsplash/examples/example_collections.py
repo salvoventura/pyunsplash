@@ -58,4 +58,3 @@ if collections_page.has_next:
 
 if collections_page.has_previous:
     collections_page_prev = collections_page.get_previous_page()
-

@@ -66,8 +66,8 @@ class UnsplashObject(object):
             logger.debug('Source is a dictionary')
             self.body = source
             self.url = source.get('links').get('self')
-                                                         # TODO: maybe protect and raise appropriate exception in
-        elif isinstance(source, str):                    # case someone feeds a random dictionary here
+                                                        # TODO: maybe protect and raise appropriate exception in
+        elif isinstance(source, str):                   # case someone feeds a random dictionary here
             logger.debug('Source is a string')
             if source.startswith(self._api_root):
                 self.url = source
@@ -89,6 +89,3 @@ class UnsplashObject(object):
             query_params[key] = kwargs[key]
         logger.debug('     returning {}'.format(query_params))
         return query_params
-
-
-

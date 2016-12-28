@@ -6,15 +6,19 @@ python:
   - "2.7"
 
 before_install:
+  # install test dependencies
   - pip install codecov
   - pip install pytest-cov
+  - pip install responses
 
 install:
+  # install dependencies
   - pip install requests
-  - pip install responses
+  # important: install the library itself
   - pip install -e .
 
 script:
+  # run tests
   py.test --cov pyunsplash --cov-report term-missing
 
 after_success:

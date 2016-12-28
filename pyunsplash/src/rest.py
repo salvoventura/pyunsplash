@@ -108,5 +108,3 @@ class Rest(object):
 
     def delete(self, url):
         pass
-
-

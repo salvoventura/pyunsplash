@@ -46,7 +46,7 @@ class TestPhotos:
         assert photos.status_code == 200
         for photo in photos.entries:
             # if any of the fields breaks, then it's a problem
-            print(photo.id, photo.link_html, photo.link_download)   #, photo.stats  # TODO: include stats in unit test
+            print(photo.id, photo.link_html, photo.link_download)   # , photo.stats  # TODO: include stats in unit test
 
     @responses.activate
     def test_photos_curated(self):
@@ -69,7 +69,7 @@ class TestPhotos:
         assert photos.status_code == 200
         for photo in photos.entries:
             # if any of the fields breaks, then it's a problem
-            print(photo.id, photo.link_html, photo.link_download)   #, photo.stats  # TODO: include stats in unit test
+            print(photo.id, photo.link_html, photo.link_download)   # , photo.stats  # TODO: include stats in unit test
 
     @responses.activate
     def test_photos_random(self):
@@ -92,4 +92,4 @@ class TestPhotos:
         assert photos.status_code == 200
         for photo in photos.entries:
             # if any of the fields breaks, then it's a problem
-            print(photo.id, photo.link_html, photo.link_download)   #, photo.stats  # TODO: include stats in unit test
+            print(photo.id, photo.link_html, photo.link_download)   # , photo.stats  # TODO: include stats in unit test
