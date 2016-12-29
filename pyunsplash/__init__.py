@@ -9,6 +9,7 @@
 #   Comment:
 #
 ###############################################################################
+from pyunsplash import PyUnsplash
 # TRAVIS_BUILD_NUMBER
 # TRAVIS_COMMIT
 # TRAVIS_COMMIT_RANGE
