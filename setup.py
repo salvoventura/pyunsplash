@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='pyunsplash',
-    version='1.0.0a2',  # alpha, v2
+    version='1.0.0a3',  # alpha, v3
     packages=['pyunsplash', 'pyunsplash.src'],
     url='https://github.com/salvoventura/pyunsplash',
     license='MIT',
