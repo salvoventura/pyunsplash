@@ -68,10 +68,36 @@ Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_
 Version
 #######
 
-**1.0.0a1  First public release (alpha, v1)**
-    This first release offers read-only capabilities to the Unsplash REST API.
-    Although with this limitation, I thought it would be useful to start exposing
-    the library and collect feedback from the community early on.
+**PyUnsplash v1.0.0a3 (alpha, v3)**
+
+    v1.0.0a2 broke the library with the attempt to import the build number from Travis via the environment variable,
+    which obviously vanishes outside of the CI system. Fixed. Will need a different solution if I really want/need
+    build numbering inside the library version number.
+
+    **Todo**
+        Still struggling to get `PyPI <https://pypi.python.org/pypi/pyunsplash/>`_ publishing automated via
+        `Travis-Ci <https://travis-ci.org/salvoventura/pyunsplash/>`_ after tag commits.
+
+--------
+
+**PyUnsplash v1.0.0a2 (alpha, v2)**
+
+    Added support and integration for more tools, which also required some code cleanup:
+
+    - integrate and run automated unit tests
+    - integrate with CodeCov
+    - integrate with CodeClimate
+
+    **Todo**
+        Still struggling to get PyPI publishing automated via Travis-Ci after tag commits.
+
+--------
+
+**PyUnsplash v1.0.0a1 (alpha, v1)**
+
+    This first release offers read-only capabilities to the `Unsplash REST API <https://unsplash.com/documentation/>`_.
+    Although with this limitation, I thought it would be useful to start exposing the library and collect
+    feedback from the community early on.
 
     Features that are right now on my TODO list:
 
@@ -79,9 +105,8 @@ Version
     - Write operations
 
     Desired:
-
-    - More unit-test coverage
-    - Documentation review
+        - More unit-test coverage
+        - Documentation review
 
 
 #######
