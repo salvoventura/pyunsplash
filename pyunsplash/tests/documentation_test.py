@@ -46,7 +46,7 @@ def funzione_6(pu, logger):
 
 
 
-#API: Class Collection
+# API: Class Collection
 
 def funzione_7(pu, logger):
     logger.info('Funzione_7')
@@ -118,11 +118,103 @@ def funzione_15(pu, logger):
 
 
 
-#API: Class Collections
+# API: Class Collections
+
+def funzione_16(pu, logger):
+    logger.info('Funzione_15')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    collections = this_user.collections(page=1, per_page=5)
+    for collection in collections.entries:
+        print collection.id, collection.title
 
 
 
 
+# API: Class Photo
+
+def funzione_17(pu, logger):
+    logger.info('Funzione_17')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    photos = this_user.photos()  # photos is an instance of class Photos
+    for photo in photos.entries:
+        photo.refresh()
+        print photo.id, photo.link_download
+
+
+def funzione_18(pu, logger):
+    logger.info('Funzione_18')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    photos = this_user.photos()    # photos is an instance of class Photos
+    for photo in photos.entries:
+        photo.refresh()
+        print photo.id, photo.link_download
+
+
+def funzione_19(pu, logger):
+    logger.info('Funzione_19')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    photos = this_user.photos()  # photos is an instance of class Photos
+    for photo in photos.entries:
+        print photo.id, photo.link_html
+
+
+def funzione_20(pu, logger):
+    logger.info('Funzione_20')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    photos = this_user.photos()  # photos is an instance of class Photos
+    for photo in photos.entries:
+        print photo.id, photo.link_download
+
+
+def funzione_21(pu, logger):
+    logger.info('Funzione_21')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    photos = this_user.photos()  # photos is an instance of class Photos
+    for photo in photos.entries:
+        print photo.stats
+
+
+
+
+# API: Class Photos
+
+def funzione_22(pu, logger):
+    logger.info('Funzione_22')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    photos = this_user.photos()  # photos is an instance of class Photos
+    for photo in photos.entries:
+        print photo.id, photo.link_download
+
+
+
+
+# API: Class Search
+
+def funzione_23(pu, logger):
+    logger.info('Funzione_23')
+    search = pu.search(type='photos', query='red,car')
+    for photo in search.entries:
+        print photo.id, photo.link_download
+
+
+
+
+# API: Class Stats
+
+def funzione_24(pu, logger):
+    logger.info('Funzione_24')
+    stats = pu.stats()
+    print stats.total
+
+
+
+
+# API: Class User
+
+def funzione_25(pu, logger):
+    logger.info('Funzione_25')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    this_user.refresh()
 
 
 
@@ -173,6 +265,18 @@ def main():
     funzione_13(pu, logger)
     funzione_14(pu, logger)
     funzione_15(pu, logger)
+    funzione_16(pu, logger)
+    funzione_17(pu, logger)
+    funzione_18(pu, logger)
+    funzione_19(pu, logger)
+    funzione_20(pu, logger)
+    funzione_21(pu, logger)
+    funzione_22(pu, logger)
+    funzione_23(pu, logger)
+    funzione_24(pu, logger)
+    funzione_25(pu, logger)
+
+
 
 
 if __name__ == '__main__':
