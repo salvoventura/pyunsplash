@@ -15,7 +15,7 @@ This is the main class used to interact with the ``Unsplash`` REST API.
     ============  ======  ========================  ====================================
     Argument      Type    Optional/Required         Notes
     ============  ======  ========================  ====================================
-    **api_key**   string  required
+    **api_key**   string  required                  Your application ID
     ============  ======  ========================  ====================================
 
     **Returns**
