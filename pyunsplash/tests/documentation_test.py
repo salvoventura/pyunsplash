@@ -1,6 +1,6 @@
 import pyunsplash
 import logging
-API_KEY='12e17a7db21afeff89fa5bfa990bc61205a2bc45cdc6672e4717abfaa3d5940c'
+API_KEY='ea8d39d41467c530ce8aa50b36cc1dd31d8527e6608656b729c270b9b8eaae79'
 
 
 def funzione_1():
@@ -29,7 +29,7 @@ def main():
     pu, logger = funzione_1()
     funzione_2(pu, logger)
     funzione_3(pu, logger)
-    
+
 
 if __name__ == '__main__':
     main()
