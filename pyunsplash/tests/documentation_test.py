@@ -23,13 +23,157 @@ def funzione_3(pu, logger):
     collections_page = pu.collections(type='featured', per_page=5)
 
 
+def funzione_4(pu, logger):
+    logger.info('Funzione_4')
+    #
+    #
+    search = pu.search(type='photos', query='red,car')
+    for entry in search.entries:
+        print entry.link_html
+
+
+def funzione_5(pu, logger):
+    logger.info('Funzione_5')
+    stats = pu.stats()
+    print stats.total  # this is json
+
+
+def funzione_6(pu, logger):
+    logger.info('Funzione_6')
+    pu.init_logging(logging.DEBUG)
+    # use the PyUnsplash objects: all logs will be recorded to log file
+
+
+
+
+#API: Class Collection
+
+def funzione_7(pu, logger):
+    logger.info('Funzione_7')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for collection in collections_page.entries:
+        collection.refresh()
+        print collection.id
+
+
+def funzione_8(pu, logger):
+    logger.info('Funzione_8')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for collection in collections_page.entries:
+        print collection.id
+
+
+def funzione_9(pu, logger):
+    logger.info('Funzione_9')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for collection in collections_page.entries:
+        print collection.title
+
+
+def funzione_10(pu, logger):
+    logger.info('Funzione_10')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for collection in collections_page.entries:
+        print collection.description
+
+
+def funzione_11(pu, logger):
+    logger.info('Funzione_11')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for collection in collections_page.entries:
+        print collection.user
+
+
+def funzione_12(pu, logger):
+    logger.info('Funzione_12')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for collection in collections_page.entries:
+        print collection.link_photos
+
+
+def funzione_13(pu, logger):
+    logger.info('Funzione_13')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for collection in collections_page.entries:
+        print collection.link_related
+
+
+def funzione_14(pu, logger):
+    logger.info('Funzione_14')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for collection in collections_page.entries:
+        photos = collection.photos(order_by='popular', per_page=3)
+        for photo in photos.entries:
+            print photo.id, photo.link_download
+
+
+def funzione_15(pu, logger):
+    logger.info('Funzione_15')
+    collections_page = pu.collections(type='featured', per_page=5)
+    for cur_collection in collections_page.entries:
+        related_collections = collection.related()
+        for rel_collection in related_collections.entries:
+            print rel_collection.title, rel_collection.description
+
+
+
+
+#API: Class Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def main():
     pu, logger = funzione_1()
     funzione_2(pu, logger)
     funzione_3(pu, logger)
-    
+    funzione_4(pu, logger)
+    funzione_5(pu, logger)
+    funzione_6(pu, logger)
+    funzione_7(pu, logger)
+    funzione_8(pu, logger)
+    funzione_9(pu, logger)
+    funzione_10(pu, logger)
+    funzione_11(pu, logger)
+    funzione_12(pu, logger)
+    funzione_13(pu, logger)
+    funzione_14(pu, logger)
+    funzione_15(pu, logger)
+
 
 if __name__ == '__main__':
     main()
