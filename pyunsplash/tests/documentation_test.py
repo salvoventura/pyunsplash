@@ -109,7 +109,7 @@ def funzione_14(pu, logger):
 def funzione_15(pu, logger):
     logger.info('Funzione_15')
     collections_page = pu.collections(type='featured', per_page=5)
-    for cur_collection in collections_page.entries:
+    for collection in collections_page.entries:
         related_collections = collection.related()
         for rel_collection in related_collections.entries:
             print rel_collection.title, rel_collection.description
