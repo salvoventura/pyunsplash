@@ -198,7 +198,6 @@ def funzione_23(pu, logger):
 
 
 
-
 # API: Class Stats
 
 def funzione_24(pu, logger):
