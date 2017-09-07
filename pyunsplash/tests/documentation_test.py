@@ -121,7 +121,7 @@ def funzione_15(pu, logger):
 # API: Class Collections
 
 def funzione_16(pu, logger):
-    logger.info('Funzione_15')
+    logger.info('Funzione_16')
     this_user = pu.user('salvoventura', w=100, h=100)
     collections = this_user.collections(page=1, per_page=5)
     for collection in collections.entries:
@@ -215,13 +215,87 @@ def funzione_25(pu, logger):
     this_user = pu.user('salvoventura', w=100, h=100)
     this_user.refresh()
 
+def funzione_26(pu, logger):
+    logger.info('Funzione_26')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    print this_user.id
+
+def funzione_27(pu, logger):
+    logger.info('Funzione_27')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    print this_user.links
+
+def funzione_28(pu, logger):
+    logger.info('Funzione_28')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    print this_user.link_html
+
+def funzione_29(pu, logger):
+    logger.info('Funzione_29')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    print this_user.link_portfolio
+
+def funzione_30(pu, logger):
+    logger.info('Funzione_30')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    print this_user.link_followers
+
+def funzione_31(pu, logger):
+    logger.info('Funzione_31')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    print this_user.link_following
+
+def funzione_32(pu, logger):
+    logger.info('Funzione_32')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    print this_user.link_photos
+
+def funzione_33(pu, logger):
+    logger.info('Funzione_33')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    photos = this_user.photos(per_page=5)
+    for photo in photos.entries:
+        print photo.id, photo.link_download
+
+def funzione_34(pu, logger):
+    logger.info('Funzione_34')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    followers = this_user.followers()
+    for user in followers.entries:
+        print user.id, user.body.get('first_name'), user.body.get('last_name')
+
+def funzione_35(pu, logger):
+    logger.info('Funzione_35')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    following = this_user.following()
+    for user in following.entries:
+        print user.id, user.body.get('first_name'), user.body.get('last_name')
+
+def funzione_36(pu, logger):
+    logger.info('Funzione_36')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    photos = this_user.likes(per_page=5)
+    for photo in photos.entries:
+        print photo.id, photo.link_download
+
+def funzione_37(pu, logger):
+    logger.info('Funzione_37')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    collections = this_user.collections(page=1, per_page=5)
+    for collection in collections.entries:
+        print collection.id, collection.title
 
 
 
 
+# API: Class Users
 
-
-
+def funzione_38(pu, logger):
+    logger.info('Funzione_38')
+    this_user = pu.user('salvoventura', w=100, h=100)
+    followers = this_user.followers()  # followers is an instance of class Users
+    for user in followers.entries:
+        print user.id, user.body.get('first_name'), user.body.get('last_name')
 
 
 
@@ -274,6 +348,18 @@ def main():
     funzione_23(pu, logger)
     funzione_24(pu, logger)
     funzione_25(pu, logger)
+    funzione_26(pu, logger)
+    funzione_27(pu, logger)
+    funzione_28(pu, logger)
+    funzione_29(pu, logger)
+    funzione_30(pu, logger)
+    funzione_31(pu, logger)
+    funzione_32(pu, logger)
+    funzione_33(pu, logger)
+    funzione_34(pu, logger)
+    funzione_35(pu, logger)
+    funzione_36(pu, logger)
+    funzione_37(pu, logger)
 
 
 
