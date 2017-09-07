@@ -23,7 +23,7 @@ import rest
 from .settings import API_ROOT
 from .settings import LIB_NAME
 
-logger = logging.getLogger(LIB_NAME)
+logger = logging.getLogger(__name__)
 
 
 class UnsplashPage(object):

@@ -16,7 +16,7 @@ from .photos import Photo
 from .users import User
 from .settings import LIB_NAME
 
-logger = logging.getLogger(LIB_NAME)
+logger = logging.getLogger(__name__)
 
 
 class Search(UnsplashPage):

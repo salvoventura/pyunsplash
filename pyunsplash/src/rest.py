@@ -13,7 +13,7 @@
 import logging
 import requests
 
-logger = logging.getLogger('pyunsplash')
+logger = logging.getLogger(__name__)
 
 
 class Rest(object):

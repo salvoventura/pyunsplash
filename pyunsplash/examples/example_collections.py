@@ -26,7 +26,7 @@ py_un.init_logging(logging.DEBUG)
 #   'page' : <int>, which page to retrieve
 #   'per_page': <int>, how many collections to include in each page
 #
-collections_page = py_un.collections(type='generic', per_page=3)
+collections_page = py_un.collections(type_='generic', per_page=3)
 
 # iterate through all the collections retrieved in the collections_page, two ways
 # 1) iterating through 'body' returns just a dictionary, no additional API call

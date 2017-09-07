@@ -13,7 +13,7 @@ import logging
 from .unobject import UnsplashObject
 from .settings import LIB_NAME
 
-logger = logging.getLogger(LIB_NAME)
+logger = logging.getLogger(__name__)
 
 
 class Stats(UnsplashObject):

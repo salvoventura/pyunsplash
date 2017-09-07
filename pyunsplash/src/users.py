@@ -16,7 +16,7 @@ from .collections import Collections
 from .photos import Photos
 from .settings import LIB_NAME
 
-logger = logging.getLogger(LIB_NAME)
+logger = logging.getLogger(__name__)
 
 
 class Users(UnsplashPage):
@@ -61,31 +61,26 @@ class User(UnsplashObject):
     def link_following(self):
         return self.links.get('following')
 
-    @property
     def photos(self, **kwargs):
         # TODO: cache the returned object
         url = self.link_photos
         return Photos(url=url, api_key=self.api_key, **kwargs)
 
-    @property
     def followers(self, **kwargs):
         # TODO: cache the returned object
         url = self.link_followers
         return Users(url=url, api_key=self.api_key, **kwargs)
 
-    @property
     def following(self, **kwargs):
         # TODO: cache the returned object
         url = self.link_following
         return Users(url=url, api_key=self.api_key, **kwargs)
 
-    @property
     def likes(self, **kwargs):
         # TODO: cache the returned object
         url = '{}/likes'.format(self.url)
         return Photos(url=url, api_key=self.api_key, **kwargs)
 
-    @property
     def collections(self, **kwargs):
         # TODO: cache the returned object
         url = '{}/collections'.format(self.url)

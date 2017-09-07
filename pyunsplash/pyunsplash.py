@@ -18,7 +18,7 @@ from .src.photos import Photos, CuratedPhotos, RandomPhotos
 from .src.search import Search
 from .src.stats import Stats
 
-logger = logging.getLogger(LIB_NAME)
+logger = logging.getLogger(__name__)
 
 
 class PyUnsplash(object):
@@ -30,13 +30,13 @@ class PyUnsplash(object):
     def user(self, source, **kwargs):
         return User(api_key=self._api_key, source=source, **kwargs)
 
-    def collections(self, type='generic', **kwargs):
+    def collections(self, type_='generic', **kwargs):
         lookup = {'curated': CuratedCollections,
                   'generic': Collections,
                   'featured': FeaturedCollections}
 
-        if type in lookup:
-            f = lookup.get(type)
+        if type_ in lookup:
+            f = lookup.get(type_)
             return f(api_key=self._api_key, **kwargs)
 
         logger.debug('No collections object to return')
@@ -54,14 +54,14 @@ class PyUnsplash(object):
         logger.debug('No photos object to return')
         return None
 
-    def search(self, type, **kwargs):
-        return Search(api_key=self._api_key, where=type, **kwargs)
+    def search(self, type_, **kwargs):
+        return Search(api_key=self._api_key, where=type_, **kwargs)
 
     def stats(self):
         return Stats(api_key=self._api_key)
 
     @staticmethod
-    def init_logging(log_level=logging.CRITICAL):
+    def init_logging(log_level=logging.DEBUG):
         """
         Initialize logging if required. Only needed for debugging.
 

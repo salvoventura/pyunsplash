@@ -14,7 +14,7 @@ from .unpage import UnsplashPage
 from .unobject import UnsplashObject
 from .settings import LIB_NAME
 
-logger = logging.getLogger(LIB_NAME)
+logger = logging.getLogger(__name__)
 
 
 class Photos(UnsplashPage):
@@ -64,10 +64,6 @@ class Photo(UnsplashObject):
         return self.links.get('html', None)
 
     @property
-    def link_download(self, **kwargs):
-        return self.links.get('download')
-
-    @property
     def stats(self):
         url = '{}/stats'.format(self.url)
         r = self._agent.get(url)
@@ -76,3 +72,7 @@ class Photo(UnsplashObject):
         else:
             logger.debug('Failed stats retrieval for {} with status code {}'.format(url, r.status_code))
             return None
+
+    def link_download(self, **kwargs):
+        return self.links.get('download')
+

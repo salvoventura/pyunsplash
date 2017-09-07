@@ -43,7 +43,7 @@ class TestCollections:
             adding_headers=stored_response.get('headers')
         )
         pu_obj = PyUnsplash(api_key=api_key)
-        collections = pu_obj.collections(type=type)
+        collections = pu_obj.collections(type_=type)
         assert collections.body is not None
         assert collections.header is not None
         assert collections.status_code == 200
@@ -70,7 +70,7 @@ class TestCollections:
             adding_headers=stored_response.get('headers')
         )
         pu_obj = PyUnsplash(api_key=api_key)
-        collections = pu_obj.collections(type=type)
+        collections = pu_obj.collections(type_=type)
         assert collections.body is not None
         assert collections.header is not None
         assert collections.status_code == 200
@@ -96,7 +96,7 @@ class TestCollections:
             adding_headers=stored_response.get('headers')
         )
         pu_obj = PyUnsplash(api_key=api_key)
-        collections = pu_obj.collections(type=type)
+        collections = pu_obj.collections(type_=type)
         assert collections.body is not None
         assert collections.header is not None
         assert collections.status_code == 200

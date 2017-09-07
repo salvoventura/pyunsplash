@@ -15,7 +15,7 @@ from .unobject import UnsplashObject
 from .photos import Photos
 from .settings import LIB_NAME
 
-logger = logging.getLogger(LIB_NAME)
+logger = logging.getLogger(__name__)
 
 
 class Collections(UnsplashPage):
@@ -76,15 +76,14 @@ class Collection(UnsplashObject):
         return self.links.get('related')
 
     @property
-    def photos(self, **kwargs):
-        # TODO: cache the returned object
-        url = self.link_photos
-        return Photos(url=url, api_key=self.api_key, **kwargs)
-
-    @property
     def related(self):
         # Apparently, 'related' doesn't honor parameters
         # TODO: cache the returned object
         url = self.link_related
         return Collections(url=url, api_key=self.api_key)
+
+    def photos(self, **kwargs):
+        # TODO: cache the returned object
+        url = self.link_photos
+        return Photos(url=url, api_key=self.api_key, **kwargs)
 

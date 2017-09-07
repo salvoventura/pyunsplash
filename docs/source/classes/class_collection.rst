@@ -284,8 +284,8 @@ Methods and properties exposed by the ``Collection`` class.
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
         collections_page = pu.collections(type='featured', per_page=5)
-        for cur_collection in collections_page.entries:
-            related_collections = collection.related()
+        for collection in collections_page.entries:
+            related_collections = collection.related
             for rel_collection in related_collections.entries:
                 print rel_collection.title, rel_collection.description
 
