@@ -9,13 +9,10 @@ download link.
 
     import logging
     from pyunsplash import PyUnsplash
-    api_key = 'YOU_API_KEY'
+    api_key = 'YOUR_APPLICATION_ID'
 
     # instantiate PyUnsplash object
     py_un = PyUnsplash(api_key=api_key)
-
-    # initiate logging if desired: will automatically create logfile
-    py_un.init_logging(logging.DEBUG)
 
     # Start with the generic collection, maximize number of items
     # note: this will run until all photos of all collections have

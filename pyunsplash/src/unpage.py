@@ -1,4 +1,5 @@
 ###############################################################################
+#    Copyright (c) 2016 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: unpage.py
 #
@@ -6,24 +7,20 @@
 #      Date: 06 Dec 2016
 #   Purpose: Base class for Unsplash API pages
 #
-#   Comment:
-# Any object exposes GET/PUT/POST/DELETE
-#   url is optional; if none provided, the current url is used
-#   next, previous, last, first *might* be available and usable
-#   object itself has no memory
-#   GET, next, previous, last, first return a new object
-#   POST returns TBD
-#   PUT no returns (true/false or error...)
-#   DELETE no returns (true, false or error...)
-#
-#
+#  Revision: 1
+#   Comment: What's new in revision 1
+#            Any object exposes GET/PUT/POST/DELETE
+#               url is optional; if none provided, the current url is used
+#               next, previous, last, first *might* be available and usable
+#               object itself has no memory
+#               GET, next, previous, last, first return a new object
+#               POST returns TBD
+#               PUT no returns (true/false or error...)
+#               DELETE no returns (true, false or error...)
 ###############################################################################
-import logging
-import rest
+from .liblogging import logger
+from .rest import Rest
 from .settings import API_ROOT
-from .settings import LIB_NAME
-
-logger = logging.getLogger(__name__)
 
 
 class UnsplashPage(object):
@@ -44,7 +41,7 @@ class UnsplashPage(object):
         self.requests = None
 
         if api_key is not None:
-            self._agent = rest.Rest(api_key=self.api_key)
+            self._agent = Rest(api_key=self.api_key)
 
         if self.url is not None:
             r = self._agent.get(self.url, self.query_parameters)
@@ -74,7 +71,7 @@ class UnsplashPage(object):
 
     def set_api_key(self, api_key):
         self.api_key = api_key
-        self._agent = rest.Rest(api_key=self.api_key)
+        self._agent = Rest(api_key=self.api_key)
 
     def get(self, url, query_parameters=None):
         return self.__class__(url=url, query_parameters=query_parameters, api_key=self.api_key)
@@ -147,7 +144,7 @@ class UnsplashPage(object):
         query_params = {}
         for key in kwargs:
             if self.valid_options and key not in self.valid_options:
-                logger.info('invalid parameter {}, safely ignoring it'.format(key))
+                logger.debug('invalid parameter {}, safely ignoring it'.format(key))
                 continue
             query_params[key] = kwargs[key]
         logger.debug('     returning {}'.format(query_params))
@@ -168,4 +165,3 @@ class UnsplashPage(object):
     def _ret_link(self, which):
         if self.navigation:
             return self.navigation.get(which, None)
-

@@ -1,4 +1,5 @@
 ###############################################################################
+#    Copyright (c) 2016 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: test_collections.py
 #
@@ -6,7 +7,9 @@
 #      Date: 14 Dec 2016
 #   Purpose: collections unit tests
 #
-#   Comment: use local resources
+#  Revision: 1
+#   Comment: What's new in revision 1
+#            use local resources
 #
 ###############################################################################
 import responses
@@ -15,7 +18,7 @@ import os
 from pyunsplash import PyUnsplash
 from pyunsplash.src.settings import API_ROOT
 
-api_key = 'DUMMY_API_KEY'
+api_key = os.environ.get('APPLICATION_ID', None) or 'DUMMY_APPLICATION_ID'
 
 
 class TestCollections:

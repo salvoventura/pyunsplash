@@ -1,21 +1,20 @@
 ###############################################################################
+#    Copyright (c) 2016 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: collections.py
 #
 #    Author: Salvatore Ventura <salvoventura@gmail.com>
 #      Date: 06 Dec 2016
-#   Purpose:
+#   Purpose: Handle Collections, CuratedCollections, FeaturedCollections, and Collection
 #
-#   Comment:
+#  Revision: 1
+#   Comment: What's new in revision 1
 #
 ###############################################################################
-import logging
+from .liblogging import logger
 from .unpage import UnsplashPage
 from .unobject import UnsplashObject
 from .photos import Photos
-from .settings import LIB_NAME
-
-logger = logging.getLogger(__name__)
 
 
 class Collections(UnsplashPage):
@@ -86,4 +85,3 @@ class Collection(UnsplashObject):
         # TODO: cache the returned object
         url = self.link_photos
         return Photos(url=url, api_key=self.api_key, **kwargs)
-

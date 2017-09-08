@@ -1,19 +1,18 @@
 ###############################################################################
+#    Copyright (c) 2016 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: stats.py
 #
 #    Author: Salvatore Ventura <salvoventura@gmail.com>
 #      Date: 08 Dec 2016
-#   Purpose:
+#   Purpose: Handle Stats
 #
-#   Comment:
+#  Revision: 1
+#   Comment: What's new in revision 1
 #
 ###############################################################################
-import logging
+from .liblogging import logger
 from .unobject import UnsplashObject
-from .settings import LIB_NAME
-
-logger = logging.getLogger(__name__)
 
 
 class Stats(UnsplashObject):

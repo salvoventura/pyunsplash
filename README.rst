@@ -35,7 +35,7 @@ download link.
 
     import logging
     from pyunsplash import PyUnsplash
-    api_key = 'YOU_API_KEY'
+    api_key = 'YOUR_APPLICATION_ID'
 
     # instantiate PyUnsplash object
     py_un = PyUnsplash(api_key=api_key)
@@ -67,6 +67,20 @@ Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_
 #######
 Version
 #######
+
+**PyUnsplash v1.0.0b1 (beta, v1)**
+
+    Logging subsystem overhaul, now cleaner. Changes have percolated across many files.
+    Documentation checked and verified, and issues fixed.
+
+    **Todo**
+    - Get `PyPI <https://pypi.python.org/pypi/pyunsplash/>`_ publishing automated via
+          `Travis-Ci <https://travis-ci.org/salvoventura/pyunsplash/>`_ after tag commits.
+    - Authorization workflow & Current user
+    - Write operations
+
+
+--------
 
 **PyUnsplash v1.0.0a3 (alpha, v3)**
 

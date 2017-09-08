@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='pyunsplash',
-    version='1.0.0a3',  # alpha, v3
+    version='1.0.0b1',  # beta, v1
     packages=['pyunsplash', 'pyunsplash.src'],
     url='https://github.com/salvoventura/pyunsplash',
     license='MIT',
@@ -14,7 +14,7 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',

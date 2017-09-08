@@ -9,19 +9,18 @@
 #   Comment:
 #
 ###############################################################################
-import logging
-from logging.handlers import RotatingFileHandler
-from .src.settings import LIB_NAME
-from .src.users import User
+from .src.liblogging import logger
 from .src.collections import Collections, FeaturedCollections, CuratedCollections
 from .src.photos import Photos, CuratedPhotos, RandomPhotos
 from .src.search import Search
 from .src.stats import Stats
-
-logger = logging.getLogger(__name__)
+from .src.users import User
+from .src.settings import LIB_NAME
 
 
 class PyUnsplash(object):
+    logger_name = LIB_NAME
+
     def __init__(self, api_key):
         self._api_key = api_key
 
@@ -59,23 +58,3 @@ class PyUnsplash(object):
 
     def stats(self):
         return Stats(api_key=self._api_key)
-
-    @staticmethod
-    def init_logging(log_level=logging.DEBUG):
-        """
-        Initialize logging if required. Only needed for debugging.
-
-        :param log_level: valid values from logging module
-        :return: None
-        """
-        logging.basicConfig(level=log_level)
-        logger = logging.getLogger(LIB_NAME)
-
-        formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s")
-        log_filepath = '{}.log'.format(LIB_NAME)
-
-        handler = RotatingFileHandler(log_filepath, maxBytes=1024 * 1024 * 10, backupCount=10)
-        handler.setLevel(log_level)
-        handler.setFormatter(formatter)
-
-        logger.addHandler(handler)

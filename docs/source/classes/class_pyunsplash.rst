@@ -196,34 +196,4 @@ Methods and properties exposed by the ``PyUnsplash`` class.
         stats = pu.stats()
         print stats.total   # this is json
 
---------
-
-**PyUnsplash.init_logging(log_level)**
---------------------------------------
-    To enable ``logging``, use the ``init_logging`` method.
-
-    **Parameters**
-
-    ============  ======  ====================================  ====================================
-    Argument      Type    Optional/Required                     Notes
-    ============  ======  ====================================  ====================================
-    log_level     number  optional (default: logging.CRITICAL)  Numeric values mapped from ``logging``
-                                                                library
-    ============  ======  ====================================  ====================================
-
-    **Returns**
-
-    ==========  ========================================================================
-    None
-    ==========  ========================================================================
-
-    **Example**
-    ::
-
-        import pyunsplash
-        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        pu.init_logging(logging.DEBUG)
-
-        # use the PyUnsplash objects: all logs will be recorded to log file
-
 

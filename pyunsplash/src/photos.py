@@ -1,20 +1,19 @@
 ###############################################################################
+#    Copyright (c) 2016 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: photos.py
 #
 #    Author: Salvatore Ventura <salvoventura@gmail.com>
 #      Date: 07 Dec 2016
-#   Purpose:
+#   Purpose: Handle Photos, CuratedPhotos, RandomPhotos, and Photo
 #
-#   Comment:
+#  Revision: 1
+#   Comment: What's new in revision 1
 #
 ###############################################################################
-import logging
+from .liblogging import logger
 from .unpage import UnsplashPage
 from .unobject import UnsplashObject
-from .settings import LIB_NAME
-
-logger = logging.getLogger(__name__)
 
 
 class Photos(UnsplashPage):
@@ -70,9 +69,9 @@ class Photo(UnsplashObject):
         if r.status_code == 200:
             return r.json()
         else:
-            logger.debug('Failed stats retrieval for {} with status code {}'.format(url, r.status_code))
+            logger.error('Failed stats retrieval for {} with status code {}'.format(url, r.status_code))
             return None
 
-    def link_download(self, **kwargs):
+    @property
+    def link_download(self):
         return self.links.get('download')
-

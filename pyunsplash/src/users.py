@@ -1,22 +1,21 @@
 ###############################################################################
+#    Copyright (c) 2016 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: users.py
 #
 #    Author: Salvatore Ventura <salvoventura@gmail.com>
 #      Date: 08 Dec 2016
-#   Purpose:
+#   Purpose: Handles Users, and User
 #
-#   Comment:
+#  Revision: 1
+#   Comment: What's new in revision 1
 #
 ###############################################################################
-import logging
+from .liblogging import logger
 from .unpage import UnsplashPage
 from .unobject import UnsplashObject
 from .collections import Collections
 from .photos import Photos
-from .settings import LIB_NAME
-
-logger = logging.getLogger(__name__)
 
 
 class Users(UnsplashPage):

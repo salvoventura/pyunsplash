@@ -1,4 +1,5 @@
 ###############################################################################
+#    Copyright (c) 2017 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: example_collections.py
 #
@@ -6,18 +7,31 @@
 #      Date: 14 Dec 2016
 #   Purpose: Example file for collections
 #
-#   Comment:
+#  Revision: 2
+#   Comment: What's new in revision 2
+#            Add application level logging and interaction with
+#            library logging example
+#
+#   Comment: What's new in revision 1
 #
 ###############################################################################
 import logging
+import os
 from pyunsplash import PyUnsplash
-api_key = 'YOU_API_KEY'
+api_key = os.environ.get('APPLICATION_ID', None) or 'DUMMY_APPLICATION_ID'
+
+# Initialize app logging
+logger = logging.getLogger()
+logging.basicConfig(filename='app.log', level=logging.DEBUG)
+
+# pyunsplash logger defaults to level logging.ERROR
+# If you need to change that, use getLogger/setLevel
+# on the module logger, like this:
+logging.getLogger(PyUnsplash.logger_name).setLevel(logging.DEBUG)
+
 
 # instantiate PyUnsplash object
 py_un = PyUnsplash(api_key=api_key)
-
-# initiate logging if desired: will automatically create logfile
-py_un.init_logging(logging.DEBUG)
 
 # Get a page from the collections api
 # Parameters:
@@ -45,7 +59,7 @@ for collection in collections_page.entries:
         print('Related collection', related.id, related.title)
 
     # go through all the 'photos' in the collection
-    photos = collection.photos
+    photos = collection.photos()
     # two ways of iterating: '.body' and '.entries' as well
     for photo in photos.entries:
         print('Photo in collection', photo.id, photo.link_download)

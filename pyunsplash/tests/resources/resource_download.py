@@ -4,10 +4,9 @@
 #
 #    Author: Salvatore Ventura <salvoventura@gmail.com>
 #      Date: 14 Dec 2016
-#   Purpose: Download and save resources for unit testing, and avoid storing
-#            the private API KEY in them
+#   Purpose: Download and save resources for unit testing
 #
-#   Comment: DO NOT DISTRIBUTE THIS FILE!!!
+#   Comment: The APPLICATION ID is taken from OS ENV
 #
 ###############################################################################
 from pyunsplash.src.settings import API_ROOT
@@ -16,8 +15,7 @@ import os
 import json
 import time
 
-# TODO: DO NOT DISTRIBUTE THIS FILE OR CLEAR THE API KEY
-api_key = '<YOUR_API_KEY>'
+api_key = os.environ['APPLICATION_ID']
 
 req_headers = {
     'Accept-Version': 'v1',

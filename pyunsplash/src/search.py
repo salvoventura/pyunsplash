@@ -1,22 +1,21 @@
 ###############################################################################
+#    Copyright (c) 2016 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: search.py
 #
 #    Author: Salvatore Ventura <salvoventura@gmail.com>
 #      Date: 08 Dec 2016
-#   Purpose:
+#   Purpose: Handle Search
 #
-#   Comment:
+#  Revision: 1
+#   Comment: What's new in revision 1
 #
 ###############################################################################
-import logging
+from .liblogging import logger
 from .unpage import UnsplashPage
 from .collections import Collection
 from .photos import Photo
 from .users import User
-from .settings import LIB_NAME
-
-logger = logging.getLogger(__name__)
 
 
 class Search(UnsplashPage):

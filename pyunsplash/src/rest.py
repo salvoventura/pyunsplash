@@ -1,4 +1,5 @@
 ###############################################################################
+#    Copyright (c) 2016 Salvatore Ventura <salvoventura@gmail.com>
 #
 #      File: rest.py
 #
@@ -7,13 +8,11 @@
 #   Purpose: Handler for REST API interaction
 #
 #  Revision: 1
-#   Comment: First revision
+#   Comment: What's new in revision 1
 #
 ###############################################################################
-import logging
 import requests
-
-logger = logging.getLogger(__name__)
+from .liblogging import logger
 
 
 class Rest(object):
@@ -27,7 +26,8 @@ class Rest(object):
         self._body = None
         self._headers = None
 
-    def _query_parameters(self, query_parameters):
+    @staticmethod
+    def _query_parameters(query_parameters):
         """
         Prepare the query parameter string to be appended to the url
 
@@ -71,9 +71,9 @@ class Rest(object):
         _url = url
         if query_params:
             if url.find('?') > 0:
-                _url = '&'.join([url, self._query_parameters(query_params)])
+                _url = '&'.join([url, self._query_parameters(query_parameters=query_params)])
             else:
-                _url = '?'.join([url, self._query_parameters(query_params)])
+                _url = '?'.join([url, self._query_parameters(query_parameters=query_params)])
 
         logger.debug('rest get {}'.format(_url))
         _r = requests.get(_url, headers=self._req_headers, allow_redirects=True)
@@ -88,13 +88,14 @@ class Rest(object):
                 )
 
         except ValueError, e:
-            # If you get a 403, the body is NOT json...
-            # thus need to protect this path
+            # If you get a 403, the body is NOT json
+            # Good for logging, but can't really protect much, as anyway the
+            # object up is likely going to run into its own exception for unexpected
+            # result, and will make debugging this so much more difficult.
+            # With some use, might get a better/smarter way of dealing with this.
             logger.error('EXCEPTION: {}'.format(e))
             if self._status_code != requests.codes.ok:
-                logger.error(
-                    'HTTP EXC status {}: {}'.format(self._status_code, _r.text))
-                self._body = []
+                logger.error('HTTP EXC status {}: {}'.format(self._status_code, _r.text))
             raise
 
         logger.debug('rest rsp status {} body {} headers {}'.format(self._status_code, self._body, self._headers))
