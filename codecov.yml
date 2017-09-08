@@ -16,7 +16,7 @@ coverage:
     patch: true
     project: true
 ignore:
-  - documentation_test.py
+  - "documentation_test.py"
 parsers:
   gcov:
     branch_detection:
