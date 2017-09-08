@@ -45,7 +45,7 @@ class TestPhotos:
             adding_headers=stored_response.get('headers')
         )
         pu_obj = PyUnsplash(api_key=api_key)
-        photos = pu_obj.photos(type=type)
+        photos = pu_obj.photos(type_=type)
         assert photos.body is not None
         assert photos.header is not None
         assert photos.status_code == 200
@@ -68,7 +68,7 @@ class TestPhotos:
             adding_headers=stored_response.get('headers')
         )
         pu_obj = PyUnsplash(api_key=api_key)
-        photos = pu_obj.photos(type=type)
+        photos = pu_obj.photos(type_=type)
         assert photos.body is not None
         assert photos.header is not None
         assert photos.status_code == 200
@@ -91,7 +91,7 @@ class TestPhotos:
             adding_headers=stored_response.get('headers')
         )
         pu_obj = PyUnsplash(api_key=api_key)
-        photos = pu_obj.photos(type=type)
+        photos = pu_obj.photos(type_=type)
         assert photos.body is not None
         assert photos.header is not None
         assert photos.status_code == 200

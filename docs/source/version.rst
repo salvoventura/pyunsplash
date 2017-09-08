@@ -1,17 +1,12 @@
 Version
 =======
-**1.0.0a1  First public release (alpha, v1)**
-    This first release offers read-only capabilities to the Unsplash REST API.
-    Although with this limitation, I thought it would be useful to start exposing
-    the library and collect feedback from the community early on.
+**PyUnsplash v1.0.0b1 (beta, v1)**
 
-    Features that are right now on my TODO list:
+    Logging subsystem overhaul, now cleaner. Changes have percolated across many files.
+    Documentation checked and verified, and issues fixed.
 
+    **Todo**
+    - Get `PyPI <https://pypi.python.org/pypi/pyunsplash/>`_ publishing automated via
+        `Travis-Ci <https://travis-ci.org/salvoventura/pyunsplash/>`_ after tag commits.
     - Authorization workflow & Current user
     - Write operations
-
-    Desired:
-    - More unit-test coverage
-    - Documentation review
-
-

@@ -42,13 +42,13 @@ class UnsplashObject(object):
             logger.debug('need an agent first')
             self._agent = Rest(api_key=self.api_key)
 
-        logger.debug('object refresh from url {}'.format(self.url))
+        logger.debug('object refresh from url %s' % self.url)
         r = self._agent.get(self.url, self.query_parameters)
         if r.status_code == 200:
-            logger.debug('status {}: loading object body'.format(r.status_code))
+            logger.debug('status %s: loading object body' % r.status_code)
             self.body = r.json()
         else:
-            logger.debug('status {}: object body not refreshed'.format(r.status_code))
+            logger.debug('status %s: object body not refreshed' % r.status_code)
 
     @property
     def id(self):
@@ -71,19 +71,19 @@ class UnsplashObject(object):
                 self.url = source
                 self.refresh()
             else:
-                logger.info('Source is a string, but we did not handle it: {}'.format(source))
-                raise ValueError('Source is a string, but we did not handle it: {}'.format(source))
+                logger.info('Source is a string, but we did not handle it: %s' % source)
+                raise ValueError('Source is a string, but we did not handle it: %s' % source)
         else:
-            logger.info('Invalid parameter to constructor: {}'.format(source))
-            raise ValueError('Invalid parameter to constructor: {}'.format(source))
+            logger.info('Invalid parameter to constructor: %s' % source)
+            raise ValueError('Invalid parameter to constructor: %s' % source)
 
     def _sanitized_query_parameters(self, kwargs):
-        logger.debug('call _sanitized_query_parameters({})'.format(kwargs))
+        logger.debug('call _sanitized_query_parameters(%s)' % kwargs)
         query_params = {}
         for key in kwargs:
             if self.valid_options and key not in self.valid_options:
-                logger.info('invalid parameter {}, safely ignoring it'.format(key))
+                logger.info('invalid parameter %s, safely ignoring it' % key)
                 continue
             query_params[key] = kwargs[key]
-        logger.debug('     returning {}'.format(query_params))
+        logger.debug('     returning %s' % query_params)
         return query_params

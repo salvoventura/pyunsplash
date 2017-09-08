@@ -69,7 +69,7 @@ class Photo(UnsplashObject):
         if r.status_code == 200:
             return r.json()
         else:
-            logger.error('Failed stats retrieval for {} with status code {}'.format(url, r.status_code))
+            logger.error('Failed stats retrieval for %s with status code %s' % (url, r.status_code))
             return None
 
     @property

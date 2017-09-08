@@ -41,13 +41,13 @@ class PyUnsplash(object):
         logger.debug('No collections object to return')
         return None
 
-    def photos(self, type='generic', **kwargs):
+    def photos(self, type_='generic', **kwargs):
         lookup = {'curated': CuratedPhotos,
                   'generic': Photos,
                   'random': RandomPhotos}
 
-        if type in lookup:
-            f = lookup.get(type)
+        if type_ in lookup:
+            f = lookup.get(type_)
             return f(api_key=self._api_key, **kwargs)
 
         logger.debug('No photos object to return')
