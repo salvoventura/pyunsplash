@@ -1,7 +1,7 @@
 ##########
 PyUnsplash
 ##########
-|Latest Version| |Docs Build Status| |Build Status| |Code Coverage| |Code Climate| |Landscape Io|
+|Latest Version| |Docs Build Status| |Build Status| |Code Coverage| |Code Climate| |Landscape Io| |Say Thanks|
 
 An open source Python wrapper for the `Unsplash REST API <https://unsplash.com/developers>`_.
 The source code is available on GitHub at `https://github.com/salvoventura/pyunsplash <https://github.com/salvoventura/pyunsplash>`_.
@@ -67,6 +67,18 @@ Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_
 #######
 Version
 #######
+
+**PyUnsplash v1.0.0b3 (beta, v3)**
+
+    Still troubles in getting Travis-Ci and PyPI publishing automation tied.
+
+    **Todo**
+    - Get `PyPI <https://pypi.python.org/pypi/pyunsplash/>`_ publishing automated via `Travis-Ci <https://travis-ci.org/salvoventura/pyunsplash/>`_ after tag commits.
+    - Authorization workflow & Current user
+    - Write operations
+
+
+--------
 
 **PyUnsplash v1.0.0b2 (beta, v2)**
 
@@ -161,3 +173,7 @@ PyUnsplash is released under the `MIT License <http://www.opensource.org/license
 .. |Landscape Io| image:: https://landscape.io/github/salvoventura/pyunsplash/master/landscape.svg?style=flat
    :target: https://landscape.io/github/salvoventura/pyunsplash/master
    :alt: Code Health
+
+.. |Say Thanks| image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
+   :target: https://saythanks.io/to/salvoventura
+   :alt: Say Thanks

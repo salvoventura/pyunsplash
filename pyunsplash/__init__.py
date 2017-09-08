@@ -14,4 +14,4 @@ from pyunsplash import PyUnsplash
 # TRAVIS_COMMIT
 # TRAVIS_COMMIT_RANGE
 # TRAVIS_TAG
-__version__ = '1.0.0b1'
+__version__ = '1.0.0b3'
