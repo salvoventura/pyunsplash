@@ -34,7 +34,7 @@ class Rest(object):
         :param query_parameters: dictionary of query parameters and their values
         :return:
         """
-        logger.debug('calling _query_parameters(%s)' % query_parameters)
+        logger.debug('calling _query_parameters(%s)', query_parameters)
         if query_parameters is None:
             return ''
 
@@ -67,7 +67,7 @@ class Rest(object):
         return {}
 
     def get(self, url, query_params=None):
-        logger.debug('calling rest get %s %s' % (url, query_params))
+        logger.debug('calling rest get %s %s', url, query_params)
         _url = url
         if query_params:
             if url.find('?') > 0:
@@ -75,7 +75,7 @@ class Rest(object):
             else:
                 _url = '?'.join([url, self._query_parameters(query_parameters=query_params)])
 
-        logger.debug('rest get %s' % _url)
+        logger.debug('rest get %s', _url)
         _r = requests.get(_url, headers=self._req_headers, allow_redirects=True)
 
         try:
@@ -84,7 +84,7 @@ class Rest(object):
             self._body = _r.json()
             if self._status_code != requests.codes.ok:
                 logger.error(
-                    'HTTP status %s: %s' % (self._status_code, self._body.get('errors', ['No error message']))
+                    'HTTP status %s: %s', self._status_code, self._body.get('errors', ['No error message'])
                 )
 
         except ValueError, e:
@@ -93,12 +93,12 @@ class Rest(object):
             # object up is likely going to run into its own exception for unexpected
             # result, and will make debugging this so much more difficult.
             # With some use, might get a better/smarter way of dealing with this.
-            logger.error('EXCEPTION: %s' % e)
+            logger.error('EXCEPTION: %s', e)
             if self._status_code != requests.codes.ok:
-                logger.error('HTTP EXC status %s: %s' % (self._status_code, _r.text))
+                logger.error('HTTP EXC status %s: %s', self._status_code, _r.text)
             raise
 
-        logger.debug('rest rsp status %s body %s headers %s' % (self._status_code, self._body, self._headers))
+        logger.debug('rest rsp status %s body %s headers %s', self._status_code, self._body, self._headers)
         return _r
 
     def put(self, url, body):

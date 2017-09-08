@@ -11,7 +11,7 @@
 #   Comment: What's new in revision 1
 #
 ###############################################################################
-from .liblogging import logger
+# from .liblogging import logger
 from .unobject import UnsplashObject
 
 

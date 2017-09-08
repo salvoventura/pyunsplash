@@ -129,25 +129,25 @@ class UnsplashPage(object):
         return self.__class__(url=self.link_last, api_key=self.api_key)
 
     def _sanitized_url(self, url):
-        logger.debug('call _sanitized_url(%s)' % url)
+        logger.debug('call _sanitized_url(%s)', url)
         if url.startswith(self._api_root):
             good_url = url
         elif url.startswith('/'):
             good_url = '{}{}'.format(self._api_root, url)
         else:
             good_url = '{}/{}'.format(self._api_root, url)
-        logger.debug('     returning %s' % good_url)
+        logger.debug('     returning %s', good_url)
         return good_url
 
     def _sanitized_query_parameters(self, kwargs):
-        logger.debug('call _sanitized_query_parameters(%s)' % kwargs)
+        logger.debug('call _sanitized_query_parameters(%s)', kwargs)
         query_params = {}
         for key in kwargs:
             if self.valid_options and key not in self.valid_options:
-                logger.debug('invalid parameter %s, safely ignoring it' % key)
+                logger.debug('invalid parameter %s, safely ignoring it', key)
                 continue
             query_params[key] = kwargs[key]
-        logger.debug('     returning %s' % query_params)
+        logger.debug('     returning %s', query_params)
         return query_params
 
     def _parse_navigation(self):
