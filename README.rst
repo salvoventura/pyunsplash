@@ -68,6 +68,17 @@ Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_
 Version
 #######
 
+**PyUnsplash v1.0.0b2 (beta, v2)**
+
+    Getting Travis-Ci and PyPI publishing automation tied.
+
+    **Todo**
+    - Authorization workflow & Current user
+    - Write operations
+
+
+--------
+
 **PyUnsplash v1.0.0b1 (beta, v1)**
 
     Logging subsystem overhaul, now cleaner. Changes have percolated across many files.

@@ -1,12 +1,9 @@
 Version
 =======
-**PyUnsplash v1.0.0b1 (beta, v1)**
+**PyUnsplash v1.0.0b2 (beta, v2)**
 
-    Logging subsystem overhaul, now cleaner. Changes have percolated across many files.
-    Documentation checked and verified, and issues fixed.
+    Getting Travis-Ci and PyPI publishing automation tied.
 
     **Todo**
-
-    - Get `PyPI <https://pypi.python.org/pypi/pyunsplash/>`_ publishing automated via `Travis-Ci <https://travis-ci.org/salvoventura/pyunsplash/>`_ after tag commits.
     - Authorization workflow & Current user
     - Write operations

@@ -28,6 +28,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     keywords=['unsplash', 'rest', 'api', 'python', 'wrapper', 'development', 'unsplash.com'],
-    install_requires=['requests']
+    install_requires=['requests'],
+    python_requires='>=2.7, <3'
 )
 
