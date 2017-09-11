@@ -25,7 +25,7 @@ class TestPhotos:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
-    root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('WORKSPACE', None)
+    root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('PYTHONPATH', None)
 
     store_mapping = {'generic': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__photos_page_2.json']),
                      'curated': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__photos_curated_page_2.json']),

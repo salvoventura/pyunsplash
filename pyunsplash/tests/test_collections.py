@@ -27,7 +27,7 @@ class TestCollections:
     # code duplication, as the testcases are pretty much the same for all
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
     print '>>>>', root_path, '<<<<'
-    root_path = os.environ.get('WORKSPACE', None)
+    root_path = os.environ.get('PYTHONPATH', None)
     print '>>>>', root_path, '<<<<'
     print os.environ
 
