@@ -25,7 +25,9 @@ class TestSearch:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
-    root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('PYTHONPATH', None)
+
+    # PYTHONPATH for Jenkins. It should be WORKDIR but doesn't seem to work.
+    root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('WORKDIR', None)
 
     store_mapping = {
         'collections': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__search_collections_query_tree.json']),

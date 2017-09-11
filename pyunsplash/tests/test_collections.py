@@ -25,11 +25,9 @@ class TestCollections:
     # TODO: avoid code duplication
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
-    root_path = os.environ.get('TRAVIS_BUILD_DIR', None)
-    print '>>>>', root_path, '<<<<'
-    root_path = os.environ.get('PYTHONPATH', None)
-    print '>>>>', root_path, '<<<<'
-    print os.environ
+
+    # PYTHONPATH for Jenkins. It should be WORKDIR but doesn't seem to work.
+    root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('WORKDIR', None)
 
     store_mapping = {'generic': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__collections_page_2.json']),
                      'curated': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__collections_curated_page_2.json']),
