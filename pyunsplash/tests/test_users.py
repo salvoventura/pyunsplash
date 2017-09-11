@@ -26,7 +26,6 @@ class TestUsers:
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('WORKSPACE', None)
-    print root_path
 
     store_mapping = {'salvoventura': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__users_salvoventura.json'])}
 
