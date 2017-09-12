@@ -26,7 +26,7 @@ class TestSearch:
     # Need to workout how to combine responses.activate so as to avoid
     # code duplication, as the testcases are pretty much the same for all
 
-    # On Jenkins, WORKDIR, comes from tox.ini
+    # TOXINIDIR comes from tox.ini
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('TOXINIDIR', None)
 
     store_mapping = {
