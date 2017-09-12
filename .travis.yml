@@ -4,6 +4,7 @@ cache: pip
 
 python:
   - "2.7"
+  - "pypy"
 
 before_install:
   # install test dependencies
