@@ -4,7 +4,6 @@ cache: pip
 
 python:
   - "2.7"
-  - "2.6"
   - "pypy"
 
 before_install:
