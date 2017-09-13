@@ -67,6 +67,15 @@ Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_
 #######
 Version
 #######
+**PyUnsplash v1.0.0b5 (beta, v5)**
+
+    **Todo**
+    - Authorization workflow & Current user
+    - Write operations
+
+
+--------
+
 **PyUnsplash v1.0.0b4 (beta, v4)**
 
     **Todo**
