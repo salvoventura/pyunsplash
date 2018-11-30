@@ -87,7 +87,7 @@ class Rest(object):
                     'HTTP status %s: %s', self._status_code, self._body.get('errors', ['No error message'])
                 )
 
-        except ValueError, e:
+        except ValueError as e:
             # If you get a 403, the body is NOT json
             # Good for logging, but can't really protect much, as anyway the
             # object up is likely going to run into its own exception for unexpected
