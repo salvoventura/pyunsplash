@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='pyunsplash',
-    version='1.0.0b5',  # beta, v5
+    version='1.0.0b6',  # beta, v6
     packages=['pyunsplash', 'pyunsplash.src'],
     url='https://github.com/salvoventura/pyunsplash',
     license='MIT',
@@ -25,11 +25,12 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6'
     ],
     keywords=['unsplash', 'rest', 'api', 'python', 'wrapper', 'development', 'unsplash.com', 'photography'],
     install_requires=['requests'],
-    python_requires='>=2.7, <3'
+    python_requires='>=2.7'
 )
 
