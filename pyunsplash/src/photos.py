@@ -74,4 +74,9 @@ class Photo(UnsplashObject):
 
     @property
     def link_download(self):
-        return self.links.get('download')
+        return self.links.get('download', None)
+
+    @property
+    def link_download_location(self):
+        return self.links.get('download_location', None)
+

@@ -1,8 +1,10 @@
 Version
 =======
-**PyUnsplash v1.0.0b6 (beta, v6)**
+**PyUnsplash v1.0.0b7 (beta, v7)**
 
-    Added Python3 support
+    Fixed issues submitted on GitHub:
+    - Search class: Param "type" is "type_"
+    - Provide property for `download_location` in PyUnsplasy.Photo class
 
     **Todo**
     - Authorization workflow & Current user

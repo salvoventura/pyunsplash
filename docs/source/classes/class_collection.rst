@@ -36,7 +36,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             collection.refresh()
             print collection.id
@@ -67,7 +67,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             print collection.id
 
@@ -97,7 +97,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             print collection.title
 
@@ -127,7 +127,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             print collection.description
 
@@ -157,7 +157,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             print collection.user
 
@@ -187,7 +187,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             print collection.link_photos
 
@@ -217,7 +217,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             print collection.link_related
 
@@ -250,7 +250,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             photos = collection.photos(order_by='popular', per_page=3)
             for photo in photos.entries:
@@ -283,7 +283,7 @@ Methods and properties exposed by the ``Collection`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
         for collection in collections_page.entries:
             related_collections = collection.related
             for rel_collection in related_collections.entries:
