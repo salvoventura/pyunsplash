@@ -37,7 +37,7 @@ Methods and properties exposed by the ``Search`` class.
 
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
-        search = pu.search(type='photos', query='red,car')
+        search = pu.search(type_='photos', query='red,car')
         for photo in search.entries:
             print photo.id, photo.link_download
 

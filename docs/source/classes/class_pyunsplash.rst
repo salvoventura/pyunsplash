@@ -96,7 +96,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
         # retrieve a page from the featured collections, with a maximum
         # of 5 collections per-page
-        collections_page = pu.collections(type='featured', per_page=5)
+        collections_page = pu.collections(type_='featured', per_page=5)
 
 --------
 
@@ -130,7 +130,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
         # retrieve a page from the curated photos, with a maximum
         # of 15 photos per-page
-        collections_page = pu.photos(type='curated', per_page=15)
+        collections_page = pu.photos(type_='curated', per_page=15)
 
 --------
 
@@ -163,7 +163,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
         #
         #
-        search = pu.search(type='photos', query='red,car')
+        search = pu.search(type_='photos', query='red,car')
         for entry in search.entries:
             print entry.link_html
 

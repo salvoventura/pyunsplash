@@ -68,7 +68,7 @@ class TestSearch:
         pu_obj = PyUnsplash(api_key=api_key)
         search = pu_obj.search(type, query='tree')
         for photo in search.entries:
-            print(photo.id, photo.link_html, photo.link_download)  # , photo.stats  # TODO: include stats in unit test
+            print(photo.id, photo.link_html, photo.link_download, photo.link_download_location)  # , photo.stats  # TODO: include stats in unit test
 
     @responses.activate
     def test_search_users(self):
