@@ -22,7 +22,7 @@ download link.
     collections = py_un.collections(per_page=30)
     while collections.has_next:
         for collection in collections.entries:
-            photos = collection.photos
+            photos = collection.photos()
             for photo in photos.entries:
                 print collection.title, photo.link_download
 

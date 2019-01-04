@@ -40,8 +40,10 @@ download link.
     # instantiate PyUnsplash object
     py_un = PyUnsplash(api_key=api_key)
 
-    # initiate logging if desired: will automatically create logfile
-    py_un.init_logging(logging.DEBUG)
+    # pyunsplash logger defaults to level logging.ERROR
+    # If you need to change that, use getLogger/setLevel
+    # on the module logger, like this:
+    logging.getLogger("pyunsplash").setLevel(logging.DEBUG)
 
     # Start with the generic collection, maximize number of items
     # note: this will run until all photos of all collections have
@@ -51,7 +53,7 @@ download link.
     collections = py_un.collections(per_page=30)
     while collections.has_next:
         for collection in collections.entries:
-            photos = collection.photos
+            photos = collection.photos()
             for photo in photos.entries:
                 print collection.title, photo.link_download
 
