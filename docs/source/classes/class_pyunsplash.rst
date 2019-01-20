@@ -67,8 +67,8 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
 --------
 
-**PyUnsplash.collections(type, page, per_page)**
-------------------------------------------------
+**PyUnsplash.collections(type_, page, per_page)**
+-------------------------------------------------
     To interact with the ``collections`` API, create an instance of class ``Collections``.
 
     **Parameters**
@@ -76,7 +76,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
     ============  ======  ===========================  ====================================
     Argument      Type    Optional/Required            Notes
     ============  ======  ===========================  ====================================
-    **type**      string  optional (default: generic)  generic, curated, featured
+    **type_**     string  optional (default: generic)  ``generic``, ``featured`` (``curated`` has been deprecated)
     **page**      number  optional (default: 1)        Page number to retrieve.
     **per_page**  number  optional (default: 10)       Number of items per page (max: 30)
     ============  ======  ===========================  ====================================
@@ -86,6 +86,8 @@ Methods and properties exposed by the ``PyUnsplash`` class.
     ==========  ========================================================================
     **Object**  Instance of class ``Collections``, ``CuratedCollections``, or
                 ``FeaturedCollections`` depending on the value of ``type``
+
+                **NOTE** ``curated`` endpoint has been deprecated by Unsplash
     ==========  ========================================================================
 
     **Example**
@@ -100,26 +102,32 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
 --------
 
-**PyUnsplash.photos(type, page, per_page, order_by)**
------------------------------------------------------
+**PyUnsplash.photos(type_, page, per_page, order_by)**
+------------------------------------------------------
     To interact with the ``photos`` API, create an instance of class ``Photos``.
+
+    **NOTE** ``curated`` endpoint has been deprecated by Unsplash
+
+*Generic Photos*
+^^^^^^^^^^^^^^^^
 
     **Parameters**
 
     ============  ======  ===========================  ====================================
     Argument      Type    Optional/Required            Notes
     ============  ======  ===========================  ====================================
-    **type**      string  optional (default: generic)  generic, curated, random
+    **type_**     string  optional (default: generic)  ``generic``
     **page**      number  optional (default: 1)        Page number to retrieve.
     **per_page**  number  optional (default: 10)       Number of items per page (max: 30)
-    **order_by**  string  optional (default: latest)   latest, oldest, popular
+    **order_by**  string  optional (default: latest)   ``latest``, ``oldest``, ``popular``
     ============  ======  ===========================  ====================================
 
     **Returns**
 
     ==========  ========================================================================
-    **Object**  Instance of class ``Photos``, ``CuratedPhotos``, or ``RandomPhotos``
-                depending on the value of ``type``
+    **Object**  Instance of class ``Photos`` depending on the value of ``type``
+
+                **NOTE** ``curated`` endpoint has been deprecated by Unsplash
     ==========  ========================================================================
 
     **Example**
@@ -128,14 +136,55 @@ Methods and properties exposed by the ``PyUnsplash`` class.
         import pyunsplash
         pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
 
-        # retrieve a page from the curated photos, with a maximum
+        # retrieve a page from the generic photos, with a maximum
         # of 15 photos per-page
-        collections_page = pu.photos(type_='curated', per_page=15)
+        collections_page = pu.photos(type_='generic', per_page=15)
+
+
+*Random Photos*
+^^^^^^^^^^^^^^^^
+
+    **Parameters**
+
+    ===============  ======  ===========================  ====================================
+    Argument         Type    Optional/Required            Notes
+    ===============  ======  ===========================  ====================================
+    **type_**        string  required                     ``random``
+    **collections**  string  optional                     Public collection ID(s) to filter selection
+                                                          If multiple, comma-separated
+    **featured**     bool    optional                     Limit selection to featured photos
+                                                          Completely remove if you don't want featured
+                                                          Setting to False doesn't work
+    **username**     string  optional                     Limit selection to a single user
+    **query**        string  optional                     Limit selection to photos matching a search term
+    **orientation**  string  optional                     ``landscape``, ``portrait``, ``squarish``
+    **count**        number  required                     Number of items per page (max: 30)
+    ===============  ======  ===========================  ====================================
+
+    **Note** You can't use the ``collections`` and ``query`` parameters in the same call
+
+
+    **Returns**
+
+    ==========  ========================================================================
+    **Object**  Instance of class ``RandomPhotos``
+    ==========  ========================================================================
+
+    **Example**
+    ::
+
+        import pyunsplash
+        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
+
+        # retrieve 4 random photos, which are featured, and tagged as "dog"
+        collections_page = pu.photos(type_='random', count=4, featured=True, query="dog")
+        for photo in photos.entries:
+            print(photo.id, photo.link_download)
 
 --------
 
-**PyUnsplash.search(type, type, page, per_page, query)**
---------------------------------------------------------
+**PyUnsplash.search(type_, type, page, per_page, query)**
+---------------------------------------------------------
     To interact with the ``search`` API, create an instance of class ``Search``.
 
     **Parameters**
@@ -143,7 +192,7 @@ Methods and properties exposed by the ``PyUnsplash`` class.
     ============  ======  ===========================  ====================================
     Argument      Type    Optional/Required            Notes
     ============  ======  ===========================  ====================================
-    **type**      string  required                     photos, collections, users
+    **type_**     string  required                     ``photos``, ``collections``, ``users``
     **page**      number  optional (default: 1)        Page number to retrieve.
     **per_page**  number  optional (default: 10)       Number of items per page (max: 30)
     **query**     string  optional                     Search terms

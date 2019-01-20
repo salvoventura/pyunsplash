@@ -26,6 +26,6 @@ The source code is available on GitHub at `https://github.com/salvoventura/pyuns
     classes/class_stats
     classes/class_user
     classes/class_users
+    classes/class_userstatistics
     version
     license
-

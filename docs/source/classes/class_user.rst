@@ -395,3 +395,38 @@ Methods and properties exposed by the ``User`` class.
             print collection.id, collection.title
 
 
+--------
+
+**User.statistics(resolution, quantity)**
+----------------------------------------------
+    Retrieve the consolidated number of downloads, views and likes of this user's photos,
+    as well as the historical breakdown and average of these stats in a specific timeframe (default is 30 days).
+
+    Returns ``UserStatistics`` object.
+
+    **Parameters**
+
+    ==============  ======  ============================  ====================================
+    Argument        Type    Optional/Required             Notes
+    ==============  ======  ============================  ====================================
+    **resolution**  number  optional (default: ``days``)  The frequency of the stats.
+    **quantity**    number  optional (default: 30)        The amount of for each stat.
+    ==============  ======  ============================  ====================================
+
+    **NOTE** Currently, the only resolution param supported is ``days`` and the quantity param
+    can be any number between 1 and 30.
+
+    **Returns**
+
+    ==========  =======================================
+    **Object**  Instance of class ``UserStatistics``
+    ==========  =======================================
+
+    **Example**
+    ::
+
+        import pyunsplash
+        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
+        this_user = pu.user('salvoventura', w=100, h=100)
+        user_statistics = this_user.statistics()
+

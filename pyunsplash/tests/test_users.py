@@ -29,8 +29,12 @@ class TestUsers:
     # TOXINIDIR comes from tox.ini
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('TOXINIDIR', None)
 
-    store_mapping = {'salvoventura': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__users_salvoventura.json'])}
-
+    store_mapping = {
+        'salvoventura':
+            os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__users_salvoventura.json']),
+        'salvoventura_statistics':
+            os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__users_salvoventura_statistics.json'])
+    }
 
     @responses.activate
     def test_stats_total(self):
@@ -46,7 +50,42 @@ class TestUsers:
             adding_headers=stored_response.get('headers')
         )
         pu_obj = PyUnsplash(api_key=api_key)
-        user = pu_obj.user(source=type)
-        print(user.id, user.link_html, user.link_portfolio, user.link_following, user.link_followers, user.link_photos)
+        this_user = pu_obj.user(source=type)
+        print(this_user.id, this_user.link_html, this_user.link_portfolio, this_user.link_following, this_user.link_followers, this_user.link_photos)
 
     # TODO: collections, photos and users from the user object
+
+    @responses.activate
+    def test_user_stats(self):
+        username = 'salvoventura'
+
+        # Add the user api response
+        type = 'salvoventura'
+        resource_filepath = self.store_mapping[type]
+        stored_response = json.loads(open(resource_filepath).read())
+        responses.add(
+            responses.GET,
+            '{}{}'.format(API_ROOT, stored_response.get('url').split('?')[0]),   # cheating on the url, because the class always inits without query params
+            json=stored_response.get('body'),
+            status=stored_response.get('status_code'),
+            content_type='application/json',
+            adding_headers=stored_response.get('headers')
+        )
+
+        # Add the user statistics api response
+        type = 'salvoventura_statistics'
+        resource_filepath = self.store_mapping[type]
+        stored_response = json.loads(open(resource_filepath).read())
+        responses.add(
+            responses.GET,
+            '{}{}'.format(API_ROOT, stored_response.get('url').split('?')[0]),   # cheating on the url, because the class always inits without query params
+            json=stored_response.get('body'),
+            status=stored_response.get('status_code'),
+            content_type='application/json',
+            adding_headers=stored_response.get('headers')
+        )
+
+        pu_obj = PyUnsplash(api_key=api_key)
+        this_user = pu_obj.user(source=username)  # create a User object
+        this_user_stats = this_user.statistics()  # fetch a UserStatistics object
+        print(this_user_stats.downloads.get('total'), this_user_stats.views.get('total'), this_user_stats.likes.get('total'))
