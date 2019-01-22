@@ -30,7 +30,7 @@ class PyUnsplash(object):
         return User(api_key=self._api_key, source=source, **kwargs)
 
     def collections(self, type_='generic', **kwargs):
-        lookup = {'curated': CuratedCollections,
+        lookup = {'curated': CuratedCollections,  # 2019: DEPRECATED
                   'generic': Collections,
                   'featured': FeaturedCollections}
 
@@ -42,7 +42,7 @@ class PyUnsplash(object):
         return None
 
     def photos(self, type_='generic', **kwargs):
-        lookup = {'curated': CuratedPhotos,
+        lookup = {'curated': CuratedPhotos,  # 2019: DEPRECATED
                   'generic': Photos,
                   'random': RandomPhotos}
 

@@ -84,3 +84,27 @@ class User(UnsplashObject):
         # TODO: cache the returned object
         url = '{}/collections'.format(self.url)
         return Collections(url=url, api_key=self.api_key, **kwargs)
+
+    def statistics(self, **kwargs):
+        # TODO: cache the returned object
+        # https://unsplash.com/documentation#get-a-users-statistics
+        source = '{}/statistics'.format(self.url)
+        return UserStatistics(api_key=self.api_key, source=source, **kwargs)
+
+
+class UserStatistics(UnsplashObject):
+    def __init__(self, api_key, source, **kwargs):
+        valid_options = ['resolution', 'quantity']
+        super(UserStatistics, self).__init__(api_key=api_key, source=source, valid_options=valid_options, **kwargs)
+
+    @property
+    def downloads(self):
+        return self.body.get('downloads', None)
+
+    @property
+    def views(self):
+        return self.body.get('views', None)
+
+    @property
+    def likes(self):
+        return self.body.get('likes', None)

@@ -11,7 +11,7 @@
 #   Comment: What's new in revision 1
 #
 ###############################################################################
-# from .liblogging import logger
+from .liblogging import logger
 from .unpage import UnsplashPage
 from .unobject import UnsplashObject
 from .photos import Photos
@@ -29,7 +29,9 @@ class Collections(UnsplashPage):
 
 
 class CuratedCollections(UnsplashPage):
+    # TODO: 2019 this endpoint is deprecated
     def __init__(self, api_key, url='/collections/curated', **kwargs):
+        logger.warning('This endpoint has been deprecated by the Unsplash API')
         valid_options = ['page', 'per_page']
         super(CuratedCollections, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
 

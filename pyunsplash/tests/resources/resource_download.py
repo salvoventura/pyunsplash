@@ -59,7 +59,7 @@ def get_resources_stats():
 
 
 def get_resources_users():
-    for sub_url in ['/users/salvoventura']:
+    for sub_url in ['/users/salvoventura', '/users/salvoventura/statistics']:
         _save_content(sub_url)
 
 
@@ -69,10 +69,10 @@ def get_resources_search():
 
 
 def main():
-    # get_resources_collections()
-    # get_resources_photos()
-    # get_resources_stats()
-    # get_resources_users()
+    get_resources_collections()
+    get_resources_photos()
+    get_resources_stats()
+    get_resources_users()
     get_resources_search()
 
 

@@ -28,7 +28,9 @@ class Photos(UnsplashPage):
 
 
 class CuratedPhotos(UnsplashPage):
+    # TODO: 2019 this endpoint is deprecated
     def __init__(self, api_key, url='/photos/curated', **kwargs):
+        logger.warning('This endpoint has been deprecated by the Unsplash API')
         valid_options = ['page', 'per_page', 'order_by']
         super(CuratedPhotos, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
 
@@ -39,8 +41,11 @@ class CuratedPhotos(UnsplashPage):
 
 
 class RandomPhotos(UnsplashPage):
+    # TODO: update documentation to reflect this at file
+    # TODO: docs/source/classes/class_pyunsplash.rst
+    #
     def __init__(self, api_key, url='/photos/random', **kwargs):
-        valid_options = ['category', 'collections', 'featured', 'username', 'query', 'w', 'h', 'orientation', 'count']
+        valid_options = ['collections', 'featured', 'username', 'query', 'orientation', 'count']
         super(RandomPhotos, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
 
     @property
