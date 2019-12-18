@@ -86,7 +86,7 @@ class Photo(UnsplashObject):
         return self.links.get('download_location', None)
 
     @property
-    def hotlink(self):
-        return self.hotlink.get('regular', None)
+    def urls(self):
+        return self.urls.get('regular', None)
     
 

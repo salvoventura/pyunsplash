@@ -59,7 +59,7 @@ class UnsplashObject(object):
         return self.body.get('links', None)
 
     @property
-    def hotlink(self):
+    def urls(self):
         return self.body.get('urls', None)
 
     def _parse_source(self, source):
