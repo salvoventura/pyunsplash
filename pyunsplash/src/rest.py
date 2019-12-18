@@ -67,7 +67,7 @@ class Rest(object):
         return {}
 
     @property
-    def urls(self):
+    def hotlink(self):
         if hasattr(self.body, 'urls'):
             return self.body.get('urls')
         return {}
