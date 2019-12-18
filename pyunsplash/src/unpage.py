@@ -52,9 +52,6 @@ class UnsplashPage(object):
     @property
     def body(self):
         if self.requests:
-            print("Debugging")
-            print(self.requests.json())
-            print("End Debug")
             return self.requests.json()
 
     @property
