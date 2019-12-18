@@ -86,7 +86,13 @@ class Photo(UnsplashObject):
         return self.links.get('download_location', None)
 
     @property
+    def urls_raw(self):
+        return self.urls.get('raw', None)
+
+    @property
     def urls_regular(self):
         return self.urls.get('regular', None)
+
+   
     
 
