@@ -66,6 +66,12 @@ class Rest(object):
             return self.body.get('links')
         return {}
 
+    @property
+    def hotlink(self):
+        if hasattr(self.body, 'urls'):
+            return self.body.get('urls')
+        return {}
+
     def get(self, url, query_params=None):
         logger.debug('calling rest get %s %s', url, query_params)
         _url = url
