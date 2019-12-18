@@ -87,6 +87,6 @@ class Photo(UnsplashObject):
 
     @property
     def hotlink(self):
-        return self.hotlink.get('raw', None)
+        return self.hotlink.get('regular', None)
     
 
