@@ -69,6 +69,20 @@ Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_
 #######
 Version
 #######
+**PyUnsplash v1.0.0b9 (beta, v9)**
+
+    - Introduce `get_attribution` method in class Photo
+    - Update tests, examples and documentation accordingly
+    - Update documentation for objects supporting `.body` attribute
+    - Update Copyright years adding 2020
+
+    **Todo**
+    - Authorization workflow & Current user
+    - Write operations
+
+
+--------
+
 **PyUnsplash v1.0.0b8 (beta, v8)**
 
     - Fix documentation for random photos API endpoint

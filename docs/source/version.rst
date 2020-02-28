@@ -1,6 +1,6 @@
 Version
 =======
-**PyUnsplash v1.0.0b8 (beta, v8)**
+**PyUnsplash v1.0.0b9 (beta, v9)**
 
     - Fix documentation for random photos API endpoint
     - Update library and documentation for deprecated 'curated' photos
