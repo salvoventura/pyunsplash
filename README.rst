@@ -55,7 +55,7 @@ download link.
         for collection in collections.entries:
             photos = collection.photos()
             for photo in photos.entries:
-                print collection.title, photo.link_download
+                print collection.title, photo.link_download, photo.get_attribution()
 
         # no need to specify per_page: will take from original object
         collections = collections.get_next_page()
@@ -69,6 +69,20 @@ Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_
 #######
 Version
 #######
+**PyUnsplash v1.0.0b9 (beta, v9)**
+
+    - Introduce `get_attribution` method in class Photo
+    - Update tests, examples and documentation accordingly
+    - Update documentation for objects supporting `.body` attribute
+    - Update Copyright years adding 2020
+
+    **Todo**
+    - Authorization workflow & Current user
+    - Write operations
+
+
+--------
+
 **PyUnsplash v1.0.0b8 (beta, v8)**
 
     - Fix documentation for random photos API endpoint

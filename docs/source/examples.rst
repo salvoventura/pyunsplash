@@ -24,7 +24,7 @@ download link.
         for collection in collections.entries:
             photos = collection.photos()
             for photo in photos.entries:
-                print collection.title, photo.link_download
+                print collection.title, photo.link_download, photo.get_attribution()
 
         # no need to specify per_page: will take from original object
         collections = collections.get_next_page()

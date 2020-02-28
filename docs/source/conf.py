@@ -63,7 +63,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'pyunsplash'
-copyright = u'2016,2017,2018,2019 Salvatore Ventura'
+copyright = u'2016,2017,2018,2019,2020 Salvatore Ventura'
 author = u'Salvatore Ventura'
 
 # The version info for the project you're documenting, acts as replacement for

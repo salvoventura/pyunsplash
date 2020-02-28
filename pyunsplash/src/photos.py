@@ -85,3 +85,25 @@ class Photo(UnsplashObject):
     def link_download_location(self):
         return self.links.get('download_location', None)
 
+    def get_attribution(self, format='str'):
+        """
+        Return the standard Unsplash attribution string, which currently is:
+            Photo by <firstname> <lastname> on Unsplash
+        In html, it should link to the photographer's profile:
+            <span>Photo by <a href=<url>><firstname> <lastname></a> on <a href=<url>>Unsplash</a></span>
+        :param format: valid values: 'str', 'html'
+        :return: string of text or html for attribution
+        """
+        author_info = self.body.get('user', None)
+        if author_info:
+            # Strictly extracting information used for the attribution string
+            # If we ever expand, we should make a new class
+            first_name = author_info.get('first_name', "")
+            last_name = author_info.get('last_name', "")
+            url = author_info.get('links', {}).get('html', "")
+            logger.debug("Photo author {} {}, on Unsplash at {}".format(first_name, last_name, url))
+        if format == 'str':
+            return "Photo by {} {} on Unsplash".format(first_name, last_name)
+        if format == 'html':
+            return '<span>Photo by <a href="{}">{} {}</a> on <a href="{}">Unsplash</a></span>'.format(url, first_name,
+                                                                                                      last_name, url)

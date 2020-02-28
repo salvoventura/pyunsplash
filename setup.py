@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='pyunsplash',
-    version='1.0.0b8',  # beta, v8
+    version='1.0.0b9',  # beta, v9
     packages=['pyunsplash', 'pyunsplash.src'],
     url='https://github.com/salvoventura/pyunsplash',
     license='MIT',
