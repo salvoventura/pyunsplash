@@ -62,7 +62,7 @@ for collection in collections_page.entries:
     photos = collection.photos()
     # two ways of iterating: '.body' and '.entries' as well
     for photo in photos.entries:
-        print('Photo in collection', photo.id, photo.link_download)
+        print('Photo in collection', photo.id, photo.link_download, photo.get_attribution())
 
 
 # You can test for navigation links and get a new 'Collections' object

@@ -38,3 +38,22 @@ Methods and properties exposed by the ``Stats`` class.
         print stats.total
 
 
+--------
+
+**Stats.body**
+--------------
+    This is the full object returned by the API in JSON format.
+
+    **Parameters**
+
+    ============  ======  ========================  ====================================
+    Argument      Type    Optional/Required         Notes
+    ============  ======  ========================  ====================================
+    N/A
+    ============  ======  ========================  ====================================
+
+    **Returns**
+
+    ==========  ============================================
+    **string**  Stats object returned by API, in JSON format
+    ==========  ============================================

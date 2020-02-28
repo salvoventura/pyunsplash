@@ -164,3 +164,54 @@ Methods and properties exposed by the ``Photo`` class.
         for photo in photos.entries:
             print photo.stats
 
+--------
+
+**Photo.get_attribution(format='str')**
+---------------------------------------
+    Generate and return a standard attribution string according to 'format' parameter.
+
+    **Parameters**
+
+    ============  ======  ========================  ====================================
+    Argument      Type    Optional/Required         Notes
+    ============  ======  ========================  ====================================
+    format        string  optional                  Valid values: 'str', 'html'
+    ============  ======  ========================  ====================================
+
+    **Returns**
+
+    ==========  ================================================
+    **string**  Text or HTML standard attribution string.
+    ==========  ================================================
+
+    **Example**
+    ::
+
+        import pyunsplash
+        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
+        this_user = pu.user('salvoventura', w=100, h=100)
+        photos = this_user.photos()    # photos is an instance of class Photos
+        for photo in photos.entries:
+            print photo.get_attribution()               #    Photo by salvatore ventura on Unsplash
+            print photo.get_attribution(format='str')   #    Photo by salvatore ventura on Unsplash
+            print photo.get_attribution(format='html')  #    <span>Photo by <a href="https://unsplash.com/@salvoventura">salvatore ventura</a> on <a href="https://unsplash.com/@salvoventura">Unsplash</a></span>
+
+--------
+
+**Photo.body**
+--------------
+    This is the full object returned by the API in JSON format.
+
+    **Parameters**
+
+    ============  ======  ========================  ====================================
+    Argument      Type    Optional/Required         Notes
+    ============  ======  ========================  ====================================
+    N/A
+    ============  ======  ========================  ====================================
+
+    **Returns**
+
+    ==========  ============================================
+    **string**  Photo object returned by API, in JSON format
+    ==========  ============================================

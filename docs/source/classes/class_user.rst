@@ -430,3 +430,22 @@ Methods and properties exposed by the ``User`` class.
         this_user = pu.user('salvoventura', w=100, h=100)
         user_statistics = this_user.statistics()
 
+--------
+
+**User.body**
+--------------
+    This is the full object returned by the API in JSON format.
+
+    **Parameters**
+
+    ============  ======  ========================  ====================================
+    Argument      Type    Optional/Required         Notes
+    ============  ======  ========================  ====================================
+    N/A
+    ============  ======  ========================  ====================================
+
+    **Returns**
+
+    ==========  ============================================
+    **string**  User object returned by API, in JSON format
+    ==========  ============================================
