@@ -145,8 +145,8 @@ class UnsplashPage(object):
         for key in kwargs:
             # Raising an exception here: if we are too protective it will hurt debuggability
             if self.valid_options and key not in self.valid_options:
-                logger.debug('Invalid parameter %s', key)
-                raise ValueError('Invalid parameter %s', key)
+                logger.debug('Invalid parameter %s' % key)
+                raise ValueError('Invalid parameter %s' % key)
             query_params[key] = kwargs[key]
         logger.debug('     returning %s', query_params)
         return query_params

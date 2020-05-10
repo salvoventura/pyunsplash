@@ -11,7 +11,7 @@
 ###############################################################################
 from .src.liblogging import logger
 from .src.collections import Collections, FeaturedCollections, CuratedCollections
-from .src.photos import Photos, CuratedPhotos, RandomPhotos
+from .src.photos import Photos, CuratedPhotos, RandomPhotos, SinglePhoto
 from .src.search import Search
 from .src.stats import Stats
 from .src.users import User
@@ -44,7 +44,8 @@ class PyUnsplash(object):
     def photos(self, type_='generic', **kwargs):
         lookup = {'curated': CuratedPhotos,  # 2019: DEPRECATED
                   'generic': Photos,
-                  'random': RandomPhotos}
+                  'random': RandomPhotos,
+                  'single': SinglePhoto}
 
         if type_ in lookup:
             f = lookup.get(type_)
