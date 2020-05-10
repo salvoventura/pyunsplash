@@ -41,9 +41,6 @@ class CuratedPhotos(UnsplashPage):
 
 
 class RandomPhotos(UnsplashPage):
-    # TODO: update documentation to reflect this at file
-    # TODO: docs/source/classes/class_pyunsplash.rst
-    #
     def __init__(self, api_key, url='/photos/random', **kwargs):
         valid_options = ['collections', 'featured', 'username', 'query', 'orientation', 'count']
         super(RandomPhotos, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
@@ -52,6 +49,17 @@ class RandomPhotos(UnsplashPage):
     def entries(self):
         for entry in self.body:
             yield Photo(api_key=self.api_key, source=entry)
+
+
+class SinglePhoto(UnsplashPage):
+    def __init__(self, api_key, photo_id):
+        url = '/photos/{}'.format(photo_id)
+        valid_options = ['photo_id']
+        super(SinglePhoto, self).__init__(url=url, api_key=api_key, valid_options=valid_options)
+
+    @property
+    def entries(self):
+        return Photo(api_key=self.api_key, source=self.body)
 
 
 class Photo(UnsplashObject):
@@ -85,7 +93,7 @@ class Photo(UnsplashObject):
     def link_download_location(self):
         return self.links.get('download_location', None)
 
-    def get_attribution(self, format='str'):
+    def get_attribution(self, format='txt'):
         """
         Return the standard Unsplash attribution string, which currently is:
             Photo by <firstname> <lastname> on Unsplash
@@ -102,7 +110,7 @@ class Photo(UnsplashObject):
             last_name = author_info.get('last_name', "")
             url = author_info.get('links', {}).get('html', "")
             logger.debug("Photo author {} {}, on Unsplash at {}".format(first_name, last_name, url))
-        if format == 'str':
+        if format in ('str', 'txt'):
             return "Photo by {} {} on Unsplash".format(first_name, last_name)
         if format == 'html':
             return '<span>Photo by <a href="{}">{} {}</a> on <a href="{}">Unsplash</a></span>'.format(url, first_name,

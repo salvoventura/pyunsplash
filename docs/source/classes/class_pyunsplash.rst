@@ -183,6 +183,38 @@ Methods and properties exposed by the ``PyUnsplash`` class.
 
 --------
 
+*Single Photo*
+^^^^^^^^^^^^^^^^
+
+    **Parameters**
+
+    ===============  ======  ===========================  ====================================
+    Argument         Type    Optional/Required            Notes
+    ===============  ======  ===========================  ====================================
+    **type_**        string  required                     ``single``
+    **photo_id**     string  required                     ID of the photo you want to load
+    ===============  ======  ===========================  ====================================
+
+    **Returns**
+
+    ==========  ========================================================================
+    **Object**  Instance of class ``SinglePhoto``
+    ==========  ========================================================================
+
+    **Example**
+    ::
+
+        import pyunsplash
+        pu = pyunsplash.PyUnsplash(api_key='<your Unsplash API key>')
+
+        # retrieve specific photo by its ID, and print the attribution
+        photo = py_un.photos(type_="single", photo_id='l0_kVknpO2g')
+        print(photo.entries.get_attribution(format='txt'))
+        print(photo.entries.get_attribution(format='html'))
+
+
+--------
+
 **PyUnsplash.search(type_, type, page, per_page, query)**
 ---------------------------------------------------------
     To interact with the ``search`` API, create an instance of class ``Search``.

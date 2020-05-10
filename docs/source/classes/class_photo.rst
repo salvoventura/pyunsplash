@@ -166,16 +166,18 @@ Methods and properties exposed by the ``Photo`` class.
 
 --------
 
-**Photo.get_attribution(format='str')**
+**Photo.get_attribution(format='txt')**
 ---------------------------------------
     Generate and return a standard attribution string according to 'format' parameter.
+
+    **Note** format parameter value 'str' has been deprecated in favor of 'txt'.
 
     **Parameters**
 
     ============  ======  ========================  ====================================
     Argument      Type    Optional/Required         Notes
     ============  ======  ========================  ====================================
-    format        string  optional                  Valid values: 'str', 'html'
+    format        string  optional                  Valid values: 'txt', 'html'
     ============  ======  ========================  ====================================
 
     **Returns**
@@ -193,7 +195,7 @@ Methods and properties exposed by the ``Photo`` class.
         photos = this_user.photos()    # photos is an instance of class Photos
         for photo in photos.entries:
             print photo.get_attribution()               #    Photo by salvatore ventura on Unsplash
-            print photo.get_attribution(format='str')   #    Photo by salvatore ventura on Unsplash
+            print photo.get_attribution(format='txt')   #    Photo by salvatore ventura on Unsplash
             print photo.get_attribution(format='html')  #    <span>Photo by <a href="https://unsplash.com/@salvoventura">salvatore ventura</a> on <a href="https://unsplash.com/@salvoventura">Unsplash</a></span>
 
 --------

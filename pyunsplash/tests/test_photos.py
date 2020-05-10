@@ -101,5 +101,5 @@ class TestPhotos:
             # if any of the fields breaks, then it's a problem
             print(photo.id, photo.link_html, photo.link_download, photo.link_download_location)   # , photo.stats  # TODO: include stats in unit test
             print(photo.get_attribution())
-            print(photo.get_attribution(format='str'))
+            print(photo.get_attribution(format='txt'))
             print(photo.get_attribution(format='html'))
