@@ -19,22 +19,21 @@ from .users import User
 
 
 class Search(UnsplashPage):
-    def __init__(self, api_key, where, **kwargs):
+    def __init__(self, api_key, url, **kwargs):
         valid_options = ['page', 'per_page', 'query']
-        url = None
-        self.where = None
-        if where.lower() in ['photos', 'collections', 'users']:
-            self.where = where.lower()
-            url = '/search/{}'.format(where.lower())
+        self.url = url
+        if url.lower() in ['photos', 'collections', 'users']:
+            self.url = url.lower()
+            url = '/search/{}'.format(url.lower())
         super(Search, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
 
     @property
     def entries(self):
-        if self.where == 'photos':
+        if self.url == 'photos':
             class_cast = Photo
-        elif self.where == 'collections':
+        elif self.url == 'collections':
             class_cast = Collection
-        elif self.where == 'users':
+        elif self.url == 'users':
             class_cast = User
         for entry in self.body.get('results', []):
             yield class_cast(api_key=self.api_key, source=entry)

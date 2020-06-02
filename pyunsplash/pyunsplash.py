@@ -55,7 +55,7 @@ class PyUnsplash(object):
         return None
 
     def search(self, type_, **kwargs):
-        return Search(api_key=self._api_key, where=type_, **kwargs)
+        return Search(api_key=self._api_key, url=type_, **kwargs)
 
     def stats(self):
         return Stats(api_key=self._api_key)
