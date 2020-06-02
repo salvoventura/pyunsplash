@@ -98,7 +98,7 @@ class Rest(object):
                 logger.error('HTTP EXC status %s: %s', self._status_code, _r.text)
             raise
 
-        logger.debug('rest rsp status %s body %s headers %s', self._status_code, self._body, self._headers)
+        logger.debug('rest rsp status %s body %s headers %s', self._status_code, str(self._body).encode("utf-8"), self._headers)
         return _r
 
     def put(self, url, body):

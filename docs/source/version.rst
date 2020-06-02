@@ -1,15 +1,14 @@
 Version
 =======
-**PyUnsplash v1.0.0rc1 (release candidate, v1)**
+**PyUnsplash v1.0.0rc2 (release candidate, v2)**
 
-    This is the first release candidate for production ready 1.0.0 of PyUnsplash.
-    Thanks to all the early adopters, there have been a number of improvements and
-    bugfixes and now should be a good time to start the rc process.
+    This is the second release candidate for production ready 1.0.0 of PyUnsplash.
+    Thanks to all the early adopters and bug reporters: thanks to you there have
+    been a number of improvements and bugfixes and we are progressing the rc process.
 
-    This release brings one useful addition:
+    This release brings mainly one bugfix:
 
-    - Introduction of SinglePhoto which allows instantiating a Photo object using a photo_id
-    - Deprecated `format` value 'str' in favor of 'txt' in `get_attribution()`
+    - #13 search.get_next_page() does not work
 
     **Todo**
     - Authorization workflow & Current user

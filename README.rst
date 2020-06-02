@@ -69,6 +69,23 @@ Documentation is published on `ReadTheDocs <http://pyunsplash.readthedocs.io/>`_
 #######
 Version
 #######
+**PyUnsplash v1.0.0rc2 (release candidate, v2)**
+
+    This is the second release candidate for production ready 1.0.0 of PyUnsplash.
+    Thanks to all the early adopters and bug reporters: thanks to you there have
+    been a number of improvements and bugfixes and we are progressing the rc process.
+
+    This release brings mainly one bugfix:
+
+    - #13 search.get_next_page() does not work
+
+    **Todo**
+    - Authorization workflow & Current user
+    - Write operations
+
+
+--------
+
 **PyUnsplash v1.0.0rc1 (release candidate, v1)**
 
     This is the first release candidate for production ready 1.0.0 of PyUnsplash.
