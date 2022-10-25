@@ -1,7 +1,7 @@
 ##########
 PyUnsplash
 ##########
-|Latest Version| |Docs Build Status| |Build Status| |Code Coverage| |Code Climate| |Landscape Io| |Say Thanks|
+|Latest Version| |Docs Build Status| |Build Status| |Code Coverage| |Code Climate|
 
 An open source Python wrapper for the `Unsplash REST API <https://unsplash.com/developers>`_.
 The source code is available on GitHub at `https://github.com/salvoventura/pyunsplash <https://github.com/salvoventura/pyunsplash>`_.
