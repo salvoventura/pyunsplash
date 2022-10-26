@@ -26,6 +26,7 @@ before_install:
   - pip install --upgrade pytest-cov
   - pip install --upgrade responses
   - pip install --upgrade importlib-metadata
+  - pip install --upgrade setuptools
 
 install:
   # install dependencies
