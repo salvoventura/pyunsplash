@@ -8,10 +8,14 @@ python:
   - "3.6"
   - "3.7"
   - "3.8"
+  - "3.9"
+  - "3.10"
+  - "3.11"
   - "pypy"
 
 before_install:
   # install test dependencies
+  - pip install --upgrade pip
   - pip install --upgrade codecov
   - pip install --upgrade pytest-cov
   - pip install --upgrade responses
