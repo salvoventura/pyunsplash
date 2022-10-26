@@ -64,7 +64,7 @@ class Photo(UnsplashObject):
 
     @property
     def stats(self):
-        url = '{}/stats'.format(self.url)
+        url = '{}/statistics'.format(self.url)
         r = self._agent.get(url)
         if r.status_code == 200:
             return r.json()
