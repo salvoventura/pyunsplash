@@ -4,16 +4,18 @@ dist: jammy
 
 cache: pip
 
-python:
-  - "2.7"
-  - "3.5"
-  - "3.6"
-  - "3.7"
-  - "3.8"
-  - "3.9"
-  - "3.10-dev"
-  - "3.11-dev"
-  - "pypy"
+jobs:
+  include:
+    - python: "2.7"
+      dist: xenial
+    - python: "3.5"
+    - python: "3.6"
+    - python: "3.7"
+    - python: "3.8"
+    - python: "3.9"
+    - python: "3.10-dev"
+    - python: "3.11-dev"
+    - python: "pypy"
 
 before_install:
   # install test dependencies
