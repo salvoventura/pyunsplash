@@ -30,7 +30,6 @@ class TestCollections:
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('TOXINIDIR', None)
 
     store_mapping = {'generic': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__collections_page_2.json']),
-                     'curated': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__collections_curated_page_2.json']),
                      'featured': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__collections_featured_page_2.json'])}
 
     @responses.activate
@@ -60,31 +59,6 @@ class TestCollections:
         assert collections.link_first is not None
         assert collections.link_last is not None
 
-    @responses.activate
-    def test_collections_curated(self):
-        type = 'curated'
-        resource_filepath = self.store_mapping[type]
-        stored_response = json.loads(open(resource_filepath).read())
-
-        responses.add(
-            responses.GET,
-            '{}{}'.format(API_ROOT, stored_response.get('url').split('?')[0]),   # cheating on the url, because the class always inits without query params
-            json=stored_response.get('body'),
-            status=stored_response.get('status_code'),
-            content_type='application/json',
-            adding_headers=stored_response.get('headers')
-        )
-        pu_obj = PyUnsplash(api_key=api_key)
-        collections = pu_obj.collections(type_=type)
-        assert collections.body is not None
-        assert collections.header is not None
-        assert collections.status_code == 200
-        for collection in collections.entries:
-            print(collection.id, collection.title, collection.description, collection.user, collection.link_photos, collection.link_related)
-        assert collections.link_next is not None
-        assert collections.link_previous is not None
-        assert collections.link_first is not None
-        assert collections.link_last is not None
 
     @responses.activate
     def test_collections_featured(self):

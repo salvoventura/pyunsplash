@@ -30,7 +30,6 @@ class TestPhotos:
     root_path = os.environ.get('TRAVIS_BUILD_DIR', None) or os.environ.get('TOXINIDIR', None)
 
     store_mapping = {'generic': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__photos_page_2.json']),
-                     'curated': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__photos_curated_page_2.json']),
                      'random': os.sep.join([root_path, 'pyunsplash', 'tests', 'resources', 'resource__photos_random_count_2.json'])}
 
     @responses.activate
@@ -55,28 +54,6 @@ class TestPhotos:
             # if any of the fields breaks, then it's a problem
             print(photo.id, photo.link_html, photo.link_download, photo.link_download_location)   # , photo.stats  # TODO: include stats in unit test
 
-    @responses.activate
-    def test_photos_curated(self):
-        type = 'curated'
-        resource_filepath = self.store_mapping[type]
-        stored_response = json.loads(open(resource_filepath).read())
-
-        responses.add(
-            responses.GET,
-            '{}{}'.format(API_ROOT, stored_response.get('url').split('?')[0]),   # cheating on the url, because the class always inits without query params
-            json=stored_response.get('body'),
-            status=stored_response.get('status_code'),
-            content_type='application/json',
-            adding_headers=stored_response.get('headers')
-        )
-        pu_obj = PyUnsplash(api_key=api_key)
-        photos = pu_obj.photos(type_=type)
-        assert photos.body is not None
-        assert photos.header is not None
-        assert photos.status_code == 200
-        for photo in photos.entries:
-            # if any of the fields breaks, then it's a problem
-            print(photo.id, photo.link_html, photo.link_download, photo.link_download_location)   # , photo.stats  # TODO: include stats in unit test
 
     @responses.activate
     def test_photos_random(self):

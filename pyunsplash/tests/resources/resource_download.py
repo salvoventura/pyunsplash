@@ -44,12 +44,12 @@ def _save_content(sub_url):
 
 
 def get_resources_collections():
-    for sub_url in ['/collections?page=2', '/collections/featured?page=2', '/collections/curated?page=2']:
+    for sub_url in ['/collections?page=2', '/collections/featured?page=2']:
         _save_content(sub_url)
 
 
 def get_resources_photos():
-    for sub_url in ['/photos?page=2', '/photos/curated?page=2', '/photos/random?count=2']:
+    for sub_url in ['/photos?page=2', '/photos/random?count=2']:
         _save_content(sub_url)
 
 
