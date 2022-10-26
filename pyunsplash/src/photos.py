@@ -29,7 +29,7 @@ class Photos(UnsplashPage):
 
 class RandomPhotos(UnsplashPage):
     def __init__(self, api_key, url='/photos/random', **kwargs):
-        valid_options = ['collections', 'featured', 'username', 'query', 'orientation', 'count']
+        valid_options = ['collections', 'topics', 'username', 'query', 'orientation', 'content_filter', 'count']
         super(RandomPhotos, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
 
     @property
