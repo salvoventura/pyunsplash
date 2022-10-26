@@ -21,6 +21,7 @@ before_install:
   - pip install --upgrade codecov
   - pip install --upgrade pytest-cov
   - pip install --upgrade responses
+  - pip install --upgrade importlib-metadata
 
 install:
   # install dependencies
