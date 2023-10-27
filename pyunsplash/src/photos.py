@@ -103,8 +103,8 @@ class Photo(UnsplashObject):
         if author_info:
             # Strictly extracting information used for the attribution string
             # If we ever expand, we should make a new class
-            first_name = author_info.get('first_name', "")
-            last_name = author_info.get('last_name', "")
+            first_name = author_info.get('first_name', "") or ''
+            last_name = author_info.get('last_name', "") or ''
             return f'{first_name} {last_name}'
         return ""
 
@@ -121,9 +121,9 @@ class Photo(UnsplashObject):
         if author_info:
             # Strictly extracting information used for the attribution string
             # If we ever expand, we should make a new class
-            first_name = author_info.get('first_name', "")
-            last_name = author_info.get('last_name', "")
-            url = author_info.get('links', {}).get('html', "")
+            first_name = author_info.get('first_name', "") or ''
+            last_name = author_info.get('last_name', "") or ''
+            url = author_info.get('links', {}).get('html', "") or ''
             logger.debug("Photo author {} {}, on Unsplash at {}".format(first_name, last_name, url))
         if format in ('str', 'txt'):
             return "Photo by {} {} on Unsplash".format(first_name, last_name)
