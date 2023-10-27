@@ -93,6 +93,21 @@ class Photo(UnsplashObject):
     def link_download_location(self):
         return self.links.get('download_location', None)
 
+    @property
+    def url_raw(self):
+        return self.urls.get('raw', None)
+
+    @property
+    def author_info(self):
+        author_info = self.body.get('user', None)
+        if author_info:
+            # Strictly extracting information used for the attribution string
+            # If we ever expand, we should make a new class
+            first_name = author_info.get('first_name', "")
+            last_name = author_info.get('last_name', "")
+            return f'{first_name} {last_name}'
+        return ""
+
     def get_attribution(self, format='txt'):
         """
         Return the standard Unsplash attribution string, which currently is:
