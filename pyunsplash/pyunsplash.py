@@ -10,8 +10,8 @@
 #
 ###############################################################################
 from .src.liblogging import logger
-from .src.collections import Collections, FeaturedCollections, CuratedCollections
-from .src.photos import Photos, CuratedPhotos, RandomPhotos, SinglePhoto
+from .src.collections import Collections, FeaturedCollections
+from .src.photos import Photos, RandomPhotos, SinglePhoto
 from .src.search import Search
 from .src.stats import Stats
 from .src.users import User
@@ -30,8 +30,7 @@ class PyUnsplash(object):
         return User(api_key=self._api_key, source=source, **kwargs)
 
     def collections(self, type_='generic', **kwargs):
-        lookup = {'curated': CuratedCollections,  # 2019: DEPRECATED
-                  'generic': Collections,
+        lookup = {'generic': Collections,
                   'featured': FeaturedCollections}
 
         if type_ in lookup:
@@ -42,8 +41,7 @@ class PyUnsplash(object):
         return None
 
     def photos(self, type_='generic', **kwargs):
-        lookup = {'curated': CuratedPhotos,  # 2019: DEPRECATED
-                  'generic': Photos,
+        lookup = {'generic': Photos,
                   'random': RandomPhotos,
                   'single': SinglePhoto}
 

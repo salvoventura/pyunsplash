@@ -27,22 +27,9 @@ class Photos(UnsplashPage):
             yield Photo(api_key=self.api_key, source=entry)
 
 
-class CuratedPhotos(UnsplashPage):
-    # TODO: 2019 this endpoint is deprecated
-    def __init__(self, api_key, url='/photos/curated', **kwargs):
-        logger.warning('This endpoint has been deprecated by the Unsplash API')
-        valid_options = ['page', 'per_page', 'order_by']
-        super(CuratedPhotos, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
-
-    @property
-    def entries(self):
-        for entry in self.body:
-            yield Photo(api_key=self.api_key, source=entry)
-
-
 class RandomPhotos(UnsplashPage):
     def __init__(self, api_key, url='/photos/random', **kwargs):
-        valid_options = ['collections', 'featured', 'username', 'query', 'orientation', 'count']
+        valid_options = ['collections', 'topics', 'username', 'query', 'orientation', 'content_filter', 'count']
         super(RandomPhotos, self).__init__(url=url, api_key=api_key, valid_options=valid_options, **kwargs)
 
     @property
@@ -77,7 +64,7 @@ class Photo(UnsplashObject):
 
     @property
     def stats(self):
-        url = '{}/stats'.format(self.url)
+        url = '{}/statistics'.format(self.url)
         r = self._agent.get(url)
         if r.status_code == 200:
             return r.json()

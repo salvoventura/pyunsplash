@@ -1,1 +1,44 @@
-{"url": "/stats/total", "body": {"photo_downloads": 767919529, "downloads_per_second": 19, "views": 131743336552, "downloads": 767919529, "views_per_second": 3585, "photos": 814552, "photographers": 118342, "likes": 15803533, "total_photos": 814552, "requests": 15993426994, "developers": 45248, "pixels": 12482066946084, "applications": 875}, "last_update": "Sat Jan 19 11:16:13 2019", "status_code": 200, "headers": {"Content-Length": "285", "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining", "X-Request-Id": "60a43b4b-3dc8-4389-ac8d-6c163a7f6ce0", "X-Cache-Hits": "0, 0", "Access-Control-Allow-Origin": "*", "X-Ratelimit-Remaining": "39", "X-Served-By": "cache-iad2133-IAD, cache-pao17421-PAO", "Access-Control-Request-Method": "*", "X-Runtime": "0.014985", "Date": "Sat, 19 Jan 2019 19:16:14 GMT", "Accept-Ranges": "bytes", "X-Cache": "MISS, MISS", "Age": "0", "Strict-Transport-Security": "max-age=15552000", "Server": "Cowboy", "Connection": "keep-alive", "X-Ratelimit-Limit": "50", "Via": "1.1 vegur, 1.1 varnish, 1.1 varnish", "X-Timer": "S1547925375.794264,VS0,VE90", "Vary": "Origin, Authorization", "Cache-Control": "no-cache, no-store, must-revalidate", "Access-Control-Allow-Headers": "*", "Content-Type": "application/json"}}
+{
+  "url": "/stats/total",
+  "body": {
+    "photo_downloads": 767919529,
+    "downloads_per_second": 19,
+    "views": 131743336552,
+    "downloads": 767919529,
+    "views_per_second": 3585,
+    "photos": 814552,
+    "photographers": 118342,
+    "likes": 15803533,
+    "total_photos": 814552,
+    "requests": 15993426994,
+    "developers": 45248,
+    "pixels": 12482066946084,
+    "applications": 875
+  },
+  "last_update": "Sat Jan 19 11:16:13 2019",
+  "status_code": 200,
+  "headers": {
+    "Content-Length": "285",
+    "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+    "X-Request-Id": "60a43b4b-3dc8-4389-ac8d-6c163a7f6ce0",
+    "X-Cache-Hits": "0, 0",
+    "Access-Control-Allow-Origin": "*",
+    "X-Ratelimit-Remaining": "39",
+    "X-Served-By": "cache-iad2133-IAD, cache-pao17421-PAO",
+    "Access-Control-Request-Method": "*",
+    "X-Runtime": "0.014985",
+    "Date": "Sat, 19 Jan 2019 19:16:14 GMT",
+    "Accept-Ranges": "bytes",
+    "X-Cache": "MISS, MISS",
+    "Age": "0",
+    "Strict-Transport-Security": "max-age=15552000",
+    "Server": "Cowboy",
+    "Connection": "keep-alive",
+    "X-Ratelimit-Limit": "50",
+    "Via": "1.1 vegur, 1.1 varnish, 1.1 varnish",
+    "X-Timer": "S1547925375.794264,VS0,VE90",
+    "Vary": "Origin, Authorization",
+    "Cache-Control": "no-cache, no-store, must-revalidate",
+    "Access-Control-Allow-Headers": "*"
+  }
+}
