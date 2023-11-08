@@ -80,6 +80,30 @@ class Photo(UnsplashObject):
     def link_download_location(self):
         return self.links.get('download_location', None)
 
+    @property
+    def url_raw(self):
+        return self.urls.get('raw', None)
+
+    @property
+    def author_info(self):
+        author_info = self.body.get('user', None)
+        if author_info:
+            # Strictly extracting information used for the attribution string
+            # If we ever expand, we should make a new class
+            first_name = author_info.get('first_name', "") or ''
+            last_name = author_info.get('last_name', "") or ''
+            return f'{first_name} {last_name}'
+        return ""
+
+    @property
+    def author_url(self):
+        author_info = self.body.get('user', None)
+        if author_info:
+            # Strictly extracting information used for the attribution string
+            # If we ever expand, we should make a new class
+            return author_info.get('links', {}).get('html', "") or ''
+        return ''
+
     def get_attribution(self, format='txt'):
         """
         Return the standard Unsplash attribution string, which currently is:
@@ -93,9 +117,9 @@ class Photo(UnsplashObject):
         if author_info:
             # Strictly extracting information used for the attribution string
             # If we ever expand, we should make a new class
-            first_name = author_info.get('first_name', "")
-            last_name = author_info.get('last_name', "")
-            url = author_info.get('links', {}).get('html', "")
+            first_name = author_info.get('first_name', "") or ''
+            last_name = author_info.get('last_name', "") or ''
+            url = author_info.get('links', {}).get('html', "") or ''
             logger.debug("Photo author {} {}, on Unsplash at {}".format(first_name, last_name, url))
         if format in ('str', 'txt'):
             return "Photo by {} {} on Unsplash".format(first_name, last_name)
