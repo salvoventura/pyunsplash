@@ -35,7 +35,7 @@ download link.
 
     import logging
     from pyunsplash import PyUnsplash
-    api_key = 'YOUR_APPLICATION_ID'
+    api_key = 'YOUR_APPLICATION_ACCESS_KEY'
 
     # instantiate PyUnsplash object
     py_un = PyUnsplash(api_key=api_key)
